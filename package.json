@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "webpack:deploy": "webpack --config=webpack.config.js -p",
-    "heroku-postbuild": "npm run webpack:deploy"
+    "heroku-postbuild": "npm install",
+    "webpack:deploy": "webpack"
   },
   "repository": {
     "type": "git",
