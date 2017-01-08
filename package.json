@@ -5,8 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-postbuild": "npm install",
-    "webpack:deploy": "webpack"
+    "postinstall": "./node_modules/.bin/webpack"
+  },
+  "engines": {
+    "node": "v6.2.1",
+    "npm": "3.9.3"
   },
   "repository": {
     "type": "git",
