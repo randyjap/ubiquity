@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: dkympkwdz
+  api_key: '922734865918157'
+  api_secret: AK0b8bO76mEDdCNm7DMNyPn3QXs
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: dkympkwdz
+  api_key: '922734865918157'
+  api_secret: AK0b8bO76mEDdCNm7DMNyPn3QXs
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: dkympkwdz
+  api_key: '922734865918157'
+  api_secret: AK0b8bO76mEDdCNm7DMNyPn3QXs
+  enhance_image_tag: true
+  static_image_support: false
