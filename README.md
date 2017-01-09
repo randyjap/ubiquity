@@ -1,9 +1,10 @@
 # Ubiquity
 
-[Heroku link][heroku]
+[Heroku][heroku]
+
 [Share Grid][sharegrid]
 
-[heroku]: https://ubiquity.herokuapp.com/
+[heroku]: http://www.randyjap.com/
 [sharegrid]: http://www.sharegrid.com
 
 ## MVP (Minimum Viable Product)
@@ -19,7 +20,7 @@ Ubiquity allows users to easily rent out their idle equipment to others and allo
 - [ ] Equipment listings are mapped with the google maps API
 - [ ] Renters and lessors can leave each other reviews.
 - [ ] Infinite Scroll
-- [ ] Production README [sample](docs/production_readme.md)
+- [ ] Production README [production_readme](docs/production_readme.md)
 
 ## Design Docs
 * [View Wireframes][wireframes]
