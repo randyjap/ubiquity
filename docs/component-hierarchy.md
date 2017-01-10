@@ -3,43 +3,40 @@
 **AuthFormContainer**
  - AuthForm
 
- **App**
+**HomeContainer**
  - TopBarContainer
- - AuthFormContainer
- - SearchResultsContainer
- - ListingsContainer
- - NewFormListingContainer
+  (Children Go Here!)
  - BottomBarContainer
 
 **TopBarContainer**
-- TopBar
-- Search
+ - TopBar
+  - Search
+  - DropDownMenu
 
 **Search**
+(Has Internal State)
 
 **SearchResultsContainer**
  - SearchResults
 
-**ListingsContainer**
- - Listings
+**ListingsIndexContainer**
+ - ListingIndex
+  - ListingIndexItem (Functional Component)
 
 **NewFormListingContainer**
  - NewFormListing
 
-**NewFormListing**
+**ProfileContainer**
+ - Profile
 
-**Listings**
-- Listing
+**UserRentalContainer**
+- UserRentalsIndex
+ - UserRentalItem
 
-**Listing**
-
-**Users**
- -UserContainer
- -UserProfile
-
-**UserContainer**
-- UserRentals
-- UserListings
+**UserListingContainer**
+- UserListingsIndex
+ - UserListingItem
+  - Rentals (Functional Component)
 
 **UserProfile**
 
@@ -47,14 +44,12 @@
 
 |Path                        | Component                 |
 |----------------------------|---------------------------|
-| "/"                        | "App"                     |
+| "/"                        | "App" (IndexRoute is Home)|
 | "/sign-up"                 | "AuthFormContainer"       |
 | "/sign-in"                 | "AuthFormContainer"       |
-| "/listings/"               | "ListingsContainer"       |
-| "/new-listing"             | "NewFormListingContainer" |
-| "/listings/:listing_id"    | "Listings"                |
-| "/users/:user_id/listings" | "UserContainer"           |
-| "/users/:user_id/rentals"  | "UserContainer"           |
-| "/users/:user_id"          | "UserProfile"             |
-| "/search"                  | "Search"                  |
-| "/search-results"          | "SearchResultsContainer"  |
+| "/search"                  | "SearchResultsContainer"  |
+| "/listings/:listing_id"    | "ListingsIndexContainer"  |
+| "/new-listing"             | "NewFormListing"          |
+| "/my-listings"             | "UserListingContainer"    |
+| "/my-rentals"              | "UserRentalContainer"     |
+| "/profile"                 | "UserProfile"             |

@@ -11,11 +11,11 @@
 ### Users
 
 - `POST /api/users`
-- `GET /profile`
+- `GET /api/profile`
   - id will be pulled from currentUser
-- `GET /listings`
+- `GET /api/my-listings`
   - id will be pulled from currentUser
-- `GET /rentals`
+- `GET /api/my-rentals`
   - id will be pulled from currentUser
 
 ### Session
