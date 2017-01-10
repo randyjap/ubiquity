@@ -41,17 +41,21 @@ Ubiquity allows users to easily rent out their idle equipment to others and allo
 
 **Objective:** Functioning rails project with front-end Authentication with provisions for reviews and profile components.
 
-### Phase 2: Equipment Listing Model, API, and Components (3 days)
+### Phase 2: Equipment Listing Model, API, and Components (2 days)
 
-**Objective:** Equipment listings can be created, read, edited and destroyed through the API.
+**Objective:** Equipment listings can be created, read, edited and inactivated through the API.
 
-### Phase 3: Equipment Search, Google Map API & Components (2 days)
+### Phase 3: Equipment Search, Listings, & Components (2 days)
 
 **Objective:** Equipment listings can be shown and linked to on the google map API.
 
-### Phase 4: Reviews & Infinite Scroll Listings (2 days)
+### Phase 4: Google Map API & Components (1 day)
 
-**Objective:** Renters and lessors can leave each other feedback.  Feedback is added to profile components.  Listings can be scrolled infinitely.
+**Objective:** Equipment listings can be shown and linked to on the google map API.
+
+### Phase 5: Reviews (2 days)
+
+**Objective:** Renters and lessors can leave each other feedback.  Feedback is added to profile components.
 
 ### Bonus Features (TBD)
 - [ ] Lessees must request and lessors may approve rental requests

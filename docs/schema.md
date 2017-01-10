@@ -5,7 +5,6 @@ column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
 username        | string    | not null, indexed, unique
-email           | string    | not null, indexed, unique
 password_digest | string    | not null
 session_token   | string    | not null, indexed, unique
 
@@ -32,20 +31,20 @@ column name | data type | details
 id          | integer   | not null, primary key
 listing_id  | integer   | not null, foreign key (references listings), indexed
 lessee_id   | integer   | not null, foreign key (references users), indexed
-start_date  | date      | not null, primary key
-end_date    | date      | not null, primary key
+start_date  | date      | not null
+end_date    | date      | not null
 
 ## brands
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
-brand       | string    | not null
+name        | string    | not null, indexed, unique
 
 ## cats
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
-category    | integer   | not null
+category    | integer   | not null, indexed, unique
 
 ## photos
 column name | data type | details
@@ -58,7 +57,7 @@ listing_id  | integer   | not null, foreign key (references listing), indexed
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
-lessee_id   | string    | not null, foreign key (references users), indexed
-lessor_id   | string    | not null, foreign key (references users), indexed
-listing_id  | integer   | not null, foreign key (references listing), indexed
-reviews     | string    | not null
+reviewer    | integer   | not null, foreign key (references users), indexed, unique scope [reviewer, rental_id]
+reviewee    | integer   | not null, foreign key (references users), indexed, unique scope [reviewee, rental_id]
+rental_id   | integer   | not null, foreign key (references listing), indexed, unique scope [reviewer, rental_id], unique scope [reviewee, rental_id]
+review      | integer   | not null, value constraint (0 - 5 in increments of 0.5)

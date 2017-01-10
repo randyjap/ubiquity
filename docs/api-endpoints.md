@@ -11,16 +11,19 @@
 ### Users
 
 - `POST /api/users`
-- `GET /api/users/:id`
-- `GET /api/users/:id/listings`
-- `GET /api/users/:id/rentals`
+- `GET /profile`
+  - id will be pulled from currentUser
+- `GET /listings`
+  - id will be pulled from currentUser
+- `GET /rentals`
+  - id will be pulled from currentUser
 
 ### Session
 
 - `POST /api/session`
 - `DELETE /api/session`
 
-### EquipmentListings
+### Listings
 
 - `GET /api/listings`
   - accepts `brand` query param to list equipment by brand
@@ -29,5 +32,3 @@
 - `POST /api/listings`
 - `GET /api/listings/:id`
 - `PATCH /api/listings/:id`
-- `DELETE /api/listings/:id`
-	- will set listing inactive by setting active column to false instead of deleting the record entirely
