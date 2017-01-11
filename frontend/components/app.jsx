@@ -3,7 +3,6 @@ import GreetingContainer from './greeting/greeting_container';
 
 const App = ({ children }) => (
   <div>
-    <h1 className="title">Ubiquity</h1>
     <GreetingContainer />
     { children }
   </div>

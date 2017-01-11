@@ -65,20 +65,21 @@ class SessionForm extends React.Component {
     let counter = 1;
 
     setTimeout(() => {
+      this.setState({ user: "WelcomeGuest" });
       this.setState({ password: "password" });
-      this.props.login({user: this.state});
-    }, 1500);
+      this.props.login({ user: this.state });
+    }, 1300);
 
     setTimeout(() => {
       this.closeModal();
-    }, 1600);
+    }, 1400);
 
     (function next() {
       if (counter++ > maxLoops) return;
       setTimeout(() => {
         that.setState({ username: "WelcomeGuest".slice(0, counter) });
         next();
-      }, 50);
+      }, 70);
     })();
   }
 
@@ -108,8 +109,8 @@ class SessionForm extends React.Component {
                   <input autoFocus type="text" placeholder="Username" value={this.state.username} onChange={this.updateProperty('username')} required/>
                   <input type="password" placeholder="Password" value={this.state.password} onChange={this.updateProperty('password')} required/>
                   <div className="entrance flex">
-                    <div><button className='demo' value="DEMO" onClick={this.demoLogin}>DEMO</button></div>
                     <div><button className='entrance' value="Sign In" onClick={this.handleSubmit}>{buttonText}</button></div>
+                    <div><button className='demo' value="DEMO" onClick={this.demoLogin}>DEMO</button></div>
                   </div>
                 </form>
               </div>

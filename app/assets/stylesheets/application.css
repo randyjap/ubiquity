@@ -21,3 +21,5 @@
  @import "base/grid.scss";
  @import "base/modal.scss";
  @import "base/reactTG.scss";
+ @import "base/gear_dropdown.scss";
+ @import "base/main_nav.scss";
