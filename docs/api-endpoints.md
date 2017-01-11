@@ -11,11 +11,11 @@
 ### Users
 
 - `POST /api/users`
-- `GET /api/profile`
+- `GET /api/users/:id`
   - id will be pulled from currentUser
-- `GET /api/my-listings`
+- `GET /api/listings`
   - id will be pulled from currentUser
-- `GET /api/my-rentals`
+- `GET /api/rentals`
   - id will be pulled from currentUser
 
 ### Session
@@ -25,7 +25,7 @@
 
 ### Listings
 
-- `GET /api/listings`
+- `GET /api/search`
   - accepts `brand` query param to list equipment by brand
   - accepts `cat` query param to list equipment by category
   - accepts `location` query param to list equipment by location

@@ -39,23 +39,10 @@ body {
 	padding: 6px 24px;
 	text-decoration: none;
   font-size: 130%;
-  -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Chrome/Safari/Opera */
-     -khtml-user-select: none; /* Konqueror */
-       -moz-user-select: none; /* Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none;
+  border-radius: 5px;
 }
 
 a.welcome {
-  padding-right: 28px;
-  padding-left: 28px;
-  padding-top: 6px;
-  padding-bottom: 6px;
-  color: grey;
-  text-decoration: none;
-  background-color: #5AB475;
-  color: white;
 
   position: absolute;
   top: 50%;
@@ -66,10 +53,8 @@ a.welcome {
 	text-decoration: none;
   font-size: 130%;
   box-shadow: 3px 3px 3px #888888;
-  transition-duration: 30ms;
 }
 
 a.welcome:hover {
-	background-color: #42CC42;
   box-shadow: none;
 }

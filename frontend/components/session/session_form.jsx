@@ -60,27 +60,19 @@ class SessionForm extends React.Component {
   }
 
   demoLogin() {
-    const that = this;
-    const maxLoops = 11;
-    let counter = 1;
-
-    setTimeout(() => {
-      this.setState({ user: "WelcomeGuest" });
-      this.setState({ password: "password" });
-      this.props.login({ user: this.state });
-    }, 1300);
-
-    setTimeout(() => {
-      this.closeModal();
-    }, 1400);
-
-    (function next() {
-      if (counter++ > maxLoops) return;
-      setTimeout(() => {
-        that.setState({ username: "WelcomeGuest".slice(0, counter) });
-        next();
-      }, 70);
-    })();
+    const username = "WelcomeGuest";
+    const password = "password";
+    let counter = 0;
+    const typer = () => {
+      counter++;
+      this.setState({ username: username.slice(0, counter) });
+      if (counter === username.length) {
+        this.setState({ password });
+        clearInterval(animation);
+        this.props.login({user: {username, password} }).then(() => this.redirect('/'));
+      }
+    };
+    const animation = setInterval(typer, 70);
   }
 
   render(){
