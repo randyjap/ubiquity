@@ -1,4 +1,3 @@
-/* global $ */
 document.addEventListener('DOMContentLoaded', () => {
 	const toggleDropdown = () => {
 		$('#gear-dropdown').toggleClass('hidden');

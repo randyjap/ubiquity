@@ -34,7 +34,7 @@ body {
 
   position: absolute;
   top: 50%;
-  left: 40%;
+  left: 34%;
 	display: inline-block;
 	padding: 6px 24px;
 	text-decoration: none;
@@ -59,7 +59,7 @@ a.welcome {
 
   position: absolute;
   top: 50%;
-  left: 46%;
+  left: 42%;
 	display: inline-block;
 	cursor: pointer;
 	padding: 6px 24px;
@@ -72,21 +72,4 @@ a.welcome {
 a.welcome:hover {
 	background-color: #42CC42;
   box-shadow: none;
-}
-
-.hidden {
-	display: none;
-}
-
-input.searchbar {
-  width: 500px;
-  height: 39px;
-  border-radius: 20px 20px 20px 20px;
-  background-color: #fff;
-  box-shadow: 1px 2px 5px rgba(0,0,0,.09);
-  border: solid 1px #cbc9c9;
-  margin-left: -5px;
-  margin-top: 13px;
-  padding-left: 10px;
-  font-size: 110%;
 }
