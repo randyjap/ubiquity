@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import FontAwesome from 'react-fontawesome';
 
 class Greeting extends React.Component{
   constructor(props){
@@ -10,24 +11,28 @@ class Greeting extends React.Component{
     let greeting;
     if (this.props.currentUser === null) {
       greeting = (
-        <div>
-          <h1>Greetings!</h1>
-          <p><Link to='signup'>Sign Up!</Link></p>
-          <p><Link to='login'>Login!</Link></p>
+        <div id='greeting'>
+          <Link className='welcome' to='login'>ENTER SITE</Link>
         </div>
       );
     } else {
       greeting = (
-        <div>
-          <h1>Hello {this.props.currentUser.username}!</h1>
+        <div id='greeting'>
+          <h1 className='welcome'>
+            <FontAwesome
+              className='fa-life-ring fa'
+              size='lg'
+              style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.3)' }}
+            />
+    Hello {this.props.currentUser.username}!</h1>
           <Link to='/' onClick={this.props.logout}>Logout</Link>
         </div>
       );
     }
 
-    return(
-      <div id='greeting'>
-        {greeting}
+    return (
+      <div>
+        { greeting }
       </div>
     );
   }
