@@ -37,7 +37,7 @@ Ubiquity allows users to easily rent out their idle equipment to others and allo
 
 ## Implementation Timeline
 
-### Phase 1: Backend setup, Front End User Authentication, Profile Components (2 days)
+### Phase 1: Backend setup, Front End User Authentication (2 days)
 
 **Objective:** Functioning rails project with front-end Authentication with provisions for reviews and profile components.
 
@@ -55,7 +55,7 @@ Ubiquity allows users to easily rent out their idle equipment to others and allo
 
 ### Phase 5: Reviews (2 days)
 
-**Objective:** Renters and lessors can leave each other feedback.  Feedback is added to profile components.
+**Objective:** Renters and lessors can leave each other point feedback.
 
 ### Bonus Features (TBD)
 - [ ] Lessees must request and lessors may approve rental requests

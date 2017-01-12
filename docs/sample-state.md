@@ -10,7 +10,8 @@
     createListing: {errors: ["serial can't be blank", "location can't be blank"]}
   },
   listing: {
-    lessor_username: "username",
+    id: 1,
+    lessor: "username",
     listing_title: "title",
     detail_desc: "description",
     location: "123 ABC Street, ABC Town, USA",
@@ -20,21 +21,22 @@
     replacement_value: 10000,
     serial: "01234567890ABC",
     brand: "Top Brand",
-    cat: "A Category",
+    category: "A Category",
     rating_average: 4.5,
     review_count: 399
   },
   listings: {
     1: {
-      lessor_username: "username",
-      listing_title: "title",
-      lat: 123.123456,
-      lng: 123.123456,
-      day_rate: 100,
       brand: "Top Brand",
-      cat: "A Category",
+      category: "A Category",
+      day_rate: 100,
+      id: 1
+      lat: 123.123456,
+      listing_title: "title",
+      lng: 123.123456,
       rating_average: 4.5,
       review_count: 399
+      lessor: "username",
     },
     2: ...
   },
@@ -61,9 +63,9 @@
     2: ...
   },
   searchFilters: {
-	location: "123 ABC Street, ABC Town, USA",
+	bounds: {},
 	brand: ["Top Brand", "Value Brand"],
-	cat: ["A Category", "B Category"]
+	category: ["A Category", "B Category"]
   }
 }
 ```

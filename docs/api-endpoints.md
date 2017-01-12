@@ -29,6 +29,6 @@
   - accepts `brand` query param to list equipment by brand
   - accepts `cat` query param to list equipment by category
   - accepts `location` query param to list equipment by location
-- `POST /api/listings`
+- `POST /api/listings` (Not MVP Required)
 - `GET /api/listings/:id`
 - `PATCH /api/listings/:id`
