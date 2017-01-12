@@ -11,13 +11,13 @@ class CreateListings < ActiveRecord::Migration
       t.integer :replacement_value, null: false
       t.string :serial, null: false
       t.integer :brand_id, null: false
-      t.integer :cat_id, null: false
+      t.integer :category_id, null: false
       t.boolean :active, null: false, default: true
       t.timestamps null: false
     end
     add_index :listings, :lessor_id
     add_index :listings, :brand_id
-    add_index :listings, :cat_id
+    add_index :listings, :category_id
     add_index :listings, :lat
     add_index :listings, :lng
   end

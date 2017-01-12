@@ -43,14 +43,14 @@ ActiveRecord::Schema.define(version: 20170111182346) do
     t.integer  "replacement_value",                null: false
     t.string   "serial",                           null: false
     t.integer  "brand_id",                         null: false
-    t.integer  "cat_id",                           null: false
+    t.integer  "category_id",                      null: false
     t.boolean  "active",            default: true, null: false
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
   end
 
   add_index "listings", ["brand_id"], name: "index_listings_on_brand_id", using: :btree
-  add_index "listings", ["cat_id"], name: "index_listings_on_cat_id", using: :btree
+  add_index "listings", ["category_id"], name: "index_listings_on_category_id", using: :btree
   add_index "listings", ["lat"], name: "index_listings_on_lat", using: :btree
   add_index "listings", ["lessor_id"], name: "index_listings_on_lessor_id", using: :btree
   add_index "listings", ["lng"], name: "index_listings_on_lng", using: :btree
