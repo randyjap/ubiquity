@@ -4,10 +4,8 @@
     id: 1,
     username: "A Grade Customer"
   },
-  forms: {
-    signUp: {errors: ["Can't leave Username blank", "Password must be 6 characters or longer"]},
-    logIn: {errors: ["oops looks like there was a mistake"]},
-    createListing: {errors: ["serial can't be blank", "location can't be blank"]}
+  errors: {
+    session: ["Can't leave Username blank", "Password must be 6 characters or longer"]
   },
   listing: {
     id: 1,
