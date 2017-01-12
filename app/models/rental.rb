@@ -5,4 +5,11 @@ class Rental < ActiveRecord::Base
   belongs_to :listing
 
   has_one :review
+  has_one :lessor, through: :listing
+
+  def total
+    days = (self.end_date - self.start_date).to_i
+    rate = self.listing.day_rate
+    days * rate
+  end
 end

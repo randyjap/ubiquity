@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   attr_reader :password
 
   has_many :listings, class_name: :Listing, foreign_key: :lessor_id
-  has_many :rentals, foreign_key: :lessee_id
+  has_many :rentals, through: :listings
   has_many :reviews, foreign_key: :lessee_id
 
   after_initialize :ensure_session_token

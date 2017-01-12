@@ -1,4 +1,5 @@
 json.extract! listing,
+              :id,
               :brand,
               :category,
               :day_rate,
@@ -15,8 +16,7 @@ json.extract! listing,
 
 json.set! :lessor,
           listing.lessor.username
-
-# $.ajax({
-#   method: 'GET',
-#   url: '/api/listings/4'
-# }).then(listing => {console.log(listing)})
+json.set! :brand,
+          listing.brand.name
+json.set! :category,
+          listing.category.name

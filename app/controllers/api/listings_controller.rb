@@ -1,7 +1,9 @@
 class Api::ListingsController < ApplicationController
   def index
     if current_user
-      @listings = Listing.where(lessor: current_user)
+      @listings = Listing
+                  .where(lessor: current_user)
+                  .where(active: true)
     else
       render json: ["you are not logged in"], status: 401
     end

@@ -3,7 +3,9 @@ import GreetingContainer from './greeting/greeting_container';
 
 const App = ({ children }) => (
   <div>
-    <GreetingContainer />
+    <header>
+      <GreetingContainer />
+    </header>
     { children }
   </div>
 );

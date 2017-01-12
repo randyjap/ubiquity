@@ -11,21 +11,21 @@
   },
   listing: {
     id: 1,
-    lessor: "username",
-    listing_title: "title",
-    detail_desc: "description",
-    location: "123 ABC Street, ABC Town, USA",
-    lat: 123.123456,
-    lng: 123.123456,
-    day_rate: 100,
-    replacement_value: 10000,
-    serial: "01234567890ABC",
     brand: "Top Brand",
     category: "A Category",
+    day_rate: 100,
+    detail_desc: "description",
+    lat: 123.123456,
+    listing_title: "title",
+    lng: 123.123456,
+    location: "123 ABC Street, ABC Town, USA",
     rating_average: 4.5,
+    replacement_value: 10000,
     review_count: 399
+    serial: "01234567890ABC",
+    lessor: "username",
   },
-  listings: {
+  searchListings: {
     1: {
       brand: "Top Brand",
       category: "A Category",
@@ -43,11 +43,11 @@
   currentUserListings: {
     1: [
         {
-          id: 12,
-          lessee_username: "username",
-          start_date: 2017-01-08 20:53:16 -0800,
           end_date: 2017-01-08 20:53:16 -0800,
+          id: 12,
+          start_date: 2017-01-08 20:53:16 -0800,
           total: 1000
+          lessee: "username",
         },
         ...
       ],
@@ -55,9 +55,9 @@
   },
   currentUserRentals: {
     1: {
-      rental_id: 1,
-      start_date: 2017-01-08 20:53:16 -0800,
       end_date: 2017-01-08 20:53:16 -0800,
+      id: 1,
+      start_date: 2017-01-08 20:53:16 -0800,
       total: 1000
     },
     2: ...

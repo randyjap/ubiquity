@@ -1,6 +1,6 @@
 class Api::SearchController < ApplicationController
   def index
-    @listings = Listing.all
+    @listings = Listing.where(active: true)
   end
 end
 
