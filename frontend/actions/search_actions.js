@@ -7,7 +7,7 @@ export const receiveListings = searchListings => ({
   searchListings
 });
 
-export const fetchSearchListings = () => dispatch => {
-  return SessionAPIUtil.fetchSearchListings()
+export const fetchSearchListings = (filters) => dispatch => {
+  return SessionAPIUtil.fetchSearchListings(filters)
     .then(listings => dispatch(receiveListings(listings)));
 };

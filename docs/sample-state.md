@@ -27,9 +27,11 @@
   },
   search: {
     searchFilters: {
-      bounds: {},
-      brand: ["Top Brand", "Value Brand"],
-      category: ["A Category", "B Category"]
+        bounds: {
+          northEast: { lat: 100, lng:  100 }, southWest: { lat: 100, lng: 100 }
+      },
+      brand: ["Canon", "Minolta"],
+      category: ["Photography", "Video"]
     }
     searchListings: {
       1: {

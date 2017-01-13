@@ -4,7 +4,14 @@ import merge from 'lodash/merge';
 
 let _defaultState = {
   searchListings: null,
-  searchFilters: null
+  searchFilters: {
+    bounds: {
+      northEast: { lat: 900, lng: 900 },
+      southWest: { lat: -900, lng: -900 }
+    },
+    brand: ["Canon", "Minolta"],
+    category: ["Photography", "Video"]
+  }
 };
 
 const searchReducer = (state = _defaultState, action) => {

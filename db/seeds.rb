@@ -15,8 +15,8 @@ end
 brand = Brand.first
 category = Category.first
 
-50.times do
-  Listing.create!({
+30.times do
+  Listing.create({
     lessor: User.find(rand(1..User.count)),
     listing_title: Faker::Company.buzzword,
     detail_desc: Faker::Company.catch_phrase,
@@ -32,11 +32,11 @@ category = Category.first
   })
 end
 
-50.times do
-  starting_date = Faker::Date.forward(23)
+1000.times do
+  starting_date = Faker::Date.forward(150)
   ending_date = starting_date + rand(1..14)
 
-  Rental.create({
+  rental = Rental.create({
     listing: Listing.find(rand(1..Listing.count)),
     lessee: User.find(rand(1..User.count)),
     start_date: starting_date,
@@ -44,18 +44,19 @@ end
   })
 end
 
-200.times do
+30.times do |i|
   thumbnail_url = "https://upload.wikimedia.org/wikipedia/commons/d/da/Pictograms-nps-misc-camera-2.svg"
-  Photo.create({
-    listing: Listing.find(rand(1..Listing.count)),
-    image_url: thumbnail_url
-  })
+  3.times do
+    Photo.create({
+      listing: Listing.find(i + 1),
+      image_url: thumbnail_url
+    })
+  end
 end
 
-200.times do
+Rental.count.times do |i|
   Review.create({
-    reviewer: User.find(rand(1..User.count)),
-    rental: Rental.find(rand(1..Rental.count)),
+    rental: Rental.find(i + 1),
     review: rand(1..5)
   })
 end

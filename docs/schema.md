@@ -57,6 +57,5 @@ listing_id  | integer   | not null, foreign key (references listing), indexed
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
-reviewer_id | integer   | not null, foreign key (references users), indexed, unique scope [rental_id]
-rental_id   | integer   | not null, foreign key (references listing), indexed, unique scope [lessee_id]
+rental_id   | integer   | not null, foreign key (references listing), indexed, unique scope [associated lessee]
 review      | integer   | not null

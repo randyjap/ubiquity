@@ -102,8 +102,8 @@ class SessionForm extends React.Component {
                   <div><Link to='signup' className='signup' onClick={this.props.clearSessionErrors} activeClassName="activeEntranceLink">Sign Up</Link></div>
                 </div>
                 <hr/>
-                <input autoFocus type="text" placeholder="Username" value={this.state.username} onChange={this.updateProperty('username')} required/>
-                <input type="password" placeholder="Password" value={this.state.password} onChange={this.updateProperty('password')} required/>
+                <input className="session" autoFocus type="text" placeholder="Username" value={this.state.username} onChange={this.updateProperty('username')} required/>
+                <input className="session" type="password" placeholder="Password" value={this.state.password} onChange={this.updateProperty('password')} required/>
                 <div className="entrance flex">
                   <div><button className='entrance' value="Sign In" onClick={this.handleSubmit}>{buttonText}</button></div>
                   <div><button className='demo' value="DEMO" onClick={this.demoLogin}>DEMO</button></div>

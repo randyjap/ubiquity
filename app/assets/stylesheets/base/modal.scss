@@ -9,10 +9,11 @@
 
 .modal {
   position: absolute;
-  top: 30%;
-  left: 40%;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
   width: 220px;
-  height: 240px;
+  height: 210px;
   overflow: scroll;
   border: 1px solid #ccc;
   background-color: #fff;
@@ -24,13 +25,14 @@
 
 div.entrance.flex {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 div.errors {
   position: absolute;
-  top: 15%;
-  left: 34%;
+  transform: translate(-50%, -50%);
+  top: 30%;
+  left: 50%;
   width: 400px;
   overflow: scroll;
   border: 1px solid #ccc;
@@ -81,8 +83,12 @@ h1.entrance {
   text-align: center;
 }
 
-input[type=radio] {
-  // visibility: hidden;
+button {
+  box-shadow: 3px 3px 3px #888888;
+}
+
+button.shadow {
+  box-shadow: none;
 }
 
 hr{
@@ -90,21 +96,17 @@ hr{
   opacity: 0.3;
 }
 
-input[type=text],input[type=password]{
+input.session[type=text],input.session[type=password] {
   width: 200px;
   height: 39px;
-  border-radius: 0px 4px 4px 0px/5px 5px 4px 4px;
+  border-radius: 5px 5px 4px 4px;
   background-color: #fff;
   box-shadow: 1px 2px 5px rgba(0,0,0,.09);
   border: solid 1px #cbc9c9;
-  margin-left: -5px;
-  margin-top: 13px;
-  padding-left: 10px;
+  margin-bottom: 10px;
+  padding-left: 15px;
+  padding-left: 15px;
   font-size: 90%;
-}
-
-input[type=password]{
-  margin-bottom: 25px;
 }
 
 button.entrance {
@@ -118,6 +120,7 @@ button.entrance {
 	padding: 6px 24px;
 	text-decoration: none;
   font-size: 100%;
+  position: relative;
 }
 
 button.demo {
@@ -131,6 +134,7 @@ button.demo {
 	padding: 6px 20px;
 	text-decoration: none;
   font-size: 100%;
+  position: relative;
 }
 
 button.entrance:hover {

@@ -9,19 +9,14 @@ class Listing < ActiveRecord::Base
 
   has_many :rentals
   has_many :photos
+  has_many :reviews, through: :rentals
 
   def rating_average
-    return 0 if review_count == 0
-    sum = self.rentals.inject(0) do |acc, rental|
-      next if rental.review.nil?
-      acc + rental.review.review
-    end
-    return 0 if sum.nil?
-    sum / review_count
-    (sum / Float(review_count)).round(1)
+    return 0 if reviews.average(:review).nil?
+    reviews.average(:review).round
   end
 
   def review_count
-    rentals.count
+    self.reviews.count
   end
 end
