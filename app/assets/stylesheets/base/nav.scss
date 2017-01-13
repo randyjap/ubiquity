@@ -1,13 +1,16 @@
+.hidden {
+	display: none;
+}
+
 .main-nav {
 	display:flex;
 	justify-content: space-between;
 	padding-top: 0;
 	padding-bottom: 15px;
 	padding-left: 30px;
-	padding-right: 30px;
+	padding-right: 0;
 	border-bottom: 1px solid grey;
 	height: 80px;
-	position: fixed;
 	top: 0;
 	transition: top 0.2s ease-in-out;
 	width: 100%;
@@ -21,19 +24,6 @@
   padding-top: 100px;
 }
 
-.stick {
-	position: fixed;
-  width: 100%;
-  left: 0;
-  top: 0;
-  z-index: 100;
-  border-top: 0;
-}
-
-.hidden {
-	display: none;
-}
-
 input.searchbar {
   width: 450px;
   height: 39px;
@@ -43,7 +33,7 @@ input.searchbar {
   border: solid 1px #cbc9c9;
   margin-left: -5px;
   margin-top: 13px;
-  padding-left: 10px;
+  padding-left: 30px;
   font-size: 110%;
 }
 
@@ -61,9 +51,5 @@ nav.left-nav {
 nav.right-nav {
   position: relative;
   top: 35px;
-	padding-right: 40px;
-}
-
-@media all and (max-width: 1000px) {
-
+	right: 40px;
 }

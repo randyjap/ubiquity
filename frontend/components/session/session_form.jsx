@@ -25,7 +25,9 @@ class SessionForm extends React.Component {
   handleSubmit(e){
     e.preventDefault();
     const user = this.state;
-    this.props.processForm({user}).then(() => this.redirect('/'));
+    this.props.processForm({user})
+      .then(() => this.redirect('search')
+    );
   }
 
   updateProperty(property){
@@ -52,7 +54,7 @@ class SessionForm extends React.Component {
 
   closeModal() {
     this.setState({ modalOpen: false });
-    this.redirect('/');
+    this.redirect('search');
   }
 
   openModal() {
@@ -69,7 +71,7 @@ class SessionForm extends React.Component {
       if (counter === username.length) {
         this.setState({ password });
         clearInterval(animation);
-        this.props.login({user: {username, password} }).then(() => this.redirect('/'));
+        this.props.login({user: {username, password} }).then(() => this.redirect('search'));
       }
     };
     const animation = setInterval(typer, 70);
@@ -81,32 +83,31 @@ class SessionForm extends React.Component {
       <div>
         {this.renderErrors()}
         <div id='greeting'>
-          <button className='enter' onClick={this.openModal}>ENTER SITE</button>
-            <Modal
-              isOpen={this.state.modalOpen}
-              onRequestClose={this.closeModal}
-              className="modal"
-              overlayClassName="overlayModal"
-              contentLabel="Modal"
-              transitionName="modal-anim">
-              <div>
-                <h1 className="entrance">UBIQUITY</h1>
-                <form onSubmit={this.handleSubmit}>
-                  <hr/>
-                  <div className='entrance flex'>
-                    <div><Link to='login' className='login' activeClassName="activeEntranceLink">Login</Link></div>
-                    <div><Link to='signup' className='signup' activeClassName="activeEntranceLink">Sign Up</Link></div>
-                  </div>
-                  <hr/>
-                  <input autoFocus type="text" placeholder="Username" value={this.state.username} onChange={this.updateProperty('username')} required/>
-                  <input type="password" placeholder="Password" value={this.state.password} onChange={this.updateProperty('password')} required/>
-                  <div className="entrance flex">
-                    <div><button className='entrance' value="Sign In" onClick={this.handleSubmit}>{buttonText}</button></div>
-                    <div><button className='demo' value="DEMO" onClick={this.demoLogin}>DEMO</button></div>
-                  </div>
-                </form>
-              </div>
-            </Modal>
+          <Modal
+            isOpen={this.state.modalOpen}
+            onRequestClose={this.closeModal}
+            className="modal"
+            overlayClassName="overlayModal"
+            contentLabel="Modal"
+            transitionName="modal-anim">
+            <div>
+              <h1 className="entrance">Youbiquity</h1>
+              <form onSubmit={this.handleSubmit}>
+                <hr/>
+                <div className='entrance flex'>
+                  <div><Link to='login' className='login' activeClassName="activeEntranceLink">Login</Link></div>
+                  <div><Link to='signup' className='signup' activeClassName="activeEntranceLink">Sign Up</Link></div>
+                </div>
+                <hr/>
+                <input autoFocus type="text" placeholder="Username" value={this.state.username} onChange={this.updateProperty('username')} required/>
+                <input type="password" placeholder="Password" value={this.state.password} onChange={this.updateProperty('password')} required/>
+                <div className="entrance flex">
+                  <div><button className='entrance' value="Sign In" onClick={this.handleSubmit}>{buttonText}</button></div>
+                  <div><button className='demo' value="DEMO" onClick={this.demoLogin}>DEMO</button></div>
+                </div>
+              </form>
+            </div>
+          </Modal>
         </div>
       </div>
     );

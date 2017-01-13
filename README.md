@@ -1,6 +1,6 @@
-# Ubiquity
+# Youbiquity
 
-##[Ubiquity][heroku]
+##[Youbiquity][heroku]
 
 [Share Grid][sharegrid]
 
@@ -9,9 +9,9 @@
 
 ## MVP (Minimum Viable Product)
 
-Ubiquity is a web application inspired by Share Grid and built using Ruby on Rails and React/Redux.
+Youbiquity is a web application inspired by Share Grid and built using Ruby on Rails and React/Redux.
 
-Ubiquity allows users to easily rent out their idle equipment to others and allow others to rent this equipment from them.
+Youbiquity allows users to easily rent out their idle equipment to others and allow others to rent this equipment from them.
 
 - [ ] Hosting on Heroku
 - [ ] New account creation, login, and guest/demo login

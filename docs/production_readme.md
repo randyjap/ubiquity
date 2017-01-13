@@ -1,15 +1,15 @@
-# Ubiquity
+# Youbiquity
 
-[Ubiquity live][heroku]
+[Youbiquity live][heroku]
 
-[heroku]: https://ubiquity.herokuapp.com/
+[heroku]: https://youbiquity.herokuapp.com/
 
-Ubiquity is a full-stack web application inspired by Share Grid.  It utilizes Ruby on Rails on the backend, a PostgreSQL database, and React.js with a Redux architectural framework on the frontend.  
+Youbiquity is a full-stack web application inspired by Share Grid.  It utilizes Ruby on Rails on the backend, a PostgreSQL database, and React.js with a Redux architectural framework on the frontend.  
 
 ## Features & Implementation
 
 ### Schema
-In its base implementation, Ubiquity will have 6 tables:
+In its base implementation, Youbiquity will have 6 tables:
 
  - **User** (Both Lessee and Lessor)
 	 - This table will be shared by lessees and lessors to store `username`, `email`, `session tokens`, and `password digest` information

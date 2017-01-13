@@ -1,15 +1,7 @@
-.flexcontainer {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-
 body {
   background-image: image-url("bg.jpg");
   background-size: cover;
 }
-// background-image: url(http://res.cloudinary.com/dkympkwdz/image/upload/c_scale,f_auto,w_2400/v1484101500/3jzew3rtg6e-chris-brignola_m6qzzy.jpg);
 
 .title {
   font-size: 300%;
@@ -59,6 +51,7 @@ a.welcome:hover {
   box-shadow: none;
 }
 
+// Wrapper
 .wrapper {
   display: -webkit-box;
   display: -moz-box;
@@ -73,19 +66,44 @@ a.welcome:hover {
   text-align: center;
 }
 
-.header, .nav, .main, .aside, .footer {
+.wrapper > * {
+  padding: 10px;
   flex: 1 100%;
 }
 
-@media all and (min-width: 600px) {
-  .aside { flex: 1 auto; }
+.nav, .main, .aside, .footer {
+  flex: 1 100%;
 }
 
-@media all and (min-width: 800px) {
-  .main { flex: 2 0px; }
+.header {
+  top: 80px;
+}
 
-  .aside-1 { order: 1; }
-  .main    { order: 2; }
-  .aside-2 { order: 3; }
-  .footer  { order: 4; }
+.main {
+  min-height: 600px;
+  width: 100%;
+  text-align: left;
+  // background: deepskyblue;
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.aside {
+  padding: 20px;
+}
+
+.search-filters {
+  background: white;
+  padding-left: 50px;
+  width: 10%;
+  flex-grow: 1;
+}
+
+.search-results {
+  // background: orange;
+}
+
+.search-map {
+  // background: pink;
+  padding-right: 50px;
 }
