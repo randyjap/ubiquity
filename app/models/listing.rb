@@ -12,7 +12,11 @@ class Listing < ActiveRecord::Base
 
   def rating_average
     return 0 if review_count == 0
-    sum = self.rentals.inject(0) { |acc, rental| acc + rental.review.review }
+    sum = self.rentals.inject(0) do |acc, rental|
+      next if rental.review.nil?
+      acc + rental.review.review
+    end
+    return 0 if sum.nil?
     sum / review_count
     (sum / Float(review_count)).round(1)
   end
