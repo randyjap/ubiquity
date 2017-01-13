@@ -19,6 +19,7 @@ class SessionForm extends React.Component {
   }
 
   redirect(route){
+    this.props.clearSessionErrors();
     this.props.router.push(route);
   }
 
@@ -53,6 +54,7 @@ class SessionForm extends React.Component {
   }
 
   closeModal() {
+    this.props.clearSessionErrors();
     this.setState({ modalOpen: false });
     this.redirect('search');
   }
@@ -80,9 +82,10 @@ class SessionForm extends React.Component {
   render(){
     const buttonText = this.props.formType === "login" ? "Login" : "Sign Up";
     return(
-      <div>
-        {this.renderErrors()}
+      <div className="main">
         <div id='greeting'>
+          <Link className='welcome' to='login' onClick={this.openModal}>ENTER SITE</Link>
+          {this.renderErrors()}
           <Modal
             isOpen={this.state.modalOpen}
             onRequestClose={this.closeModal}
@@ -91,12 +94,12 @@ class SessionForm extends React.Component {
             contentLabel="Modal"
             transitionName="modal-anim">
             <div>
-              <h1 className="entrance">Youbiquity</h1>
+              <h1 className="entrance">YOUBIQUITY</h1>
               <form onSubmit={this.handleSubmit}>
                 <hr/>
                 <div className='entrance flex'>
-                  <div><Link to='login' className='login' activeClassName="activeEntranceLink">Login</Link></div>
-                  <div><Link to='signup' className='signup' activeClassName="activeEntranceLink">Sign Up</Link></div>
+                  <div><Link to='login' className='login' onClick={this.props.clearSessionErrors} activeClassName="activeEntranceLink">Login</Link></div>
+                  <div><Link to='signup' className='signup' onClick={this.props.clearSessionErrors} activeClassName="activeEntranceLink">Sign Up</Link></div>
                 </div>
                 <hr/>
                 <input autoFocus type="text" placeholder="Username" value={this.state.username} onChange={this.updateProperty('username')} required/>

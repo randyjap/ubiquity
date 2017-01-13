@@ -11,20 +11,20 @@ class Greeting extends React.Component{
     return (
       <div className="footer">
         <div>
-          <li className="footer-items">How it works!</li>
+          <li className="footer-items">HOW IT WORKS!</li>
         </div>
         <div>
-          <li className="footer-items cities">San Francisco</li>
-          <li className="footer-items cities">New York</li>
+          <li className="footer-items cities">SAN Francisco</li>
+          <li className="footer-items cities">NEW YORK</li>
         </div>
         <div>
-          <li className="footer-items">Join us!</li>
+          <li className="footer-items">JOIN US!</li>
         </div>
         <div>
-          <li className="footer-items">Contact Me</li>
+          <li className="footer-items">CONTACT ME</li>
         </div>
         <div>
-          <li className="footer-items">Terms</li>
+          <li className="footer-items">TERMS</li>
         </div>
       </div>
     );

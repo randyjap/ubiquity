@@ -1,11 +1,13 @@
 import { connect } from 'react-redux';
 import Search from './search';
-// import { logout } from '../../actions/session_actions';
+import { fetchSearchListings } from '../../actions/search_actions';
 
 const mapStateToProps = state => ({
+  searchListings: state.search.searchListings
 });
 
 const mapDispatchToProps = dispatch => ({
+  fetchSearchListings: () => dispatch(fetchSearchListings())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);

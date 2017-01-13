@@ -40,7 +40,7 @@ class Greeting extends React.Component{
       greeting = (
         <div className='greeting'>
           &nbsp;
-          <Link className='welcome' to='search'>ENTER SITE</Link>
+          <Link className='welcome' to='login'>ENTER SITE</Link>
         </div>
       );
     } else {

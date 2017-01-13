@@ -1,8 +1,10 @@
 ```js
 {
-  currentUser: {
-    id: 1,
-    username: "A Grade Customer"
+  session: {
+    currentUser: {
+      id: 1,
+      username: "A Grade Customer"
+    }
   },
   errors: {
     session: ["Can't leave Username blank", "Password must be 6 characters or longer"]
@@ -23,20 +25,27 @@
     serial: "01234567890ABC",
     lessor: "username",
   },
-  searchListings: {
-    1: {
-      brand: "Top Brand",
-      category: "A Category",
-      day_rate: 100,
-      id: 1
-      lat: 123.123456,
-      listing_title: "title",
-      lng: 123.123456,
-      rating_average: 4.5,
-      review_count: 399
-      lessor: "username",
-    },
-    2: ...
+  search: {
+    searchFilters: {
+      bounds: {},
+      brand: ["Top Brand", "Value Brand"],
+      category: ["A Category", "B Category"]
+    }
+    searchListings: {
+      1: {
+        brand: "Top Brand",
+        category: "A Category",
+        day_rate: 100,
+        id: 1
+        lat: 123.123456,
+        listing_title: "title",
+        lng: 123.123456,
+        rating_average: 4.5,
+        review_count: 399
+        lessor: "username",
+      },
+      2: ...
+    }
   },
   currentUserListings: {
     1: [
@@ -59,11 +68,6 @@
       total: 1000
     },
     2: ...
-  },
-  searchFilters: {
-	bounds: {},
-	brand: ["Top Brand", "Value Brand"],
-	category: ["A Category", "B Category"]
   }
 }
 ```

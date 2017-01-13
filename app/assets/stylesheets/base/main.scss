@@ -38,7 +38,7 @@ a.welcome {
 
   position: absolute;
   top: 50%;
-  left: 42%;
+  left: 45%;
 	display: inline-block;
 	cursor: pointer;
 	padding: 6px 24px;
@@ -80,12 +80,10 @@ a.welcome:hover {
 }
 
 .main {
-  min-height: 600px;
+  min-height: 800px;
   width: 100%;
   text-align: left;
-  // background: deepskyblue;
   display: flex;
-  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .aside {
@@ -100,10 +98,10 @@ a.welcome:hover {
 }
 
 .search-results {
-  // background: orange;
+  background: orange;
 }
 
 .search-map {
-  // background: pink;
+  background: pink;
   padding-right: 50px;
 }
