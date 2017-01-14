@@ -11,7 +11,7 @@ const searchReducer = (state = _defaultState, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_SEARCH_LISTINGS:
-      return merge({}, state, { searchListings: action.searchListings });
+      return merge({}, state, { searchListings: null }, { searchListings: action.searchListings});
     case RECEIVE_FILTERS:
       return merge({}, state, { searchFilters: action.filters });
     default:

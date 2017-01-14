@@ -15,6 +15,9 @@ class Search extends React.Component{
     this.renderedSearchResults = this.renderedSearchResults.bind(this);
     this.updateProperty = this.updateProperty.bind(this);
     this.getOptions = this.getOptions.bind(this);
+    this.logChange = this.logChange.bind(this);
+    this.state = { brand: [] };
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount(){
@@ -24,16 +27,46 @@ class Search extends React.Component{
   }
 
   getOptions(key){
-    null
+    let options;
+    if (this.props.searchFilters["brand"]) {
+      options = this.props.searchFilters["brand"].map(name => {
+        return { value: name, label: name };
+      });
+    } else {
+      options = [{ value: "Loading...", label: "Loading..." }];
+    }
+    return options;
+  }
+
+  logChange(field) {
+    return e => {
+      this.setState({ [field]: e });
+    };
+  }
+
+  handleSubmit(field){
+    return e => {
+      e.preventDefault();
+      let filters = this.state[field].map(obj => {
+        return obj.value;
+      });
+      console.log({[field]: filters});
+      console.log(this.props.searchFilters);
+      this.props.fetchSearchListings({[field]: filters});
+    };
   }
 
   renderedSearchFilters(){
     return (
-      <Select
-          name="brand-filter"
-          options={this.getOptions('brands')}
-
-          multi={true} />
+      <form onSubmit={this.handleSubmit}>
+        <Select
+            name="brand-filter"
+            options={this.getOptions("brand")}
+            multi={true}
+            onChange={this.logChange("brand")}
+            value={ this.state.brand } />
+          <button className='filter' onClick={this.handleSubmit("brand")}>Filter</button>
+      </form>
     );
   }
 
