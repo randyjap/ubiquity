@@ -9,17 +9,32 @@ var TextInput = belle.TextInput;
 var Spinner = belle.Spinner;
 var Rating = belle.Rating;
 
-
 class Search extends React.Component{
   constructor(props){
     super(props);
     this.renderedSearchResults = this.renderedSearchResults.bind(this);
     this.updateProperty = this.updateProperty.bind(this);
+    this.getOptions = this.getOptions.bind(this);
   }
 
   componentDidMount(){
     let filters = this.props.searchFilters;
+    this.props.fetchAllFilterOptions();
     this.props.fetchSearchListings(filters);
+  }
+
+  getOptions(key){
+    null
+  }
+
+  renderedSearchFilters(){
+    return (
+      <Select
+          name="brand-filter"
+          options={this.getOptions('brands')}
+
+          multi={true} />
+    );
   }
 
   renderedSearchResults(){
@@ -58,21 +73,6 @@ class Search extends React.Component{
       <div className="listings">
         {listings}
       </div>
-    );
-  }
-
-  renderedSearchFilters(){
-    var options = [
-        { value: 'Canon', label: 'Canon' },
-        { value: 'Minolta', label: 'Minolta' }
-    ];
-
-    return (
-      <Select
-          name="brand-filter"
-          options={options}
-          onChange={this.updateProperty('brands')}
-          multi={true} />
     );
   }
 

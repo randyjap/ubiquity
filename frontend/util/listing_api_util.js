@@ -6,10 +6,9 @@ export const fetchSearchListings = (data) => (
   })
 );
 
-export const fetchBrandOptions = (selection) => (
+export const fetchAllFilterOptions = () => (
   $.ajax({
     method: 'GET',
-    url: '/api/options',
-    selection
+    url: '/api/options'
   })
 );

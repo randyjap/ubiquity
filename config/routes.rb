@@ -7,5 +7,6 @@ Rails.application.routes.draw do
     resources :listings, only: [:index, :show, :update]
     resources :rentals, only: [:index]
     resources :search, only: [:index]
+    resources :options, only: [:index]
   end
 end
