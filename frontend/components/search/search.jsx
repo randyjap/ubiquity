@@ -125,18 +125,18 @@ class Search extends React.Component{
       listings = listings.map(listing => {
         return (
           <li className="listing">
-            {listing.listing_title}
-              <Rating defaultValue={listing.rating_average}
-                className="star-rating"
-                character={'✪'}
-                disabled>
-              </Rating>
-            <br/>Contact: {listing.lessor}
-            <br/>Brand: {listing.brand}
-            <br/>Category: {listing.category}
+            <Rating defaultValue={listing.rating_average}
+              className="star-rating"
+              character={'✪'}
+              disabled>
+            </Rating>
+            <br/>{listing.lessor}
+            <br/>{listing.brand}
+            <br/>{listing.category}
             <br/>Day Rate: ${listing.day_rate}
-            <br/>Average Rating: {listing.rating_average}
-            <br/>Review Count: {listing.review_count}
+            <br/>Rating: {listing.rating_average}
+            <br/>Reviews: {listing.review_count}
+            <br/>{listing.listing_title}
           </li>
         );
       });

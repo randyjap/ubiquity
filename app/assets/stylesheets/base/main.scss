@@ -103,10 +103,17 @@ a.welcome:hover {
   list-style: none;
   justify-content: space-around;
   overflow-y: auto;
+  padding: 0;
+  margin: 0;
+  border: 0;
 }
 
 .listing {
   width: 150px;
+  font-size: 90%;
+  padding: 0;
+  margin: 0;
+  border: 0;
 }
 
 .search-map {
@@ -115,6 +122,12 @@ a.welcome:hover {
 }
 
 .star-rating {
+  position: relative;
+  left: -50px;
+  top: 12px;
+  padding: 0;
+  margin: 0;
+  border: 0;
   transform: scale(0.4, 0.4);
 }
 
