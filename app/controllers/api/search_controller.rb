@@ -2,6 +2,7 @@ class Api::SearchController < ApplicationController
   def index
     brand_filters = brand_params ? brand_params : Brand.all.pluck(:name)
     category_filters = category_params ? category_params : Category.all.pluck(:name)
+    rating_filter = rating_params ? rating_params : 0
 
     if bounds_params
       @listings = Listing
@@ -14,13 +15,17 @@ class Api::SearchController < ApplicationController
         .where("lng < ?", bounds_params[:northEast][:lng])
     else
       @listings = Listing
-        .joins(:category, :brand)
+        .joins(:category, :brand, :reviews)
         .where(categories: { name: category_filters })
         .where(brands: { name: brand_filters })
     end
   end
 
   private
+  def rating_params
+    params[:rating]
+  end
+
   def bounds_params
     params[:bounds]
   end

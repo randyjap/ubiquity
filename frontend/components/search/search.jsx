@@ -16,8 +16,10 @@ class Search extends React.Component{
     this.updateProperty = this.updateProperty.bind(this);
     this.getOptions = this.getOptions.bind(this);
     this.logChange = this.logChange.bind(this);
-    this.state = { brand: [] };
+    this.state = { brand: [], category: [], rating: 1, dayRate: null };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.logRating = this.logRating.bind(this);
+    this.handleRating = this.handleRating.bind(this);
   }
 
   componentDidMount(){
@@ -28,8 +30,8 @@ class Search extends React.Component{
 
   getOptions(key){
     let options;
-    if (this.props.searchFilters["brand"]) {
-      options = this.props.searchFilters["brand"].map(name => {
+    if (this.props.searchFilters[key]) {
+      options = this.props.searchFilters[key].map(name => {
         return { value: name, label: name };
       });
     } else {
@@ -46,7 +48,6 @@ class Search extends React.Component{
 
   handleSubmit(field){
     return e => {
-      e.preventDefault();
       let filters = this.state[field].map(obj => {
         return obj.value;
       });
@@ -56,17 +57,46 @@ class Search extends React.Component{
     };
   }
 
+  handleRating(field){
+    return e => {
+      this.props.fetchSearchListings({[field]: e.value });
+      console.log(this.state.rating);
+    };
+  }
+
+  logRating(field){
+    return e => {
+      this.setState({ [field]: e });
+      console.log(this.state.rating);
+    };
+  }
+
   renderedSearchFilters(){
     return (
-      <form onSubmit={this.handleSubmit}>
+      <div>
         <Select
-            name="brand-filter"
-            options={this.getOptions("brand")}
-            multi={true}
-            onChange={this.logChange("brand")}
-            value={ this.state.brand } />
-          <button className='filter' onClick={this.handleSubmit("brand")}>Filter</button>
-      </form>
+          name="brand-filter"
+          options={this.getOptions("brand")}
+          multi={true}
+          onChange={this.logChange("brand")}
+          value={ this.state.brand }
+          onClose={this.handleSubmit("brand")}
+          placeholder="Select brands.." />
+        <Select
+          name="category-filter"
+          options={this.getOptions("category")}
+          multi={true}
+          onChange={this.logChange("category")}
+          value={ this.state.category }
+          onClose={this.handleSubmit("category")}
+          placeholder="Select categories.." />
+        <Rating defaultValue={1}
+          className="rating-filter"
+          character={'✪'}
+          onMouseUp={this.handleRating("rating")}
+          onMouseDown={this.logRating("rating")}>
+        </Rating>
+      </div>
     );
   }
 
