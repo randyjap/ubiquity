@@ -13,6 +13,7 @@ class CreateListings < ActiveRecord::Migration
       t.integer :brand_id, null: false
       t.integer :category_id, null: false
       t.boolean :active, null: false, default: true
+      t.float :rating_average
       t.timestamps null: false
     end
     add_index :listings, :lessor_id
@@ -20,5 +21,6 @@ class CreateListings < ActiveRecord::Migration
     add_index :listings, :category_id
     add_index :listings, :lat
     add_index :listings, :lng
+    add_index :listings, :rating_average
   end
 end

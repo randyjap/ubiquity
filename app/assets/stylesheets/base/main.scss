@@ -116,6 +116,15 @@ a.welcome:hover {
   border: 0;
 }
 
+a.listing {
+  text-decoration: none;
+  color: black;
+}
+
+.listing:hover {
+  cursor: pointer;
+}
+
 .search-map {
   background: rgba(255,255,255,.4);
   flex: 3;
@@ -134,4 +143,11 @@ a.welcome:hover {
 .map {
   width: 430px;
   height: 500px;
+}
+
+.listing-title {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  font-family: 'Fjalla One', sans-serif;
 }

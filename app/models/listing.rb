@@ -11,9 +11,8 @@ class Listing < ActiveRecord::Base
   has_many :photos
   has_many :reviews, through: :rentals
 
-  def rating_average
-    return 0 if reviews.average(:review).nil?
-    reviews.average(:review).round
+  def calculate_rating_average
+    reviews.average(:review).round(1)
   end
 
   def review_count

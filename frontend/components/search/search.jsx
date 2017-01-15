@@ -19,11 +19,10 @@ class Search extends React.Component{
     this.renderedSearchResults = this.renderedSearchResults.bind(this);
     this.updateProperty = this.updateProperty.bind(this);
     this.getOptions = this.getOptions.bind(this);
-    this.logChange = this.logChange.bind(this);
-    this.state = { brand: [], category: [], rating: null, dayRate: null };
+    this.logArrayChange = this.logArrayChange.bind(this);
+    this.state = { brand: [], category: [], rating: undefined, dayRate: undefined };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.logRating = this.logRating.bind(this);
-    this.handleRating = this.handleRating.bind(this);
+    this.logChange = this.logChange.bind(this);
   }
 
   componentDidMount(){
@@ -44,35 +43,24 @@ class Search extends React.Component{
     return options;
   }
 
-  logChange(field) {
+  redirect(route){
+    this.props.clearSessionErrors();
+    this.props.router.push(route);
+  }
+
+  logArrayChange(field) {
     return e => {
-      this.setState({ [field]: e });
+      const filters = e.map(el => el.value );
+      this.setState({ [field]: filters });
     };
   }
 
-  handleSubmit(field){
-    return e => {
-      let filters = this.state[field].map(obj => {
-        return obj.value;
-      });
-      console.log({[field]: filters});
-      console.log(this.props.searchFilters);
-      this.props.fetchSearchListings({[field]: filters});
-    };
+  logChange(rating) {
+    this.setState({ "rating": rating.value });
   }
 
-  handleRating(field){
-    return e => {
-      this.props.fetchSearchListings({[field]: e.value });
-      console.log(this.state.rating);
-    };
-  }
-
-  logRating(field){
-    return e => {
-      this.setState({ [field]: e });
-      console.log(this.state.rating);
-    };
+  handleSubmit(){
+    this.props.fetchSearchListings(this.state);
   }
 
   ping(value){
@@ -86,27 +74,27 @@ class Search extends React.Component{
           name="brand-filter"
           options={this.getOptions("brand")}
           multi={true}
-          onChange={this.logChange("brand")}
-          value={ this.state.brand }
-          onClose={this.handleSubmit("brand")}
+          onChange={this.logArrayChange("brand")}
+          value={this.state.brand}
+          onClose={this.handleSubmit}
           placeholder="Select brands.." />
         <Select
           name="category-filter"
           options={this.getOptions("category")}
           multi={true}
-          onChange={this.logChange("category")}
-          value={ this.state.category }
-          onClose={this.handleSubmit("category")}
+          onChange={this.logArrayChange("category")}
+          value={this.state.category}
+          onClose={this.handleSubmit}
           placeholder="Select categories.." />
         <Rating defaultValue={1}
           className="rating-filter"
           character={'✪'}
-          onMouseUp={this.handleRating("rating")}
-          onMouseDown={this.logRating("rating")}>
+          onUpdate={this.logChange}
+          onMouseLeave={this.handleSubmit}>
         </Rating>
         <div style={style}>
           Price
-          <Slider max={500} onChange={this.ping} />
+          <Slider min={0} max={500} onChange={this.ping} />
         </div>
       </div>
     );
@@ -124,20 +112,20 @@ class Search extends React.Component{
       listings = Object.keys(searchListings).map(key => searchListings[key]);
       listings = listings.map(listing => {
         return (
-          <li className="listing">
-            <Rating defaultValue={listing.rating_average}
+          <Link className="listing" key={listing.id} to={`listings/${listing.id}`}>
+            <Rating defaultValue={Math.round(listing.rating_average)}
               className="star-rating"
               character={'✪'}
               disabled>
             </Rating>
-            <br/>{listing.lessor}
-            <br/>{listing.brand}
+            <br/><div className="listing-title">{listing.lessor}</div>
+            {listing.brand}
             <br/>{listing.category}
             <br/>Day Rate: ${listing.day_rate}
             <br/>Rating: {listing.rating_average}
             <br/>Reviews: {listing.review_count}
             <br/>{listing.listing_title}
-          </li>
+          </Link>
         );
       });
     }
@@ -159,7 +147,6 @@ class Search extends React.Component{
         { this.renderedSearchFilters() }
         { this.renderedSearchResults() }
         <div className="aside search-map">
-          <Map searchListings={this.props.searchListings} />
         </div>
       </div>
     );
@@ -167,3 +154,5 @@ class Search extends React.Component{
 }
 
 export default Search;
+
+// <Map searchListings={this.props.searchListings} />

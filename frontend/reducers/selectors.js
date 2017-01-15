@@ -1,5 +1,6 @@
-export const selectListing = ({ listings }, id) => {
-   const listing = listings[id] || {};
+export const selectListing = ({ search }, id) => {
+   const searchListings = search.searchListings;
+   const listing = searchListings[id] || {};
    return listing;
 };
 
