@@ -8,6 +8,7 @@ class ListingDetail extends React.Component {
     super(props);
     this.logDate = this.logDate.bind(this);
     this.toggleDropDown = this.toggleDropDown.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
       pickUp: true,
       dropOff: true,
@@ -33,6 +34,10 @@ class ListingDetail extends React.Component {
 
   toggleDropDown(field){
     this.setState({ [field]: !this.state[field] });
+  }
+
+  handleSubmit(){
+    console.log(this.state);
   }
 
   render(){
@@ -92,7 +97,7 @@ class ListingDetail extends React.Component {
             <br/><br/>
             <p>Daily Rate: ${listing.day_rate}</p>
             <br/><br/>
-            <p>Total: $
+            <p className="total">Total: $
               {
                 typeof this.state.start_date === 'object'
                   && typeof this.state.end_date === 'object'
@@ -100,9 +105,10 @@ class ListingDetail extends React.Component {
                 listing.day_rate *
                   Math.round((this.state.end_date - this.state.start_date)
                   / (1000*60*60*24))
-                : null
+                : ""
               }
             </p>
+            <Link className="book" onClick={this.handleSubmit}>Book!</Link>
           </div>
         </div>
       );

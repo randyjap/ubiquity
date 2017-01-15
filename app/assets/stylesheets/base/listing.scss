@@ -1,11 +1,13 @@
 .aside-2 {
   padding: 20px;
+  padding-top: 8px;
   width: 60%;
   overflow-y: scroll;
 }
 
 .aside-3 {
   padding: 20px;
+  padding-top: 8px;
   width: 40%;
 }
 
@@ -31,10 +33,40 @@ h1.listing {
   font-family: 'Fjalla One', sans-serif;
 }
 
+a.book {
+  position: relative;;
+  top: 20px;
+  padding-right: 28px;
+  padding-left: 28px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  border-radius: 5px;
+  text-decoration: none;
+  background-color: #5AB475;
+  color: white;
+
+  cursor: pointer;
+  padding: 6px 24px;
+  text-decoration: none;
+  font-size: 130%;
+  box-shadow: 3px 3px 3px #888888;
+}
+
+a.book:active {
+  box-shadow: none;
+}
+
+.total {
+  font-family: 'Fjalla One', sans-serif;
+  font-size: 110%;
+  text-decoration: underline;
+}
+
 .listing-star-rating {
 
 }
 
 .calendar {
   position: absolute;
+  z-index: 999;
 }

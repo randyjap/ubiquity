@@ -9,7 +9,7 @@
 	padding-bottom: 15px;
 	padding-left: 30px;
 	border-bottom: 1px solid grey;
-	height: 80px;
+	height: 60px;
 	top: 0;
 	transition: top 0.2s ease-in-out;
 	width: 100%;
@@ -20,35 +20,39 @@
 }
 
 .main-section {
-  padding-top: 100px;
+  padding-top: 0px;
 }
 
 input.searchbar {
-  width: 450px;
-  height: 39px;
+  width: 350px;
+  height: 30px;
   border-radius: 20px 20px 20px 20px;
   background-color: #fff;
   box-shadow: 1px 2px 5px rgba(0,0,0,.09);
   border: solid 1px #cbc9c9;
   margin-left: -5px;
   margin-top: 13px;
-  padding-left: 30px;
+  padding-left: 20px;
   font-size: 110%;
 }
 
 nav.middle-nav {
+	overflow-x: scroll;
   position: relative;
-	top: 12px;
-  left: -80px;
+	left: 100px;
+
+	transform: translate(-50%, -50%);
+	top: 57%;
 }
 
 nav.left-nav {
+	width: 25%;
   position: relative;
-  top: 18px;
+  top: 6px;
 }
 
 nav.right-nav {
   position: relative;
-  top: 35px;
+  top: 24px;
 	right: 40px;
 }
