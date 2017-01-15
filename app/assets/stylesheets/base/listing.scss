@@ -1,0 +1,40 @@
+.aside-2 {
+  padding: 20px;
+  width: 60%;
+  overflow-y: scroll;
+}
+
+.aside-3 {
+  padding: 20px;
+  width: 40%;
+}
+
+div.listing-thumbnails {
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+}
+
+img.listing-image {
+  width: 100%;
+  height: auto;
+  margin: auto;
+}
+
+img.listing-thumbnail {
+  height: 90px;
+}
+
+h1.listing {
+  text-transform: capitalize;
+  font-size: 130%;
+  font-family: 'Fjalla One', sans-serif;
+}
+
+.listing-star-rating {
+
+}
+
+.calendar {
+  position: absolute;
+}

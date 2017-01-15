@@ -1,21 +1,14 @@
 import { connect } from 'react-redux';
 
 import ListingShow from './listing_show';
-import { selectListing } from '../../reducers/selectors';
+import { fetchListing } from '../../actions/listing_actions';
 
-const mapStateToProps = (state, { params }) => {
-  const listingId = parseInt(params.listingId);
-  // const listing = selectListing(state, listingId);
-  return {
-    listingId
-    // listing
-  };
-};
-
-const mapDispatchToProps = dispatch => ({
+const mapStateToProps = state => ({
+  listing: state.listing
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ListingShow);
+const mapDispatchToProps = dispatch => ({
+  fetchListing: (id) => dispatch(fetchListing(id))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ListingShow);

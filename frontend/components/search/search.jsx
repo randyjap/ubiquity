@@ -3,12 +3,8 @@ import { Link } from 'react-router';
 import FontAwesome from 'react-fontawesome';
 import SearchFilter from './search_filter';
 import Select from 'react-select';
-import belle from 'belle';
+import { Spinner, Rating } from 'belle';
 import Map from '../map/map';
-
-var TextInput = belle.TextInput;
-var Spinner = belle.Spinner;
-var Rating = belle.Rating;
 
 const Slider = require('rc-slider');
 const style = { width: 150, margin: 10 };
@@ -169,5 +165,3 @@ class Search extends React.Component{
 }
 
 export default Search;
-
-// onClose={this.handleSubmit}

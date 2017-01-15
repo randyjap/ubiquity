@@ -6,6 +6,13 @@ export const fetchSearchListings = (data) => (
   })
 );
 
+export const fetchListing = (id) => (
+  $.ajax({
+    method: 'GET',
+    url: `/api/listings/${id}`
+  })
+);
+
 export const fetchAllFilterOptions = () => (
   $.ajax({
     method: 'GET',

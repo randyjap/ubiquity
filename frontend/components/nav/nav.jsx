@@ -5,7 +5,7 @@ import FontAwesome from 'react-fontawesome';
 class Nav extends React.Component{
   constructor(props){
     super(props);
-    this.state = { dropDownHide: false };
+    this.state = { dropDownHide: true };
     this.handleLogout = this.handleLogout.bind(this);
     this.toggleDropDown = this.toggleDropDown.bind(this);
   }
@@ -74,7 +74,7 @@ class Nav extends React.Component{
                     style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.3)' }}
                   />
                 </div>
-                <ul id="gear-dropdown" className={ this.state.dropDownHide ? "gear-dropdown" : "gear-dropdown hidden"}>
+                <ul id="gear-dropdown" className={ this.state.dropDownHide ? "gear-dropdown hidden" : "gear-dropdown"}>
                   <li>
                     <ul className="help">
                       <li><a href="#">How does this work?</a></li>
@@ -117,7 +117,7 @@ class Nav extends React.Component{
                     style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.3)' }}
                   />
                 </div>
-                <ul id="gear-dropdown" className={ this.state.dropDownHide ? "gear-dropdown" : "gear-dropdown hidden"}>
+                <ul id="gear-dropdown" className={ this.state.dropDownHide ? "gear-dropdown hidden" : "gear-dropdown"}>
                   <li>
                     <ul className="editions">
                       <span className="dropdown-subtitle">
