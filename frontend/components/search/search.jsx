@@ -22,7 +22,8 @@ class Search extends React.Component{
     this.logArrayChange = this.logArrayChange.bind(this);
     this.state = { brand: [], category: [], rating: undefined, dayRate: undefined };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.logChange = this.logChange.bind(this);
+    this.logRating = this.logRating.bind(this);
+    this.logPrice = this.logPrice.bind(this);
   }
 
   componentDidMount(){
@@ -55,8 +56,12 @@ class Search extends React.Component{
     };
   }
 
-  logChange(rating) {
+  logRating(rating) {
     this.setState({ "rating": rating.value });
+  }
+
+  logPrice(price) {
+    this.setState({ "price": price });
   }
 
   handleSubmit(){
@@ -68,15 +73,21 @@ class Search extends React.Component{
   }
 
   renderedSearchFilters(){
+    let count;
+    if (this.props.searchListings) {
+      count = `We found ${Object.keys(this.props.searchListings).length} matches!`;
+    } else {
+      count = (<div>Counting <Spinner characterStyle={{ fontSize: 20 }} /></div>);
+    }
     return (
       <div className="aside search-filters">
+        { count }
         <Select
           name="brand-filter"
           options={this.getOptions("brand")}
           multi={true}
           onChange={this.logArrayChange("brand")}
           value={this.state.brand}
-          onClose={this.handleSubmit}
           placeholder="Select brands.." />
         <Select
           name="category-filter"
@@ -84,18 +95,21 @@ class Search extends React.Component{
           multi={true}
           onChange={this.logArrayChange("category")}
           value={this.state.category}
-          onClose={this.handleSubmit}
           placeholder="Select categories.." />
         <Rating defaultValue={1}
           className="rating-filter"
           character={'✪'}
-          onUpdate={this.logChange}
-          onMouseLeave={this.handleSubmit}>
+          onUpdate={this.logRating}>
         </Rating>
         <div style={style}>
-          Price
-          <Slider min={0} max={500} onChange={this.ping} />
+          Price {`<`} ${this.state.price || " ?"}
+          <Slider
+            min={0}
+            max={500}
+            defaultValue={500}
+            onChange={this.logPrice}/>
         </div>
+        <button className="filter" onClick={this.handleSubmit}>Update!</button>
       </div>
     );
   }
@@ -147,6 +161,7 @@ class Search extends React.Component{
         { this.renderedSearchFilters() }
         { this.renderedSearchResults() }
         <div className="aside search-map">
+          <Map searchListings={this.props.searchListings} />
         </div>
       </div>
     );
@@ -155,4 +170,4 @@ class Search extends React.Component{
 
 export default Search;
 
-// <Map searchListings={this.props.searchListings} />
+// onClose={this.handleSubmit}

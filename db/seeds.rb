@@ -57,6 +57,6 @@ end
 Rental.count.times do |i|
   Review.create({
     rental: Rental.find(i + 1),
-    review: rand(1..5)
+    review: [1,2,3,3,4,4,4,5,5,5,5,5,5].sample
   })
 end

@@ -151,3 +151,21 @@ a.listing {
   border: 0;
   font-family: 'Fjalla One', sans-serif;
 }
+
+button.filter {
+  cursor: pointer;
+  width: 200px;
+  height: 39px;
+  border-radius: 5px 5px 4px 4px;
+  background-color: #fff;
+  box-shadow: 1px 2px 5px rgba(0,0,0,.09);
+  border: solid 1px #cbc9c9;
+  margin-bottom: 10px;
+  padding-left: 15px;
+  padding-left: 15px;
+  font-size: 90%;
+}
+
+button.filter:active{
+  box-shadow: none;
+}
