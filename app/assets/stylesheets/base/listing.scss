@@ -27,6 +27,11 @@ img.listing-thumbnail {
   height: 90px;
 }
 
+img.listing-thumbnail:hover {
+  height: 90px;
+  transform: translate3d();
+}
+
 h1.listing-title {
   font-size: 130%;
   font-family: 'Fjalla One', sans-serif;
@@ -52,6 +57,13 @@ a.book {
   box-shadow: 3px 3px 3px #888888;
 }
 
+a.disabled {
+  cursor: not-allowed;
+  background-color: grey;
+  box-shadow: none;
+  pointer-events: none;
+}
+
 a.book:active {
   box-shadow: none;
 }
@@ -63,11 +75,11 @@ a.book:active {
 }
 
 .calendar {
-  position: absolute;
+  position: fixed;
   z-index: 999;
 }
 
-.cal-div {
+.pointer {
   cursor: pointer;
 }
 
@@ -78,4 +90,31 @@ a.book:active {
 .success-booking {
   color: green;
   font-size: 120%;
+  text-decoration: underline;
+}
+
+b.listing-sub-header {
+  font-family: 'Fjalla One', sans-serif;
+}
+
+table, th, td, tr {
+  padding: 10px;
+  width: 100%;
+}
+
+table.selection-menu {
+  table-layout: fixed;
+  width: 100%;
+}
+
+table.selection-menu td:first-child {
+  width: 100px;
+}
+
+table.selection-menu td:last-child {
+  text-align: right;
+  padding-right: 130px;
+}
+table.selection-menu td {
+  padding: 20px;
 }

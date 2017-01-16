@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import { Spinner, Rating, DatePicker } from 'belle';
 import FontAwesome from 'react-fontawesome';
 
-class ListingDetail extends React.Component {
+class ListingShow extends React.Component {
   constructor(props){
     super(props);
     this.logDate = this.logDate.bind(this);
@@ -75,6 +75,20 @@ class ListingDetail extends React.Component {
     }
   }
 
+  renderPhotos(){
+    let photos = this.props.listing.photos;
+    const thumbnails = photos.map((photo, idx) => {
+      return (
+        <img className="listing-thumbnail" key={idx} src={photo["image_url"]}/>
+      );
+    });
+    return (
+      <div className="listing-thumbnails">
+        { thumbnails }
+      </div>
+    );
+  }
+
   render(){
     let main;
     let pickUpDate;
@@ -88,19 +102,6 @@ class ListingDetail extends React.Component {
         </div>
       );
     } else {
-      const thumbnails = (
-        <div className='listing-thumbnails'>
-            <img className="listing-thumbnail" src="http://thumb9.shutterstock.com/display_pic_with_logo/114367/229591876/stock-photo-vintage-camera-on-wooden-bench-in-autumn-park-instagram-style-toned-photo-229591876.jpg" />
-            <img className="listing-thumbnail" src="http://thumb9.shutterstock.com/display_pic_with_logo/114367/229591876/stock-photo-vintage-camera-on-wooden-bench-in-autumn-park-instagram-style-toned-photo-229591876.jpg" />
-            <img className="listing-thumbnail" src="http://thumb9.shutterstock.com/display_pic_with_logo/114367/229591876/stock-photo-vintage-camera-on-wooden-bench-in-autumn-park-instagram-style-toned-photo-229591876.jpg" />
-            <img className="listing-thumbnail" src="http://thumb9.shutterstock.com/display_pic_with_logo/114367/229591876/stock-photo-vintage-camera-on-wooden-bench-in-autumn-park-instagram-style-toned-photo-229591876.jpg" />
-            <img className="listing-thumbnail" src="http://thumb9.shutterstock.com/display_pic_with_logo/114367/229591876/stock-photo-vintage-camera-on-wooden-bench-in-autumn-park-instagram-style-toned-photo-229591876.jpg" />
-            <img className="listing-thumbnail" src="http://thumb9.shutterstock.com/display_pic_with_logo/114367/229591876/stock-photo-vintage-camera-on-wooden-bench-in-autumn-park-instagram-style-toned-photo-229591876.jpg" />
-            <img className="listing-thumbnail" src="http://thumb9.shutterstock.com/display_pic_with_logo/114367/229591876/stock-photo-vintage-camera-on-wooden-bench-in-autumn-park-instagram-style-toned-photo-229591876.jpg" />
-            <img className="listing-thumbnail" src="http://thumb9.shutterstock.com/display_pic_with_logo/114367/229591876/stock-photo-vintage-camera-on-wooden-bench-in-autumn-park-instagram-style-toned-photo-229591876.jpg" />
-            <img className="listing-thumbnail" src="http://thumb9.shutterstock.com/display_pic_with_logo/114367/229591876/stock-photo-vintage-camera-on-wooden-bench-in-autumn-park-instagram-style-toned-photo-229591876.jpg" />
-        </div>
-      );
       main = (
         <div className="main">
           <div className="aside-2">
@@ -108,8 +109,33 @@ class ListingDetail extends React.Component {
             <div className="listing-image">
               <img className="listing-image" src="http://thumb9.shutterstock.com/display_pic_with_logo/114367/229591876/stock-photo-vintage-camera-on-wooden-bench-in-autumn-park-instagram-style-toned-photo-229591876.jpg" />
             </div>
-            {thumbnails}
-            <br/><p>{listing.detail_desc}</p><br/>
+            { this.renderPhotos() }
+            <br/>
+            <table>
+              <tbody>
+              <tr>
+                <td><b className="listing-sub-header">Brand:</b></td>
+                <td> {listing.brand}</td>
+              </tr>
+              <tr>
+                <td><b className="listing-sub-header">Category:</b></td>
+                <td> {listing.category}</td>
+              </tr>
+              <tr>
+                <td><b className="listing-sub-header">Location:</b></td>
+                <td> {listing.location}</td>
+              </tr>
+              <tr>
+                <td><b className="listing-sub-header">Replacement Value:</b></td>
+                <td> ${listing.replacement_value}</td>
+              </tr>
+              <tr>
+                <td><b className="listing-sub-header">Serial:</b></td>
+                <td> {listing.serial}</td>
+              </tr>
+              </tbody>
+            </table><br/>
+          <p><b className="listing-sub-header">{listing.detail_desc}</b></p><br/>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
           </div>
           <div className="aside-3">
@@ -118,32 +144,45 @@ class ListingDetail extends React.Component {
               className="listing-star-rating"
               character={'✪'}
               disabled></Rating><br/><br/><br/>
-            <div className="cal-div" onClick={() => this.toggleDropDown("pickUp")}>
-              Pick Up On:<FontAwesome onClick={() => this.toggleDropDown("pickUp")} className='fa-calendar fa-listing' name='calendar' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.3)' }}/>
-              { typeof this.state.start_date === 'object' ? this.state.start_date.toDateString() : this.state.start_date }
-            </div>
-            <DatePicker className={ this.state.pickUp ? "calendar hidden" : "calendar"} onUpdate={this.logDate("start_date")}/>
-            <br/><br/>
-            <div className="cal-div" onClick={() => this.toggleDropDown("dropOff")}>
-              Drop Off On: <FontAwesome onClick={() => this.toggleDropDown("dropOff")} className='fa-calendar fa-listing' name='calendar' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.3)' }}/>
-              { typeof this.state.end_date === 'object' ? this.state.end_date.toDateString() : this.state.end_date }
-            </div>
-            <DatePicker className={ this.state.dropOff ? "calendar hidden" : "calendar"} onUpdate={this.logDate("end_date")}/>
-            <br/><br/>
-            <p>Daily Rate: ${listing.day_rate}</p>
-            <br/><br/>
-            <p className="total">Total: $
-              {
-                typeof this.state.start_date === 'object'
-                  && typeof this.state.end_date === 'object'
-                  && this.state.end_date > this.state.start_date ?
-                listing.day_rate *
-                  Math.round((this.state.end_date - this.state.start_date)
-                  / (1000*60*60*24))
-                : ""
-              }
-            </p>
-            <Link className="book" onClick={this.handleSubmit}>Book!</Link><br/><br/><br/><br/>
+            <table className="selection-menu">
+              <tbody>
+                <tr>
+                  <td><b className="listing-sub-header">Pick Up On:</b></td>
+                  <td>
+                    <FontAwesome onClick={() => this.toggleDropDown("pickUp")} className='fa-calendar fa-listing pointer' name='calendar' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.3)' }}/>
+                    <DatePicker className={ this.state.pickUp ? "calendar hidden" : "calendar pointer"} onUpdate={this.logDate("start_date")}/>
+                    <b className="pointer" onClick={() => this.toggleDropDown("pickUp")}>{ typeof this.state.start_date === 'object' ? this.state.start_date.toDateString() : this.state.start_date }</b>
+                  </td>
+                </tr>
+                <tr>
+                  <td><b className="listing-sub-header">Drop Off On:</b></td>
+                  <td>
+                    <FontAwesome onClick={() => this.toggleDropDown("dropOff")} className='fa-calendar fa-listing pointer' name='calendar' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.3)' }}/>
+                    <DatePicker className={ this.state.dropOff ? "calendar hidden" : "calendar pointer"} onUpdate={this.logDate("end_date")}/>
+                    <b className="pointer" onClick={() => this.toggleDropDown("dropOff")}>{ typeof this.state.end_date === 'object' ? this.state.end_date.toDateString() : this.state.end_date }</b>
+                  </td>
+                </tr>
+                <tr>
+                  <td><b className="listing-sub-header">Daily Rate:</b></td>
+                  <td>${listing.day_rate}</td>
+                </tr>
+                <tr>
+                  <td><b className="listing-sub-header">Total:</b></td>
+                  <td className="total">
+                    {
+                      typeof this.state.start_date === 'object'
+                        && typeof this.state.end_date === 'object'
+                        && this.state.end_date > this.state.start_date ?
+                      `$${listing.day_rate *
+                        Math.round((this.state.end_date - this.state.start_date)
+                        / (1000*60*60*24))}`
+                      : ""
+                    }
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <Link className={this.state.success ? "book disabled" : "book"} onClick={this.handleSubmit}>{this.state.success ? "Booked!" : "Book!" }</Link><br/><br/><br/><br/>
             {this.renderErrors()}
             {this.state.success ? (<div className="success-booking">Succesfully booked!  Thank you!</div>) : ""}
           </div>
@@ -154,4 +193,4 @@ class ListingDetail extends React.Component {
   }
 }
 
-export default ListingDetail;
+export default ListingShow;

@@ -48,7 +48,7 @@ class Greeting extends React.Component{
     }
 
     return (
-      <div className="main">
+      <div className="main splash">
         {greeting}
       </div>
     );
