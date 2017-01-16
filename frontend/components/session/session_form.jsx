@@ -19,8 +19,8 @@ class SessionForm extends React.Component {
   }
 
   redirect(route){
-    this.props.clearSessionErrors();
     this.props.router.push(route);
+    this.props.clearSessionErrors();
   }
 
   handleSubmit(e){

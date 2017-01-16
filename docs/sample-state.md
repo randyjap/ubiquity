@@ -7,7 +7,7 @@
     }
   },
   errors: {
-    session: ["Can't leave Username blank", "Password must be 6 characters or longer"]
+    all: ["Can't leave Username blank", "Password must be 6 characters or longer"]
   },
   listing: {
     id: 1,

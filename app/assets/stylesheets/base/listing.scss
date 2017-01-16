@@ -27,10 +27,10 @@ img.listing-thumbnail {
   height: 90px;
 }
 
-h1.listing {
-  text-transform: capitalize;
+h1.listing-title {
   font-size: 130%;
   font-family: 'Fjalla One', sans-serif;
+  cursor: default;
 }
 
 a.book {
@@ -62,11 +62,20 @@ a.book:active {
   text-decoration: underline;
 }
 
-.listing-star-rating {
-
-}
-
 .calendar {
   position: absolute;
   z-index: 999;
+}
+
+.cal-div {
+  cursor: pointer;
+}
+
+.listing-errors {
+  color: red;
+}
+
+.success-booking {
+  color: green;
+  font-size: 120%;
 }

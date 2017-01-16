@@ -47,77 +47,23 @@ class Nav extends React.Component{
 
   render(){
     let name = "User";
-    let mainBar;
+    let dropDown;
     if (this.props.currentUser === null) {
-      mainBar = (
-        <header className="main-nav">
-          <nav className="left-nav">
-            <h1 className="title">Youbiquity</h1>
-          </nav>
-          <nav className="middle-nav">
-            <FontAwesome
-              className='fa-search fa'
-              name="search"
-              size="2x"
-              style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.3)' }}
-            />
-            <input className="searchbar" placeholder="Search near..."/>
-          </nav>
-          <nav className="right-nav">
-            <ul onClick={this.toggleDropDown}>
-              <li id="gear-dropdown-btn">
-                <div className='fa'>
-                  <FontAwesome
-                    className='fa fa-user-o'
-                    name="user"
-                    size="2x"
-                    style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.3)' }}
-                  />
-                </div>
-                <ul id="gear-dropdown" className={ this.state.dropDownHide ? "gear-dropdown hidden" : "gear-dropdown"}>
-                  <li>
-                    <ul className="help">
-                      <li><a href="#">How does this work?</a></li>
-                      <li><a href="#">Contact Us</a></li>
-                      <li>
-                        { this.linkSignIn() }
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </nav>
-        </header>
-      );
+      dropDown = (<ul id="gear-dropdown" className={ this.state.dropDownHide ? "gear-dropdown hidden" : "gear-dropdown"}>
+                    <li>
+                      <ul className="help">
+                        <li><a href="#">How does this work?</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li>
+                          { this.linkSignIn() }
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                );
     } else {
       name = this.props.currentUser.username;
-      mainBar = (
-        <header className="main-nav">
-          <nav className="left-nav">
-            <h1 className="title">Youbiquity</h1>
-          </nav>
-          <nav className="middle-nav">
-            <FontAwesome
-              className='fa-search fa'
-              name="search"
-              size="2x"
-              style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.3)' }}
-            />
-            <input className="searchbar" placeholder="Search near..."/>
-          </nav>
-          <nav className="right-nav">
-            <ul onClick={this.toggleDropDown}>
-              <li id="gear-dropdown-btn">
-                <div className='fa'>
-                  <FontAwesome
-                    className='fa fa-user-o'
-                    name="user"
-                    size="2x"
-                    style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.3)' }}
-                  />
-                </div>
-                <ul id="gear-dropdown" className={ this.state.dropDownHide ? "gear-dropdown hidden" : "gear-dropdown"}>
+      dropDown = (<ul id="gear-dropdown" className={ this.state.dropDownHide ? "gear-dropdown hidden" : "gear-dropdown"}>
                   <li>
                     <ul className="editions">
                       <span className="dropdown-subtitle">
@@ -142,13 +88,39 @@ class Nav extends React.Component{
                     </ul>
                   </li>
                 </ul>
-              </li>
-            </ul>
-          </nav>
-        </header>
-      );
+              );
     }
-
+    const mainBar = (
+      <header className="main-nav">
+        <nav className="left-nav">
+          <h1><Link className="website-title" to="search">Youbiquity</Link></h1>
+        </nav>
+        <nav className="middle-nav">
+          <FontAwesome
+            className='fa-search fa'
+            name="search"
+            size="2x"
+            style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.3)' }}
+          />
+          <input className="searchbar" placeholder="Search near..."/>
+        </nav>
+        <nav className="right-nav">
+          <ul onClick={this.toggleDropDown}>
+            <li id="gear-dropdown-btn">
+              <div className='fa'>
+                <FontAwesome
+                  className='fa fa-user-o'
+                  name="user"
+                  size="2x"
+                  style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.3)' }}
+                />
+              </div>
+              { dropDown }
+            </li>
+          </ul>
+        </nav>
+      </header>
+    );
     return (
       <div className="nav">
         {mainBar}

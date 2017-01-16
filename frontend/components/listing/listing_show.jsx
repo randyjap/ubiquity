@@ -13,12 +13,14 @@ class ListingDetail extends React.Component {
       pickUp: true,
       dropOff: true,
       start_date: "../../..",
-      end_date: "../../.."
+      end_date: "../../..",
+      success: false
     };
   }
 
   componentDidMount(){
     this.props.fetchListing(this.props.routeParams.listingId);
+    this.setState({ id: this.props.routeParams.listingId });
   }
 
   logDate(field){
@@ -36,8 +38,41 @@ class ListingDetail extends React.Component {
     this.setState({ [field]: !this.state[field] });
   }
 
+  redirect(route){
+    this.props.router.push(route);
+    this.props.clearSessionErrors();
+  }
+
+  setSuccess(){
+    this.setState({ success: true });
+  }
+
   handleSubmit(){
-    console.log(this.state);
+    const rental = {
+      start_date: this.state.start_date,
+      end_date: this.state.end_date,
+      id: this.state.id
+    };
+    this.props.bookListing({ rental })
+      .then(() => this.setSuccess());
+  }
+
+  renderErrors(){
+    if (this.props.errors.length > 0) {
+    return(
+      <div className="listing-errors">
+        <ul className="listing-errors">
+          {this.props.errors.map((error, i) => (
+            <li key={`error-${i}`}>
+              {error}
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+    } else {
+      return null;
+    }
   }
 
   render(){
@@ -69,7 +104,7 @@ class ListingDetail extends React.Component {
       main = (
         <div className="main">
           <div className="aside-2">
-            <h1 className="listing">{listing.listing_title}</h1>
+            <h1 className="listing-title">{listing.listing_title}</h1>
             <div className="listing-image">
               <img className="listing-image" src="http://thumb9.shutterstock.com/display_pic_with_logo/114367/229591876/stock-photo-vintage-camera-on-wooden-bench-in-autumn-park-instagram-style-toned-photo-229591876.jpg" />
             </div>
@@ -78,18 +113,18 @@ class ListingDetail extends React.Component {
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
           </div>
           <div className="aside-3">
-            <h1 className="listing">{listing.lessor} ({listing.review_count})</h1>
+            <h1 className="listing-title">{listing.lessor} ({listing.review_count})</h1>
             <Rating defaultValue={Math.round(listing.rating_average)}
               className="listing-star-rating"
               character={'✪'}
               disabled></Rating><br/><br/><br/>
-            <div onClick={() => this.toggleDropDown("pickUp")}>
+            <div className="cal-div" onClick={() => this.toggleDropDown("pickUp")}>
               Pick Up On:<FontAwesome onClick={() => this.toggleDropDown("pickUp")} className='fa-calendar fa-listing' name='calendar' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.3)' }}/>
               { typeof this.state.start_date === 'object' ? this.state.start_date.toDateString() : this.state.start_date }
             </div>
             <DatePicker className={ this.state.pickUp ? "calendar hidden" : "calendar"} onUpdate={this.logDate("start_date")}/>
             <br/><br/>
-            <div onClick={() => this.toggleDropDown("dropOff")}>
+            <div className="cal-div" onClick={() => this.toggleDropDown("dropOff")}>
               Drop Off On: <FontAwesome onClick={() => this.toggleDropDown("dropOff")} className='fa-calendar fa-listing' name='calendar' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.3)' }}/>
               { typeof this.state.end_date === 'object' ? this.state.end_date.toDateString() : this.state.end_date }
             </div>
@@ -108,7 +143,9 @@ class ListingDetail extends React.Component {
                 : ""
               }
             </p>
-            <Link className="book" onClick={this.handleSubmit}>Book!</Link>
+            <Link className="book" onClick={this.handleSubmit}>Book!</Link><br/><br/><br/><br/>
+            {this.renderErrors()}
+            {this.state.success ? (<div className="success-booking">Succesfully booked!  Thank you!</div>) : ""}
           </div>
         </div>
       );

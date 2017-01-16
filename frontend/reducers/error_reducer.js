@@ -6,16 +6,16 @@ import {
 import merge from 'lodash/merge';
 
 let _defaultState = {
-  session: []
+  all: []
 };
 
 const errorReducer = (state = _defaultState, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_SESSION_ERRORS:
-      return merge({}, _defaultState, { session: action.errors });
+      return merge({}, _defaultState, { all: action.errors });
     case CLEAR_SESSION_ERRORS:
-      return merge({}, _defaultState, { session: [] });
+      return merge({}, _defaultState, { all: [] });
     default:
       return state;
   }

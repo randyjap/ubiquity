@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :users, only: [:create, :show]
     resource :session, only: [:new, :create, :destroy]
     resources :listings, only: [:index, :show, :update]
-    resources :rentals, only: [:index]
+    resources :rentals, only: [:index, :create]
     resources :search, only: [:index]
     resources :options, only: [:index]
   end

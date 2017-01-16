@@ -19,3 +19,11 @@ export const fetchAllFilterOptions = () => (
     url: '/api/options'
   })
 );
+
+export const bookListing = (data) => (
+  $.ajax({
+    method: 'POST',
+    url: `/api/rentals`,
+    data
+  })
+);

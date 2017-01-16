@@ -7,16 +7,12 @@ class Rental < ActiveRecord::Base
   has_one :review
   has_one :lessor, through: :listing
 
-  validate :end_date_before_start_date?, :overlap?
+  validate :end_date_before_start_date?, :overlap?, :in_the_future?
 
   def total
     days = (self.end_date - self.start_date).to_i
     rate = self.listing.day_rate
     days * rate
-  end
-
-  def end_date_before_start_date?
-    errors.add(:end_date, 'must be before start date') unless end_date > start_date
   end
 
   def find_overlap
@@ -28,7 +24,15 @@ class Rental < ActiveRecord::Base
       SQL
   end
 
+  def end_date_before_start_date?
+    errors.add(:end_date, 'must be before start date') unless end_date > start_date
+  end
+
   def overlap?
-    errors.add(:dates, "another rental overlaps your dates") unless find_overlap.empty?
+    errors.add(:dates, "of another rental overlap yours") unless find_overlap.empty?
+  end
+
+  def in_the_future?
+    errors.add(:dates, "must be in the future") if start_date <= Time.now || end_date <= Time.now
   end
 end
