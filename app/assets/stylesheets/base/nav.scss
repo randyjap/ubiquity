@@ -35,7 +35,7 @@ input.searchbar {
   border-radius: 20px 20px 20px 20px;
   background-color: #fff;
   box-shadow: 1px 2px 5px rgba(0,0,0,.09);
-  border: solid 1px #cbc9c9;
+  border: solid 1px #61C261;;
   margin-left: -5px;
   margin-top: 13px;
   padding-left: 20px;
@@ -61,4 +61,15 @@ nav.right-nav {
   position: relative;
   top: 24px;
 	right: 40px;
+}
+
+div.logo {
+	height: 60px;
+	width: 180px;
+	background-image: url("http://res.cloudinary.com/dkympkwdz/image/upload/v1484586200/Youbiquity-Logo_q0wmh6.png");
+	background-size: contain;
+}
+
+.fa-search, .fa-user-o {
+	color: #61C261;
 }

@@ -13,7 +13,7 @@
   left: 50%;
   top: 50%;
   width: 220px;
-  height: 210px;
+  height: 310px;
   overflow: scroll;
   border: 1px solid #ccc;
   background-color: #fff;
@@ -31,7 +31,7 @@ div.entrance.flex {
 div.errors {
   position: absolute;
   transform: translate(-50%, -50%);
-  top: 30%;
+  top: 15%;
   left: 50%;
   width: 400px;
   overflow: scroll;
@@ -139,4 +139,13 @@ button.demo {
 
 button.entrance:hover {
   background-color: #42CC42;
+}
+
+div.square-logo {
+  position: relative;
+  left: -13px;
+	height: 120px;
+	width: 240px;
+	background-image: url("http://res.cloudinary.com/dkympkwdz/image/upload/v1484586735/Youbiquity-Square-Logo_qhltkv.png");
+	background-size: contain;
 }

@@ -152,12 +152,13 @@ a.listing {
 }
 
 button.filter {
+  background-color: #61C261;
+  color: white;
   cursor: pointer;
   width: 200px;
   height: 39px;
   border-radius: 5px 5px 4px 4px;
-  background-color: #fff;
-  box-shadow: 1px 2px 5px rgba(0,0,0,.09);
+  box-shadow: 1px 2px 5px rgba(0,0,0,.3);
   border: solid 1px #cbc9c9;
   margin-bottom: 10px;
   padding-left: 15px;
@@ -165,6 +166,6 @@ button.filter {
   font-size: 90%;
 }
 
-button.filter:active{
+button.filter:active, button.filter:hover {
   box-shadow: none;
 }

@@ -94,7 +94,7 @@ class SessionForm extends React.Component {
             contentLabel="Modal"
             transitionName="modal-anim">
             <div>
-              <h1 className="entrance">YOUBIQUITY</h1>
+              <h1 className="entrance"><div className="square-logo"></div></h1>
               <form onSubmit={this.handleSubmit}>
                 <hr/>
                 <div className='entrance flex'>

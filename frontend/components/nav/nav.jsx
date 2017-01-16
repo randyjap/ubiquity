@@ -93,7 +93,7 @@ class Nav extends React.Component{
     const mainBar = (
       <header className="main-nav">
         <nav className="left-nav">
-          <h1><Link className="website-title" to="search">Youbiquity</Link></h1>
+          <h1><Link className="website-title" to="search"><div className="logo"></div></Link></h1>
         </nav>
         <nav className="middle-nav">
           <FontAwesome
