@@ -9,6 +9,7 @@ class ListingShow extends React.Component {
     this.logDate = this.logDate.bind(this);
     this.toggleDropDown = this.toggleDropDown.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.updateThumbnail = this.updateThumbnail.bind(this);
     this.state = {
       pickUp: true,
       dropOff: true,
@@ -18,8 +19,18 @@ class ListingShow extends React.Component {
     };
   }
 
+  firstMainImage(data){
+    const photoData = data.listing.photos;
+    if (photoData.length === 0) {
+      this.setState({ mainListingImage: "http://thumb9.shutterstock.com/display_pic_with_logo/114367/229591876/stock-photo-vintage-camera-on-wooden-bench-in-autumn-park-instagram-style-toned-photo-229591876.jpg" });
+    } else {
+      this.setState({ mainListingImage: photoData[0].image_url });
+    }
+  }
+
   componentDidMount(){
-    this.props.fetchListing(this.props.routeParams.listingId);
+    this.props.fetchListing(this.props.routeParams.listingId)
+      .then((data) => this.firstMainImage(data));
     this.setState({ id: this.props.routeParams.listingId });
   }
 
@@ -28,9 +39,6 @@ class ListingShow extends React.Component {
     return date => {
       this.setState({ pickUp: true, dropOff: true });
       this.setState({ [field]: date.value });
-      console.log(date.value);
-      console.log(field);
-      console.log(this);
     };
   }
 
@@ -75,11 +83,15 @@ class ListingShow extends React.Component {
     }
   }
 
+  updateThumbnail(e){
+    this.setState({ mainListingImage: e.target.src });
+  }
+
   renderPhotos(){
     let photos = this.props.listing.photos;
-    const thumbnails = photos.map((photo, idx) => {
+    const thumbnails = photos.map(photo => {
       return (
-        <img className="listing-thumbnail" key={idx} src={photo["image_url"]}/>
+        <img className="listing-thumbnail" onClick={this.updateThumbnail} key={photo["photo_id"]} src={photo["image_url"]}/>
       );
     });
     return (
@@ -107,7 +119,7 @@ class ListingShow extends React.Component {
           <div className="aside-2">
             <h1 className="listing-title">{listing.listing_title}</h1>
             <div className="listing-image">
-              <img className="listing-image" src="http://thumb9.shutterstock.com/display_pic_with_logo/114367/229591876/stock-photo-vintage-camera-on-wooden-bench-in-autumn-park-instagram-style-toned-photo-229591876.jpg" />
+              <img className="main-listing-image" src={this.state.mainListingImage} />
             </div>
             { this.renderPhotos() }
             <br/>
@@ -194,3 +206,5 @@ class ListingShow extends React.Component {
 }
 
 export default ListingShow;
+
+// http://thumb9.shutterstock.com/display_pic_with_logo/114367/229591876/stock-photo-vintage-camera-on-wooden-bench-in-autumn-park-instagram-style-toned-photo-229591876.jpg

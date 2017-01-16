@@ -17,7 +17,7 @@ div.listing-thumbnails {
   overflow-x: scroll;
 }
 
-img.listing-image {
+img.main-listing-image {
   width: 100%;
   height: auto;
   margin: auto;
@@ -25,6 +25,7 @@ img.listing-image {
 
 img.listing-thumbnail {
   height: 90px;
+  cursor: pointer;
 }
 
 img.listing-thumbnail:hover {

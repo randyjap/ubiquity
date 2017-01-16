@@ -23,4 +23,5 @@ json.set! :category,
 
 json.photos listing.photos do |photo|
   json.image_url photo.image_url
+  json.photo_id photo.id
 end
