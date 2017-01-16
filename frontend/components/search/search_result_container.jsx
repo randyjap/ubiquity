@@ -4,8 +4,7 @@ import { fetchSearchListings, fetchAllFilterOptions } from '../../actions/search
 
 const mapStateToProps = state => ({
   searchListings: state.search.searchListings,
-  searchFilters: state.search.searchFilters,
-  hello: "hello"
+  searchFilters: state.search.searchFilters
 });
 
 const mapDispatchToProps = dispatch => ({

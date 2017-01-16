@@ -4,4 +4,10 @@ export const selectListing = ({ search }, id) => {
    return listing;
 };
 
-export const searchListingsAsArray = ( {searchListings} ) => Object.keys(searchListings).map(key => searchListings[key]);
+export const searchListingsAsArray = searchListings => {
+  if (searchListings === null) {
+    return [];
+  } else {
+    return Object.keys(searchListings).map(key => searchListings[key]);
+  }
+};

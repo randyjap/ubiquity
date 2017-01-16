@@ -22,3 +22,5 @@ export const fetchAllFilterOptions = () => dispatch => {
   return SessionAPIUtil.fetchAllFilterOptions()
     .then(filters => dispatch(receiveFilters(filters)));
 };
+
+window.fetchSearchListings = fetchSearchListings;

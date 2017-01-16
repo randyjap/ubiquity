@@ -1,7 +1,7 @@
-json.brand do
+json.brand_options do
   json.array! @brands
 end
 
-json.category do
+json.category_options do
   json.array! @categories
 end

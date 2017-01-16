@@ -4,7 +4,7 @@ import FontAwesome from 'react-fontawesome';
 import SearchFilter from './search_filter';
 import Select from 'react-select';
 import { Spinner, Rating } from 'belle';
-import Map from '../map/map';
+import MapContainer from '../map/map_container';
 
 const Slider = require('rc-slider');
 const style = { width: 150, margin: 10 };
@@ -80,14 +80,14 @@ class Search extends React.Component{
         { count }
         <Select
           name="brand-filter"
-          options={this.getOptions("brand")}
+          options={this.getOptions("brand_options")}
           multi={true}
           onChange={this.logArrayChange("brand")}
           value={this.state.brand}
           placeholder="Select brands.." />
         <Select
           name="category-filter"
-          options={this.getOptions("category")}
+          options={this.getOptions("category_options")}
           multi={true}
           onChange={this.logArrayChange("category")}
           value={this.state.category}
@@ -157,7 +157,7 @@ class Search extends React.Component{
         { this.renderedSearchFilters() }
         { this.renderedSearchResults() }
         <div className="aside search-map">
-          <Map searchListings={this.props.searchListings} />
+          <MapContainer />
         </div>
       </div>
     );

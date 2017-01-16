@@ -9,8 +9,8 @@ const _getCoordsObj = latLng => ({
 });
 
 let _mapOptions = {
-  center: {lat: 37.773972, lng: -122.431297}, // San Francisco coords
-  zoom: 9
+  center: {lat: 40, lng: -30}, // San Francisco coords
+  zoom: 1
 };
 
 class Map extends Component {
@@ -19,7 +19,7 @@ class Map extends Component {
     this.map = new google.maps.Map(map, _mapOptions);
     this.MarkerManager = new MarkerManager(this.map, this._handleMarkerClick.bind(this));
     this._registerListeners();
-    this.MarkerManager.updateMarkers(this.props.listings);
+    this.MarkerManager.updateMarkers(this.props.searchListings);
   }
 
   componentDidUpdate() {

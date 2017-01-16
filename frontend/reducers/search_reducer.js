@@ -4,7 +4,13 @@ import merge from 'lodash/merge';
 
 let _defaultState = {
   searchListings: null,
-  searchFilters: { }
+  searchFilters: {
+    brand: null,
+    category: null,
+    rating: null,
+    bounds: null,
+    price: null
+  }
 };
 
 const searchReducer = (state = _defaultState, action) => {
