@@ -206,5 +206,3 @@ class ListingShow extends React.Component {
 }
 
 export default ListingShow;
-
-// http://thumb9.shutterstock.com/display_pic_with_logo/114367/229591876/stock-photo-vintage-camera-on-wooden-bench-in-autumn-park-instagram-style-toned-photo-229591876.jpg

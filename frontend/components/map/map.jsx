@@ -18,6 +18,8 @@ class Map extends Component {
     const map = this.refs.map;
     this.map = new google.maps.Map(map, _mapOptions);
     this.MarkerManager = new MarkerManager(this.map, this._handleMarkerClick.bind(this));
+    this._registerListeners();
+    this.MarkerManager.updateMarkers(this.props.listings);
   }
 
   componentDidUpdate() {

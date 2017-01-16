@@ -3,7 +3,6 @@ export default class MarkerManager {
     this.map = map;
     this.handleClick = handleClick;
     this.markers = [];
-    //permanently bind instance methods
     this._createMarkerFromListing = this._createMarkerFromListing.bind(this);
     this._removeMarker = this._removeMarker.bind(this);
     this._markersToRemove = this._markersToRemove.bind(this);
