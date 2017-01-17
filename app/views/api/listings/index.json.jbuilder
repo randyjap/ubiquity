@@ -8,6 +8,6 @@
                     :total
       json.set! :lessee,
                 rental.lessee.username
-    end
+    end.sort_by! { |k, _| k["start_date"] }
   end
 end

@@ -15,6 +15,7 @@ class Search extends React.Component{
     this.updateProperty = this.updateProperty.bind(this);
     this.getOptions = this.getOptions.bind(this);
     this.logArrayChange = this.logArrayChange.bind(this);
+    this.redirect = this.redirect.bind(this);
     this.state = { brand: null, category: null, rating: undefined, dayRate: undefined };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.logRating = this.logRating.bind(this);

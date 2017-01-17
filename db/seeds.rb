@@ -146,6 +146,23 @@ category = Category.first
   })
 end
 
+30.times do
+  Listing.create({
+    lessor: User.first,
+    listing_title: Faker::Company.buzzword,
+    detail_desc: Faker::Company.catch_phrase,
+    location: "#{Faker::Address.street_address}, #{Faker::Address.city}",
+    lat: (rand(30..47) - (rand(0..1000)/1000)),
+    lng: (rand(-113..-94) - (rand(0..1000)/1000)),
+    day_rate: rand(5..500),
+    replacement_value: rand(500..5000),
+    serial: Faker::Crypto.md5,
+    brand: Brand.find(rand(1..Brand.count)),
+    category: Category.find(rand(1..Category.count)),
+    active: true
+  })
+end
+
 1000.times do
   starting_date = Faker::Date.forward(150)
   ending_date = starting_date + rand(1..14)
@@ -158,7 +175,19 @@ end
   })
 end
 
-30.times do |i|
+30.times do
+  starting_date = Faker::Date.forward(150)
+  ending_date = starting_date + rand(1..14)
+
+  rental = Rental.create({
+    listing: Listing.find(rand(1..Listing.count)),
+    lessee: User.first,
+    start_date: starting_date,
+    end_date: ending_date
+  })
+end
+
+60.times do |i|
   12.times do
     Photo.create({
       listing: Listing.find(i + 1),
