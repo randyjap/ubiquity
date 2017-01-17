@@ -117,6 +117,14 @@ table.selection-menu td:last-child {
   text-align: right;
   padding-right: 130px;
 }
+
 table.selection-menu td {
   padding: 20px;
+}
+
+.user-review-rating {
+  position: relative;
+  left: -27px;
+  top: 5px;
+  transform: scale(0.7, 0.7);
 }

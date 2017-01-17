@@ -90,7 +90,7 @@ class Search extends React.Component{
           onChange={this.logArrayChange("category")}
           value={this.state.category}
           placeholder="Select categories.." />
-          Price {`>=`} {this.state.rating || " ?"}<br/>
+          Rating {`>=`} {this.state.rating || " ?"}<br/>
         <Rating defaultValue={1}
           className="rating-filter"
           character={'✪'}

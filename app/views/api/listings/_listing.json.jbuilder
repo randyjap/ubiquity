@@ -25,3 +25,10 @@ json.photos listing.photos do |photo|
   json.image_url photo.image_url
   json.photo_id photo.id
 end
+
+json.reviews listing.reviews do |review|
+  json.lessee review.reviewer.username
+  json.date time_ago_in_words(review.created_at)
+  json.rating review.review
+  json.review_text review.review_text
+end
