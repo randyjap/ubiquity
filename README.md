@@ -1,6 +1,6 @@
-# Youbiquity[website]
+# [Youbiquity]
 
-[website]: http://www.youbiquity.io/
+[Youbiquity]: http://www.youbiquity.io/
 
 ## MVP (Minimum Viable Product)
 

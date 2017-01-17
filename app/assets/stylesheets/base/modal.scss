@@ -31,7 +31,7 @@ div.entrance.flex {
 div.errors {
   position: absolute;
   transform: translate(-50%, -50%);
-  top: 15%;
+  top: 13%;
   left: 50%;
   width: 400px;
   overflow: scroll;
@@ -43,6 +43,7 @@ div.errors {
   padding: 20px;
   transition-duration: 1500ms;
   z-index: 99;
+  color: red;
 }
 
 div.demo {

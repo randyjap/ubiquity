@@ -77,10 +77,11 @@ ActiveRecord::Schema.define(version: 20170111182346) do
   add_index "rentals", ["listing_id"], name: "index_rentals_on_listing_id", using: :btree
 
   create_table "reviews", force: :cascade do |t|
-    t.integer  "rental_id",  null: false
-    t.integer  "review",     null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "rental_id",   null: false
+    t.integer  "review",      null: false
+    t.text     "review_text"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   add_index "reviews", ["rental_id"], name: "index_reviews_on_rental_id", unique: true, using: :btree
