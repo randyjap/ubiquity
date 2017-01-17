@@ -1,9 +1,10 @@
 import { connect } from 'react-redux';
 
 import UserListing from './user_listing';
-import { fetchUserListings, toggleListingActivity } from '../../actions/user_listing_actions';
+import { fetchUserListings, toggleListingActivity } from '../../actions/current_user_actions';
 
 const mapStateToProps = state => ({
+  currentUserListings: state.currentUserListings
 });
 
 const mapDispatchToProps = dispatch => ({
