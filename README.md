@@ -1,11 +1,6 @@
-# Youbiquity
+# Youbiquity[website]
 
-##[Youbiquity][heroku]
-
-[Share Grid][sharegrid]
-
-[heroku]: http://www.randyjap.com/
-[sharegrid]: http://www.sharegrid.com
+[website]: http://www.youbiquity.io/
 
 ## MVP (Minimum Viable Product)
 

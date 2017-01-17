@@ -64,7 +64,7 @@ class SessionForm extends React.Component {
   }
 
   demoLogin() {
-    const username = "WelcomeGuest";
+    const username = "Guest";
     const password = "password";
     let counter = 0;
     const typer = () => {

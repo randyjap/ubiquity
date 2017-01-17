@@ -50,7 +50,7 @@ photo_urls = ["http://res.cloudinary.com/dkympkwdz/image/upload/v1484546400/stoc
 "http://res.cloudinary.com/dkympkwdz/image/upload/v1484546396/camera-canon-photography-office-space-159479_vghvu0.jpg"]
 
 
-User.create(username: "WelcomeGuest", password: "password")
+User.create(username: "Guest", password: "password")
 
 50.times do
   User.create(username: Faker::Name.name, password: "password")
