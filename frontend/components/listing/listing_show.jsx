@@ -111,7 +111,7 @@ class ListingShow extends React.Component {
     if (reviews) {
       reviews = reviews.map(review => {
         return (
-          <div className="user-review">
+          <div className="user-review" key={review.id}>
             <Rating defaultValue={review.rating}
               className="listing-star-rating user-review-rating"
               character={'✪'}

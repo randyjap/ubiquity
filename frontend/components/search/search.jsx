@@ -24,6 +24,12 @@ class Search extends React.Component{
   componentDidMount(){
     this.props.fetchOptions();
     this.props.fetchSearchListings(this.props.searchFilters);
+    this.setState({
+      brand: this.props.searchFilters.brand,
+      category: this.props.searchFilters.category,
+      rating: this.props.searchFilters.rating,
+      dayRate: this.props.searchFilters.price
+    });
   }
 
   getOptions(key){
@@ -91,7 +97,7 @@ class Search extends React.Component{
           value={this.state.category}
           placeholder="Select categories.." />
           Rating {`>=`} {this.state.rating || " ?"}<br/>
-        <Rating defaultValue={1}
+        <Rating defaultValue={this.state.rating}
           className="rating-filter"
           character={'✪'}
           onUpdate={this.logRating}>
@@ -101,7 +107,7 @@ class Search extends React.Component{
           <Slider
             min={0}
             max={500}
-            defaultValue={500}
+            defaultValue={this.state.dayRate || 500}
             onChange={this.logPrice}/>
         </div><br/>
         <button className="filter" onClick={this.handleSubmit}>Update!</button>

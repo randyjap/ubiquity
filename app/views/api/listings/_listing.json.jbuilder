@@ -31,4 +31,5 @@ json.reviews listing.reviews do |review|
   json.date time_ago_in_words(review.created_at)
   json.rating review.review
   json.review_text review.review_text
+  json.id review.id
 end
