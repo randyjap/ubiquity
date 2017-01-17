@@ -22,15 +22,14 @@ class Search extends React.Component{
   }
 
   componentDidMount(){
-    let filters = this.props.searchFilters;
-    this.props.fetchAllFilterOptions();
-    this.props.fetchSearchListings(filters);
+    this.props.fetchOptions();
+    this.props.fetchSearchListings(this.props.searchFilters);
   }
 
   getOptions(key){
     let options;
-    if (this.props.searchFilters[key]) {
-      options = this.props.searchFilters[key].map(name => {
+    if (this.props.options[key]) {
+      options = this.props.options[key].map(name => {
         return { value: name, label: name };
       });
     } else {
@@ -157,7 +156,7 @@ class Search extends React.Component{
         { this.renderedSearchFilters() }
         { this.renderedSearchResults() }
         <div className="aside search-map">
-          <MapContainer />
+
         </div>
       </div>
     );
@@ -165,3 +164,5 @@ class Search extends React.Component{
 }
 
 export default Search;
+
+// <MapContainer />

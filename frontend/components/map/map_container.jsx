@@ -4,8 +4,8 @@ import { fetchSearchListings, receiveBounds } from '../../actions/search_actions
 import { searchListingsAsArray } from '../../reducers/selectors';
 
 const mapStateToProps = state => ({
-  searchListings: searchListingsAsArray(state.search.searchListings),
-  searchFilters: state.search.searchFilters
+  searchListings: searchListingsAsArray(state.search),
+  searchFilters: state.filters
 });
 
 const mapDispatchToProps = dispatch => ({

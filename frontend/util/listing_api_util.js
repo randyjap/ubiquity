@@ -13,13 +13,6 @@ export const fetchListing = (id) => (
   })
 );
 
-export const fetchAllFilterOptions = () => (
-  $.ajax({
-    method: 'GET',
-    url: '/api/options'
-  })
-);
-
 export const bookListing = (data) => (
   $.ajax({
     method: 'POST',

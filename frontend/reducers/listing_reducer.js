@@ -1,5 +1,4 @@
 import { RECEIVE_LISTING } from '../actions/listing_actions';
-
 import merge from 'lodash/merge';
 
 let _defaultState = null;

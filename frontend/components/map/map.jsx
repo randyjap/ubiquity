@@ -10,7 +10,7 @@ const _getCoordsObj = latLng => ({
 
 let _mapOptions = {
   center: {lat: 40, lng: -30}, // San Francisco coords
-  zoom: 9
+  zoom: 3
 };
 
 class Map extends Component {
@@ -20,7 +20,6 @@ class Map extends Component {
     this.MarkerManager = new MarkerManager(this.map, this._handleMarkerClick.bind(this));
     this._registerListeners();
     this.MarkerManager.updateMarkers(this.props.searchListings);
-    this.props.fetchSearchListings(this.props.searchFilters);
   }
 
   componentDidUpdate() {
@@ -35,6 +34,7 @@ class Map extends Component {
         southWest: { lat: south, lng: west }
       };
       this.props.receiveBounds(bounds);
+      // this.props.fetchSearchListings(this.props.searchFilters);
     });
     google.maps.event.addListener(this.map, 'click', event => {
       const coords = _getCoordsObj(event.latLng);
@@ -47,10 +47,10 @@ class Map extends Component {
   }
 
   _handleClick(coords) {
-    this.props.router.push({
-      pathname: "listings/new",
-      query: coords
-    });
+    // this.props.router.push({
+    //   pathname: "listings/new",
+    //   query: coords
+    // });
   }
 
   render() {
