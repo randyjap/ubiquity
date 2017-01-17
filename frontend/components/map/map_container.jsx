@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 import Map from './map';
-import { fetchSearchListings, receiveBounds } from '../../actions/search_actions';
+import { fetchSearchListings } from '../../actions/search_actions';
 import { searchListingsAsArray } from '../../reducers/selectors';
+import { receiveBounds } from '../../actions/filter_actions';
 
 const mapStateToProps = state => ({
   searchListings: searchListingsAsArray(state.search),

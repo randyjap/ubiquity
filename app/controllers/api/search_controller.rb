@@ -11,7 +11,7 @@ class Api::SearchController < ApplicationController
         .where(categories: { name: category_filters })
         .where(brands: { name: brand_filters })
         .where("day_rate <= ?", price_filter)
-        .where("lat BETWEEN ? AND ?", bounds_filter[:northEast][:lat], bounds_filter[:southWest][:lat])
+        .where("lat BETWEEN ? AND ?", bounds_filter[:southWest][:lat], bounds_filter[:northEast][:lat])
         .where("lng BETWEEN ? AND ?", bounds_filter[:southWest][:lng], bounds_filter[:northEast][:lng])
         .group("listings.id")
         .having("AVG(reviews.review) >= ?", rating_filter)
