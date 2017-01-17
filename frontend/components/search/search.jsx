@@ -157,7 +157,7 @@ class Search extends React.Component{
         { this.renderedSearchFilters() }
         { this.renderedSearchResults() }
         <div className="aside search-map">
-
+          <MapContainer />
         </div>
       </div>
     );
@@ -165,4 +165,3 @@ class Search extends React.Component{
 }
 
 export default Search;
-// <MapContainer />

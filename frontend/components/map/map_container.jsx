@@ -1,14 +1,16 @@
 import { connect } from 'react-redux';
 import Map from './map';
-import { fetchSearchListings } from '../../actions/search_actions';
+import { fetchSearchListings, receiveBounds } from '../../actions/search_actions';
 import { searchListingsAsArray } from '../../reducers/selectors';
 
 const mapStateToProps = state => ({
-  searchListings: searchListingsAsArray(state.search.searchListings)
+  searchListings: searchListingsAsArray(state.search.searchListings),
+  searchFilters: state.search.searchFilters
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchSearchListings: (filters) => dispatch(fetchSearchListings(filters))
+  fetchSearchListings: (filters) => dispatch(fetchSearchListings(filters)),
+  receiveBounds: (filters) => dispatch(receiveBounds(filters))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Map);

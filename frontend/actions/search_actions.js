@@ -2,6 +2,7 @@ import * as ListingAPIUtil from '../util/listing_api_util';
 
 export const RECEIVE_SEARCH_LISTINGS = "RECEIVE_SEARCH_LISTINGS";
 export const RECEIVE_FILTERS = "RECEIVE_FILTERS";
+export const RECEIVE_BOUNDS = "RECEIVE_BOUNDS";
 
 export const receiveListings = searchListings => ({
   type: RECEIVE_SEARCH_LISTINGS,
@@ -10,6 +11,11 @@ export const receiveListings = searchListings => ({
 
 export const receiveFilters = filters => ({
   type: RECEIVE_FILTERS,
+  filters
+});
+
+export const receiveBounds = filters => ({
+  type: RECEIVE_BOUNDS,
   filters
 });
 
