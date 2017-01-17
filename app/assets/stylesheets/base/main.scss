@@ -77,6 +77,8 @@ a.welcome:hover {
 .main {
   height: 550px;
   width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
   text-align: left;
   display: flex;
 }
@@ -113,6 +115,8 @@ a.welcome:hover {
   padding: 0;
   margin: 0;
   border: 0;
+  padding-left: 20px;
+  padding-bottom: 20px;
 }
 
 a.listing {
@@ -186,4 +190,8 @@ button.filter:active, button.filter:hover {
   top: 35%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.fjalla {
+  font-family: 'Fjalla One', sans-serif;
 }

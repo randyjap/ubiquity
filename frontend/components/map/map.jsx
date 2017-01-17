@@ -34,7 +34,7 @@ class Map extends Component {
         southWest: { lat: south, lng: west }
       };
       this.props.receiveBounds(bounds);
-      // this.props.fetchSearchListings(this.props.searchFilters);
+      this.props.fetchSearchListings(this.props.searchFilters);
     });
     google.maps.event.addListener(this.map, 'click', event => {
       const coords = _getCoordsObj(event.latLng);

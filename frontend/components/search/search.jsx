@@ -69,20 +69,20 @@ class Search extends React.Component{
   renderedSearchFilters(){
     let count;
     if (this.props.searchListings) {
-      count = `We found ${Object.keys(this.props.searchListings).length} matches!`;
+      count = (<div className="fjalla">We found {Object.keys(this.props.searchListings).length} matches!</div>);
     } else {
-      count = (<div>Counting <Spinner characterStyle={{ fontSize: 20 }} /></div>);
+      count = (<div className="fjalla">Counting <Spinner /></div>);
     }
     return (
       <div className="aside search-filters">
-        { count }
+        { count }<br/>
         <Select
           name="brand-filter"
           options={this.getOptions("brand_options")}
           multi={true}
           onChange={this.logArrayChange("brand")}
           value={this.state.brand}
-          placeholder="Select brands.." />
+          placeholder="Select brands.." /><br/>
         <Select
           name="category-filter"
           options={this.getOptions("category_options")}
@@ -90,12 +90,12 @@ class Search extends React.Component{
           onChange={this.logArrayChange("category")}
           value={this.state.category}
           placeholder="Select categories.." />
-          Price {`>=`} {this.state.rating || " ?"}
+          Price {`>=`} {this.state.rating || " ?"}<br/>
         <Rating defaultValue={1}
           className="rating-filter"
           character={'✪'}
           onUpdate={this.logRating}>
-        </Rating>
+        </Rating><br/>
         <div style={style}>
           Price {`<`} ${this.state.price || " ?"}
           <Slider
@@ -103,7 +103,7 @@ class Search extends React.Component{
             max={500}
             defaultValue={500}
             onChange={this.logPrice}/>
-        </div>
+        </div><br/>
         <button className="filter" onClick={this.handleSubmit}>Update!</button>
       </div>
     );
