@@ -169,3 +169,21 @@ button.filter {
 button.filter:active, button.filter:hover {
   box-shadow: none;
 }
+
+.splash {
+  background-image: url("http://res.cloudinary.com/dkympkwdz/image/upload/v1484627970/splash_collage_in5e6x.jpg");
+  background-size: contain;
+}
+
+.slogan {
+  text-align: center;
+  font-size: 200%;
+  height: 30px;
+  padding: 10px;
+  background-color: white;
+  font-family: 'Fjalla One', sans-serif;
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

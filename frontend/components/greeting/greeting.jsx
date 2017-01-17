@@ -34,22 +34,12 @@ class Greeting extends React.Component{
   }
 
   render(){
-    let greeting;
-    let name = "User";
-    if (this.props.currentUser === null) {
-      greeting = (
-        <div className='greeting'>
-          &nbsp;
-          <Link className='welcome' to='login'>ENTER SITE</Link>
-        </div>
-      );
-    } else {
-      greeting = "";
-    }
-
     return (
       <div className="main splash">
-        {greeting}
+        <div className='greeting'>
+          <Link className='welcome' to='login'>ENTER SITE</Link>
+          <h1 className="slogan">Share, Rent, Get Paid for Your Gear!</h1>
+        </div>
       </div>
     );
   }
