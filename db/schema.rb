@@ -45,7 +45,6 @@ ActiveRecord::Schema.define(version: 20170111182346) do
     t.integer  "brand_id",                         null: false
     t.integer  "category_id",                      null: false
     t.boolean  "active",            default: true, null: false
-    t.float    "rating_average"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
   end
@@ -55,7 +54,6 @@ ActiveRecord::Schema.define(version: 20170111182346) do
   add_index "listings", ["lat"], name: "index_listings_on_lat", using: :btree
   add_index "listings", ["lessor_id"], name: "index_listings_on_lessor_id", using: :btree
   add_index "listings", ["lng"], name: "index_listings_on_lng", using: :btree
-  add_index "listings", ["rating_average"], name: "index_listings_on_rating_average", using: :btree
 
   create_table "photos", force: :cascade do |t|
     t.integer  "listing_id", null: false

@@ -11,8 +11,8 @@ class Listing < ActiveRecord::Base
   has_many :photos
   has_many :reviews, through: :rentals
 
-  def calculate_rating_average
-    reviews.average(:review).round(1)
+  def rating_average
+    reviews.average(:review).to_f.round(1)
   end
 
   def review_count

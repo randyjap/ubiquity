@@ -8,7 +8,6 @@
                   :lat,
                   :listing_title,
                   :lng,
-                  :rating_average,
                   :review_count
     json.set! :lessor,
               listing.lessor.username
@@ -16,5 +15,7 @@
               listing.brand.name
     json.set! :category,
               listing.category.name
+    json.set! :rating_average,
+              listing.rating_average
   end
 end

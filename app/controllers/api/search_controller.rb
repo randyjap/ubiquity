@@ -8,43 +8,43 @@ class Api::SearchController < ApplicationController
 
     if bounds_filter
       @listings = Listing
-        .joins(:category, :brand)
+        .joins(:category, :brand, :rentals, :reviews)
         .where(categories: { name: category_filters })
         .where(brands: { name: brand_filters })
-        .where("rating_average >= ?", rating_filter)
         .where("day_rate <= ?", price_filter)
-        .where("lat < ?", bounds_params[:northEast][:lat])
-        .where("lat > ?", bounds_params[:southWest][:lat])
-        .where("lng > ?", bounds_params[:southWest][:lng])
-        .where("lng < ?", bounds_params[:northEast][:lng])
+        .where("lat BETWEEN ? AND ?", bounds_params[:northEast][:lat], bounds_params[:southWest][:lat])
+        .where("lng BETWEEN ? AND ?", bounds_params[:southWest][:lng], bounds_params[:northEast][:lng])
+        .group("listings.id")
+        .having("AVG(reviews.review) >= ?", rating_filter)
     else
       @listings = Listing
-        .joins(:category, :brand, :reviews)
+        .joins(:category, :brand, :rentals, :reviews)
         .where(categories: { name: category_filters })
         .where(brands: { name: brand_filters })
-        .where("rating_average >= ?", rating_filter)
         .where("day_rate <= ?", price_filter)
+        .group("listings.id")
+        .having("AVG(reviews.review) >= ?", rating_filter)
     end
   end
 
   private
   def brand_params
-    params[:brand]
+    params[:brand] || ""
   end
 
   def category_params
-    params[:category]
+    params[:category] || ""
   end
 
   def rating_params
-    params[:rating]
+    params[:rating] || ""
   end
 
   def bounds_params
-    params[:bounds]
+    params[:bounds] || ""
   end
 
   def price_params
-    params[:price]
+    params[:price] || ""
   end
 end
