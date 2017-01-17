@@ -56,7 +56,7 @@ class SessionForm extends React.Component {
   closeModal() {
     this.props.clearSessionErrors();
     this.setState({ modalOpen: false });
-    this.redirect('search');
+    this.redirect('/');
   }
 
   openModal() {

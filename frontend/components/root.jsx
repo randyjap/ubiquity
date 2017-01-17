@@ -9,6 +9,7 @@ import NavContainer from './nav/nav_container';
 import SearchResultContainer from './search/search_result_container';
 import GreetingContainer from './greeting/greeting_container';
 import ListingShowContainer from './listing/listing_show_container';
+import UserListingContainer from './user/user_listing_container';
 
 const Root = ({ store }) => {
   const _ensureLoggedIn = (nextState, replace) => {
@@ -41,6 +42,7 @@ const Root = ({ store }) => {
           <Route path="signup" component={ SessionFormContainer } onEnter={_redirectIfLoggedIn} />
           <Route path="search" component={ SearchResultContainer } onEnter={_ensureLoggedIn} />
           <Route path="listings/:listingId" component={ ListingShowContainer } onEnter={_ensureLoggedIn} />
+          <Route path="listings" component={ UserListingContainer } onEnter={_ensureLoggedIn} />
         </Route>
       </Router>
     </Provider>
