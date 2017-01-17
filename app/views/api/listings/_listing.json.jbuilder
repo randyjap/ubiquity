@@ -33,3 +33,9 @@ json.reviews listing.reviews do |review|
   json.review_text review.review_text
   json.id review.id
 end
+
+json.rentals listing.rentals do |rental|
+  json.start_date rental.start_date
+  json.end_date rental.end_date
+  json.id rental.id
+end.sort_by! { |k, _| k["start_date"] }

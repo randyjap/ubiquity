@@ -10,7 +10,7 @@ const _getCoordsObj = latLng => ({
 
 let _mapOptions = {
   center: {lat: 39, lng: -101}, // San Francisco coords
-  zoom: 4
+  zoom: 4 
 };
 
 class Map extends Component {

@@ -20,7 +20,7 @@ class Rental < ActiveRecord::Base
       .where.not(id: self.id)
       .where(listing: listing)
       .where(<<-SQL, start_date: start_date, end_date: end_date)
-        NOT( (start_date > :end_date) OR (end_date < :start_date) )
+        NOT( (start_date >= :end_date) OR (end_date <= :start_date) )
       SQL
   end
 

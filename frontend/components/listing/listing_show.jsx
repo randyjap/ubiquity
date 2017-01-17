@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import { Spinner, Rating, DatePicker } from 'belle';
 import FontAwesome from 'react-fontawesome';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class ListingShow extends React.Component {
   constructor(props){
@@ -67,7 +68,8 @@ class ListingShow extends React.Component {
       id: this.state.id
     };
     this.props.bookListing({ rental })
-      .then(() => this.setSuccess());
+      .then(() => this.setSuccess())
+      .then(() => this.props.fetchListing(this.props.routeParams.listingId));
   }
 
   renderErrors(){
@@ -123,6 +125,20 @@ class ListingShow extends React.Component {
       });
     }
     return reviews;
+  }
+
+  rentalDates(){
+    let rentals = this.props.listing.rentals;
+    if (rentals) {
+      rentals = rentals.map(rental => {
+        return (
+          <div className="rental-date" key={rental.id}>
+            {rental.start_date} - {rental.end_date}
+          </div>
+        );
+      });
+    }
+    return rentals;
   }
 
   render(){
@@ -226,6 +242,16 @@ class ListingShow extends React.Component {
             <Link className={this.state.success ? "book disabled" : "book"} onClick={this.handleSubmit}>{this.state.success ? "Booked!" : "Book!" }</Link><br/><br/><br/><br/>
             {this.renderErrors()}
             {this.state.success ? (<div className="success-booking">Succesfully booked!  Thank you!</div>) : ""}
+            <br/>
+            <b className="listing-sub-header">These dates have been taken:</b>
+              <ReactCSSTransitionGroup
+                transitionName="example"
+                transitionAppear={true}
+                transitionAppearTimeout={1000}
+                transitionEnterTimeout={1000}
+                transitionLeaveTimeout={600}>
+                { this.rentalDates() }
+              </ReactCSSTransitionGroup>
           </div>
         </div>
       );

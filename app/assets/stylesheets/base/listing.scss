@@ -9,6 +9,7 @@
   padding: 20px;
   padding-top: 8px;
   width: 40%;
+  overflow-y: scroll;
 }
 
 div.listing-thumbnails {
@@ -127,4 +128,12 @@ table.selection-menu td {
   left: -27px;
   top: 5px;
   transform: scale(0.7, 0.7);
+}
+
+.rental-date {
+  margin: 10px;
+}
+
+.bold {
+  font-family: 'Fjalla One', sans-serif;
 }
