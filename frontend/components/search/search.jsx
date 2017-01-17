@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
 import FontAwesome from 'react-fontawesome';
-import SearchFilter from './search_filter';
 import Select from 'react-select';
 import { Spinner, Rating } from 'belle';
 import MapContainer from '../map/map_container';
@@ -49,23 +48,23 @@ class Search extends React.Component{
     return e => {
       const filters = e.map(el => el.value );
       this.setState({ [field]: filters });
+      this.props.receiveFilters({ [field]: filters });
     };
   }
 
   logRating(rating) {
     this.setState({ "rating": rating.value });
+    this.props.receiveFilters({ "rating": rating.value });
   }
 
   logPrice(price) {
     this.setState({ "price": price });
+    this.props.receiveFilters({ "price": price });
   }
 
-  handleSubmit(){
-    this.props.fetchSearchListings(this.state);
-  }
-
-  ping(value){
-    console.log(value);
+  handleSubmit(e){
+    e.preventDefault();
+    this.props.fetchSearchListings(this.props.searchFilters);
   }
 
   renderedSearchFilters(){
@@ -92,6 +91,7 @@ class Search extends React.Component{
           onChange={this.logArrayChange("category")}
           value={this.state.category}
           placeholder="Select categories.." />
+          Price {`>=`} {this.state.rating || " ?"}
         <Rating defaultValue={1}
           className="rating-filter"
           character={'✪'}
@@ -157,7 +157,7 @@ class Search extends React.Component{
         { this.renderedSearchFilters() }
         { this.renderedSearchResults() }
         <div className="aside search-map">
-          <MapContainer />
+
         </div>
       </div>
     );
@@ -165,3 +165,4 @@ class Search extends React.Component{
 }
 
 export default Search;
+// <MapContainer />

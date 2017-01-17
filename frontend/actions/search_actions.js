@@ -1,4 +1,4 @@
-import * as SessionAPIUtil from '../util/listing_api_util';
+import * as ListingAPIUtil from '../util/listing_api_util';
 
 export const RECEIVE_SEARCH_LISTINGS = "RECEIVE_SEARCH_LISTINGS";
 export const RECEIVE_FILTERS = "RECEIVE_FILTERS";
@@ -14,12 +14,12 @@ export const receiveFilters = filters => ({
 });
 
 export const fetchSearchListings = (filters) => dispatch => {
-  return SessionAPIUtil.fetchSearchListings(filters)
+  return ListingAPIUtil.fetchSearchListings(filters)
     .then(listings => dispatch(receiveListings(listings)));
 };
 
 export const fetchAllFilterOptions = () => dispatch => {
-  return SessionAPIUtil.fetchAllFilterOptions()
+  return ListingAPIUtil.fetchAllFilterOptions()
     .then(filters => dispatch(receiveFilters(filters)));
 };
 

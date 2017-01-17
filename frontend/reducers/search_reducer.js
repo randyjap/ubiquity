@@ -19,7 +19,16 @@ const searchReducer = (state = _defaultState, action) => {
     case RECEIVE_SEARCH_LISTINGS:
       return merge({}, state, { searchListings: null }, { searchListings: action.searchListings});
     case RECEIVE_FILTERS:
-      return merge({}, state, { searchFilters: action.filters });
+      let newState = {
+        searchListings: state.searchListings,
+        searchFilters: {
+          brand_options: state.searchFilters.brand_options,
+          category_options: state.searchFilters.category_options,
+          brand: [],
+          category: []
+        }
+      };
+      return merge(newState, { searchFilters: action.filters });
     default:
       return state;
   }
