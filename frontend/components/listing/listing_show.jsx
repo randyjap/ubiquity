@@ -118,8 +118,8 @@ class ListingShow extends React.Component {
               className="listing-star-rating user-review-rating"
               character={'✪'}
               disabled/><br/>
-            {review.date} ago <br/>
-          <b className="listing-sub-header">{review.lessee} said...</b> {review.review_text}
+            <div className="review-sub-header">{review.date} ago {review.lessee} said...</div>
+            <div className="review-text-container">{review.review_text}</div>
           </div>
         );
       });
@@ -196,11 +196,13 @@ class ListingShow extends React.Component {
             </div>
           </div>
           <div className="aside-3">
+            <h1 className="listing-title">Book this rental today!</h1>
+            <br/><br/><br/>
             <h1 className="listing-title">{listing.lessor} ({listing.review_count})</h1>
             <Rating defaultValue={Math.round(listing.rating_average)}
               className="listing-star-rating"
               character={'✪'}
-              disabled></Rating><br/><br/><br/>
+              disabled></Rating>
             <table className="selection-menu">
               <tbody>
                 <tr>

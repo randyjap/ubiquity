@@ -1,4 +1,4 @@
-import { RECEIVE_FILTERS, RECEIVE_BOUNDS } from '../actions/filter_actions';
+import { RECEIVE_FILTERS, RECEIVE_BOUNDS, RESET_FILTERS } from '../actions/filter_actions';
 import merge from 'lodash/merge';
 
 let _defaultState = {
@@ -17,6 +17,8 @@ const filterReducer = (state = _defaultState, action) => {
   switch (action.type) {
     case RECEIVE_FILTERS:
       return merge({}, state, action.filters, middleState);
+    case RESET_FILTERS:
+      return merge({}, _defaultState);
     case RECEIVE_BOUNDS:
       return merge({}, state, { bounds: action.filters });
     default:

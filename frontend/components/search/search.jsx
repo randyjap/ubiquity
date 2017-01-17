@@ -15,7 +15,7 @@ class Search extends React.Component{
     this.updateProperty = this.updateProperty.bind(this);
     this.getOptions = this.getOptions.bind(this);
     this.logArrayChange = this.logArrayChange.bind(this);
-    this.state = { brand: [], category: [], rating: undefined, dayRate: undefined };
+    this.state = { brand: null, category: null, rating: undefined, dayRate: undefined };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.logRating = this.logRating.bind(this);
     this.logPrice = this.logPrice.bind(this);
@@ -30,6 +30,11 @@ class Search extends React.Component{
       rating: this.props.searchFilters.rating,
       dayRate: this.props.searchFilters.price
     });
+  }
+
+  componentWillUnmount(){
+    this.setState({ brand: null, category: null, rating: undefined, dayRate: undefined });
+    this.props.resetFilters();
   }
 
   getOptions(key){
@@ -97,7 +102,7 @@ class Search extends React.Component{
           value={this.state.category}
           placeholder="Select categories.." />
           Rating {`>=`} {this.state.rating || " ?"}<br/>
-        <Rating defaultValue={this.state.rating}
+        <Rating defaultValue={null}
           className="rating-filter"
           character={'✪'}
           onUpdate={this.logRating}>
@@ -107,7 +112,7 @@ class Search extends React.Component{
           <Slider
             min={0}
             max={500}
-            defaultValue={this.state.dayRate || 500}
+            defaultValue={500}
             onChange={this.logPrice}/>
         </div><br/>
         <button className="filter" onClick={this.handleSubmit}>Update!</button>
@@ -128,6 +133,7 @@ class Search extends React.Component{
       listings = listings.map(listing => {
         return (
           <Link className="listing" key={listing.id} to={`listings/${listing.id}`}>
+            <img className="listing-thumbnail" src={listing.photos[0].image_url}/>
             <Rating defaultValue={Math.round(listing.rating_average)}
               className="star-rating"
               character={'✪'}
@@ -139,7 +145,6 @@ class Search extends React.Component{
             <br/>Day Rate: ${listing.day_rate}
             <br/>Rating: {listing.rating_average}
             <br/>Reviews: {listing.review_count}
-            <br/>{listing.listing_title}
           </Link>
         );
       });

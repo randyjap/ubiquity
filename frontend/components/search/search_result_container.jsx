@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Search from './search';
 import { fetchSearchListings } from '../../actions/search_actions';
-import { receiveFilters } from '../../actions/filter_actions';
+import { receiveFilters, resetFilters } from '../../actions/filter_actions';
 import { fetchOptions } from '../../actions/option_actions';
 
 const mapStateToProps = state => ({
@@ -13,7 +13,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   fetchSearchListings: (filters) => dispatch(fetchSearchListings(filters)),
   receiveFilters: (filters) => dispatch(receiveFilters(filters)),
-  fetchOptions: () => dispatch(fetchOptions())
+  fetchOptions: () => dispatch(fetchOptions()),
+  resetFilters: () => dispatch(resetFilters())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);

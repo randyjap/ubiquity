@@ -17,5 +17,9 @@
               listing.category.name
     json.set! :rating_average,
               listing.rating_average
+    json.photos listing.photos do |photo|
+      json.image_url photo.image_url
+      json.photo_id photo.id
+    end
   end
 end
