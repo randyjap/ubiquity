@@ -136,36 +136,33 @@ class Map extends Component {
     //styling
     this.map.setOptions({styles: style['retro']});
 
-    //geolocation
-    // let infoWindow = new google.maps.InfoWindow({map: this.map});
-    // let thisMap = this.map;
-    // if (navigator.geolocation) {
-    //   navigator.geolocation.getCurrentPosition(function(position) {
-    //     var pos = {
-    //       lat: position.coords.latitude,
-    //       lng: position.coords.longitude
-    //     };
-    //
-    //     infoWindow.setPosition(pos);
-    //     infoWindow.setContent('You are here!');
-    //     thisMap.setCenter(pos);
-    //   }, function() {
-    //     handleLocationError(true, infoWindow, thisMap.getCenter());
-    //   });
-    // } else {
-    //   // Browser doesn't support Geolocation
-    //   handleLocationError(false, infoWindow, thisMap.getCenter());
-    // }
-    //
-    // let handleLocationError = (browserHasGeolocation, infoWindow, pos) => {
-    // infoWindow.setPosition(pos);
-    // infoWindow.setContent(browserHasGeolocation ?
-    //                       'Error: The Geolocation service failed.' :
-    //                       'Error: Your browser doesn\'t support geolocation.');
-    // };
+    // geolocation
+    let infoWindow = new google.maps.InfoWindow({map: this.map});
+    let thisMap = this.map;
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
 
-    // getting reference for nav
-    window.map = this.map;
+        infoWindow.setPosition(pos);
+        infoWindow.setContent('You are here!');
+        thisMap.setCenter(pos);
+      }, function() {
+        handleLocationError(true, infoWindow, thisMap.getCenter());
+      });
+    } else {
+      // Browser doesn't support Geolocation
+      handleLocationError(false, infoWindow, thisMap.getCenter());
+    }
+
+    let handleLocationError = (browserHasGeolocation, infoWindow, pos) => {
+    infoWindow.setPosition(pos);
+    infoWindow.setContent(browserHasGeolocation ?
+                          'Error: The Geolocation service failed.' :
+                          'Error: Your browser doesn\'t support geolocation.');
+    };
   }
 
   componentDidUpdate() {
@@ -173,20 +170,23 @@ class Map extends Component {
   }
 
   componentWillReceiveProps(nextProps){
-    // this.map.setCenter(nextProps.searchFilters.center);
+    this.map.setCenter(nextProps.searchFilters.center);
   }
 
   _registerListeners() {
     google.maps.event.addListener(this.map, 'idle', () => {
       const { north, south, east, west } = this.map.getBounds().toJSON();
       const bounds = {
-        northEast: { lat:north, lng: east },
+        northEast: { lat: north, lng: east },
         southWest: { lat: south, lng: west }
       };
       this.props.receiveBounds(bounds);
-      this.props.receiveCenter(this.map.getCenter().toJSON());
-      // this.map.setCenter(this.map.getCenter().toJSON());
       this.props.fetchSearchListings(this.props.searchFilters);
+    });
+
+    google.maps.event.addListener(this.map, 'dragend', () => {
+      console.log(this.map.getCenter().toJSON());
+      this.props.receiveCenter(this.map.getCenter().toJSON());
     });
 
     google.maps.event.addListener(this.map, 'click', event => {
