@@ -1,11 +1,22 @@
 import * as UserListingAPIUtil from '../util/user_listing_api_util';
 
 export const RECEIVE_USER_LISTINGS = "RECEIVE_USER_LISTINGS";
+export const RECEIVE_USER_RENTALS = "RECEIVE_USER_RENTALS";
+
+export const receiveUserRentals = rentals => ({
+  type: RECEIVE_USER_RENTALS,
+  rentals
+});
 
 export const receiveUserListings = listings => ({
   type: RECEIVE_USER_LISTINGS,
   listings
 });
+
+export const fetchUserRentals = () => dispatch => {
+  return UserListingAPIUtil.fetchUserRentals()
+    .then(rentals => dispatch(receiveUserRentals(rentals)));
+};
 
 export const fetchUserListings = () => dispatch => {
   return UserListingAPIUtil.fetchUserListings()

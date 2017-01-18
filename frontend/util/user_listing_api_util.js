@@ -1,3 +1,11 @@
+export const fetchUserRentals = (data) => (
+  $.ajax({
+    method: 'GET',
+    url: '/api/rentals',
+    data
+  })
+);
+
 export const fetchUserListings = (data) => (
   $.ajax({
     method: 'GET',

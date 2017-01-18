@@ -1,11 +1,6 @@
 .aside-current-user-listings {
   overflow-y: scroll;
   width: 100%;
-  padding: 20px;
-  padding-top: 0;
-  padding-left: 30%;
-  margin-top: 0;
-  border-top: 0;
 }
 
 .userListing {
@@ -22,12 +17,29 @@
   padding-top: 0;
 }
 
-a.listing-sub-header {
+.listing-sub-header {
   font-family: 'Fjalla One', sans-serif;
 }
 
-b.user-listing-sub-header {
+.user-listing-sub-header {
   font-family: 'Fjalla One', sans-serif;
-  padding-bottom: 10px;
+  padding-top: 20px;
   font-size: 120%;
+}
+
+.user-rental-sub-header {
+  font-family: 'Fjalla One', sans-serif;
+}
+
+.current-user-rental {
+  width: 400px;
+  padding-top: 20px;
+}
+
+.current-user-rentals {
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  overflow-y: auto;
 }

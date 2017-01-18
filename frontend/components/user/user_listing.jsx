@@ -34,16 +34,16 @@ class UserListing extends React.Component {
         let rentals = listings[key].map(rental => {
           return (
             <div className="sub-rental" key={rental.id}>
-              Lessee: <b className="listing-sub-header ">{rental.lessee}</b><br/>
-              Start Date: <b className="listing-sub-header ">{rental.start_date}</b><br/>
-              End Date: <b className="listing-sub-header ">{rental.end_date}</b><br/>
-              Total Revenue: <b className="listing-sub-header ">${rental.total}</b>
+              Lessee: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b className="listing-sub-header ">{rental.lessee}</b><br/>
+              Start Date: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b className="listing-sub-header ">{rental.start_date}</b><br/>
+              End Date: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b className="listing-sub-header ">{rental.end_date}</b><br/>
+              Total Revenue: &nbsp;<b className="listing-sub-header ">${rental.total}</b>
             </div>
           );
         });
         return (
           <div className="userListing" key={key}>
-            <b className="user-listing-sub-header ">These are your rentals for <Link className="listing-sub-header" to={`listings/${key}`}>Listing ID#{key}</Link></b>
+            <b className="user-listing-sub-header "><Link className="listing-sub-header" to={`listings/${key}`}>These are your rentals for Listing ID#{key}</Link></b>
             <div className="sub-rentals">
               { rentals }
             </div>
@@ -53,7 +53,9 @@ class UserListing extends React.Component {
     }
 
     return (
-      <div className="aside-current-user-listings">{ listings }</div>
+      <div className="aside-current-user-listings">
+        { listings }
+      </div>
     );
   }
 

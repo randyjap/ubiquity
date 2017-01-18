@@ -74,8 +74,8 @@ class Nav extends React.Component{
                     </ul>
                     <ul className="editions">
                       <li><Link to="search">Search</Link></li>
-                      <li><Link to="listings">Listings</Link></li>
-                      <li><Link to="rentals">Rentals</Link></li>
+                      <li><Link to="listings">My Listings</Link></li>
+                      <li><Link to="rentals">My Rentals</Link></li>
                     </ul>
                   </li>
                   <li>

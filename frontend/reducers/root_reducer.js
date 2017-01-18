@@ -7,6 +7,7 @@ import listingReducer from './listing_reducer';
 import optionReducer from './option_reducer';
 import filterReducer from './filter_reducer';
 import currentUserListingReducer from './current_user_listing_reducer';
+import currentUserRentalReducer from './current_user_rental_reducer';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
   listing: listingReducer,
   options: optionReducer,
   filters: filterReducer,
-  currentUserListings: currentUserListingReducer
+  currentUserListings: currentUserListingReducer,
+  currentUserRentals: currentUserRentalReducer
 });
 
 export default rootReducer;
