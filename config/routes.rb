@@ -8,5 +8,6 @@ Rails.application.routes.draw do
     resources :rentals, only: [:index, :create]
     resources :search, only: [:index]
     resources :options, only: [:index]
+    resources :reviews, only: [:create]
   end
 end

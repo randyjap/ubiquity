@@ -6,5 +6,9 @@ json.set! :current_user do
     json.set! :start_date, rental.start_date
     json.set! :end_date, rental.end_date
     json.set! :total, rental.total
+    if rental.review
+      json.set! :rating, rental.review.review
+      json.set! :review, rental.review.review_text
+    end
   end.sort_by! { |k, _| k["start_date"] }
 end
