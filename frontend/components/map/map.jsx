@@ -148,7 +148,6 @@ class Map extends Component {
 
         infoWindow.setPosition(pos);
         infoWindow.setContent('You are here!');
-        thisMap.setCenter(pos);
       }, function() {
         handleLocationError(true, infoWindow, thisMap.getCenter());
       });
@@ -185,7 +184,6 @@ class Map extends Component {
     });
 
     google.maps.event.addListener(this.map, 'dragend', () => {
-      console.log(this.map.getCenter().toJSON());
       this.props.receiveCenter(this.map.getCenter().toJSON());
     });
 

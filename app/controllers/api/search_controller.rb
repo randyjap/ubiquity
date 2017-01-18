@@ -5,7 +5,7 @@ class Api::SearchController < ApplicationController
     rating_filter = rating_params.empty? ? 0 : rating_params.to_i - 0.5
     price_filter = price_params.empty? ? 99999 : price_params
     bounds_filter = bounds_params.empty? ? nil : bounds_params
-    if bounds_filter
+    if bounds_filter && bounds_filter[:southWest][:lng] < bounds_filter[:northEast][:lng]
       @listings = Listing
         .joins(:category, :brand, :rentals, :reviews)
         .where(categories: { name: category_filters })
@@ -14,6 +14,17 @@ class Api::SearchController < ApplicationController
         .where("day_rate <= ?", price_filter)
         .where("lat BETWEEN ? AND ?", bounds_filter[:southWest][:lat], bounds_filter[:northEast][:lat])
         .where("lng BETWEEN ? AND ?", bounds_filter[:southWest][:lng], bounds_filter[:northEast][:lng])
+        .group("listings.id")
+        .having("AVG(reviews.review) >= ?", rating_filter)
+    elsif bounds_filter
+      @listings = Listing
+        .joins(:category, :brand, :rentals, :reviews)
+        .where(categories: { name: category_filters })
+        .where(brands: { name: brand_filters })
+        .where(active: true)
+        .where("day_rate <= ?", price_filter)
+        .where("lat BETWEEN ? AND ?", bounds_filter[:southWest][:lat], bounds_filter[:northEast][:lat])
+        .where("lng > ? OR lng < ?", bounds_filter[:southWest][:lng], bounds_filter[:northEast][:lng])
         .group("listings.id")
         .having("AVG(reviews.review) >= ?", rating_filter)
     else
