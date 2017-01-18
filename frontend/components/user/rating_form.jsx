@@ -54,7 +54,7 @@ class RatingForm extends React.Component {
           character={'✪'}
           onUpdate={this.logRating}>
         </Rating>
-        <TextInput onChange={this.logReview} placeholder="Enter your review here..." />
+        <TextInput style={{ minHeight: 80 }} onChange={this.logReview} placeholder="Enter your review here..." allowNewLine/>
         <button className="review" onClick={this.handleSubmit}>Submit Review!</button>
         { this.renderErrors() }
       </div>
