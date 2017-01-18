@@ -13,6 +13,37 @@ let _mapOptions = {
   zoom: 4
 };
 
+var autocomplete;
+
+function initAutocomplete() {
+
+  autocomplete = new google.maps.places.Autocomplete(
+    /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+    {types: ['geocode']});
+
+  autocomplete.addListener('place_changed', fillInAddress);
+}
+
+var fillInAddress = (e) => {
+  console.log(e);
+};
+
+function geolocate() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var geolocation = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      var circle = new google.maps.Circle({
+        center: geolocation,
+        radius: position.coords.accuracy
+      });
+      autocomplete.setBounds(circle.getBounds());
+    });
+  }
+}
+
 class Map extends Component {
   componentDidMount() {
     const map = this.refs.map;
@@ -54,7 +85,12 @@ class Map extends Component {
   }
 
   render() {
-    return <div className="map" ref="map">Map</div>;
+    return (
+      <div>
+        <div className="map" ref="map">Map</div>;
+        <input className="searchbar" id="autocomplete" placeholder="Search near..." type="text"></input>
+      </div>
+    );
   }
 }
 

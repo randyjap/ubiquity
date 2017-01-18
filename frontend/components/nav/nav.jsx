@@ -8,6 +8,65 @@ class Nav extends React.Component{
     this.state = { dropDownHide: true };
     this.handleLogout = this.handleLogout.bind(this);
     this.toggleDropDown = this.toggleDropDown.bind(this);
+    this.initAutocomplete = this.initAutocomplete.bind(this);
+  }
+
+  componentDidMount(){
+    this.initAutocomplete();
+  }
+
+  initAutocomplete() {
+    let autocomplete = new google.maps.places.Autocomplete(
+        /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+        {types: ['geocode']});
+
+    autocomplete.addListener('place_changed', this.fillInAddress);
+    this.state = { autocomplete: autocomplete};
+  }
+
+  fillInAddress() {
+    var placeSearch, autocomplete;
+    var componentForm = {
+      street_number: 'short_name',
+      route: 'long_name',
+      locality: 'long_name',
+      administrative_area_level_1: 'short_name',
+      country: 'long_name',
+      postal_code: 'short_name'
+    };
+    // Get the place details from the autocomplete object.
+    var place = autocomplete.getPlace();
+
+    for (var component in componentForm) {
+      document.getElementById(component).value = '';
+      document.getElementById(component).disabled = false;
+    }
+
+    // Get each component of the address from the place details
+    // and fill the corresponding field on the form.
+    for (var i = 0; i < place.address_components.length; i++) {
+      var addressType = place.address_components[i].types[0];
+      if (componentForm[addressType]) {
+        var val = place.address_components[i][componentForm[addressType]];
+        document.getElementById(addressType).value = val;
+      }
+    }
+  }
+
+  geolocate() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var geolocation = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        var circle = new google.maps.Circle({
+          center: geolocation,
+          radius: position.coords.accuracy
+        });
+        this.state.autocomplete.setBounds(circle.getBounds());
+      });
+    }
   }
 
   linkSignIn(){
@@ -102,7 +161,7 @@ class Nav extends React.Component{
             size="2x"
             style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.3)' }}
           />
-          <input className="searchbar" placeholder="Search near..."/>
+          <input onFocus={this.geolocate} id="autocomplete" className="searchbar" placeholder="Search near..."/>
         </nav>
         <nav className="right-nav">
           <ul onClick={this.toggleDropDown}>
