@@ -11,7 +11,11 @@ class Nav extends React.Component{
     this.initAutocomplete = this.initAutocomplete.bind(this);
     this.updateLocation = this.updateLocation.bind(this);
     this.geolocate = this.geolocate.bind(this);
-    this.geocode = this.geocode.bind(this);
+    this.redirect = this.redirect.bind(this);
+  }
+
+  redirect(route){
+    this.props.router.push(route);
   }
 
   componentDidMount(){
@@ -27,9 +31,18 @@ class Nav extends React.Component{
   }
 
   updateLocation() {
+    let lat = this.autocomplete.getPlace().geometry.location.lat();
+    let lng = this.autocomplete.getPlace().geometry.location.lng();
     let searchAddress = this.autocomplete.getPlace().formatted_address;
-    this.geocode(searchAddress);
-    this.setState({ searchAddress });
+    let latlng = {
+      lat: lat,
+      lng: lng
+    };
+    this.redirect('search');
+    this.setState({ searchAddress, latlng });
+    // this.props.receiveCenter(latlng);
+    map.setCenter(latlng);
+    // this.props.map.setCenter(latlng);
   }
 
   geolocate() {
@@ -47,23 +60,6 @@ class Nav extends React.Component{
         that.autocomplete.setBounds(circle.getBounds());
       });
     }
-  }
-
-  geocode(searchAddress) {
-    var googleMapsClient = require('@google/maps').createClient({
-      key: 'AIzaSyBqsvOsC3Vz10r3WSLV23Zf4Ou4zfXFVDQ'
-    });
-    googleMapsClient.geocode({
-      address: searchAddress
-    }, function(err, response) {
-      if (!err) {
-        console.log(response.json.results[0].geometry.location);
-        console.log(this.props.receiveCenter);
-        debugger
-        this.props.receiveCenter(response.json.results[0].geometry.location);
-        window.map.setCenter(response.json.results[0].geometry.location);
-      }
-    });
   }
 
   linkSignIn(){
@@ -103,8 +99,10 @@ class Nav extends React.Component{
 
   render(){
     let name = "User";
+    let searchbar;
     let dropDown;
     if (this.props.currentUser === null) {
+      searchbar = (<input onFocus={this.geolocate()} id="autocomplete" className="searchbar" placeholder="Disabled until you log in... ->" disabled/>);
       dropDown = (<ul id="gear-dropdown" className={ this.state.dropDownHide ? "gear-dropdown hidden" : "gear-dropdown"}>
                     <li>
                       <ul className="help">
@@ -119,6 +117,7 @@ class Nav extends React.Component{
                 );
     } else {
       name = this.props.currentUser.username;
+      searchbar = (<input onFocus={this.geolocate()} id="autocomplete" className="searchbar" placeholder="Search near..."/>);
       dropDown = (<ul id="gear-dropdown" className={ this.state.dropDownHide ? "gear-dropdown hidden" : "gear-dropdown"}>
                   <li>
                     <ul className="editions">
@@ -158,7 +157,7 @@ class Nav extends React.Component{
             size="2x"
             style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.3)' }}
           />
-          <input onFocus={this.geolocate()} id="autocomplete" className="searchbar" placeholder="Search near..."/>
+        { searchbar }
         </nav>
         <nav className="right-nav">
           <ul onClick={this.toggleDropDown}>

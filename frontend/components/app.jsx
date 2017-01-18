@@ -5,7 +5,7 @@ import Footer from './footer/footer';
 
 const App = ({ children }) => (
   <div className="wrapper">
-    <NavContainer />
+    <NavContainer router={children.props.router}/>
       { children }
     <Footer />
   </div>

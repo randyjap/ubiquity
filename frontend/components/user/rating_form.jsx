@@ -63,5 +63,3 @@ class RatingForm extends React.Component {
 }
 
 export default RatingForm;
-
-// <div onClick={this.props.router.goBack}>test to go back</div>

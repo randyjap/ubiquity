@@ -11,6 +11,7 @@ import GreetingContainer from './greeting/greeting_container';
 import ListingShowContainer from './listing/listing_show_container';
 import UserListingContainer from './user/user_listing_container';
 import UserRentalContainer from './user/user_rental_container';
+import Nav from './nav/nav_container';
 
 const Root = ({ store }) => {
   const _ensureLoggedIn = (nextState, replace) => {
@@ -44,6 +45,7 @@ const Root = ({ store }) => {
           <Route path="search" component={ SearchResultContainer } onEnter={_ensureLoggedIn} />
           <Route path="listings/:listingId" component={ ListingShowContainer } onEnter={_ensureLoggedIn} />
           <Route path="listings" component={ UserListingContainer } onEnter={_ensureLoggedIn} />
+          <Route path="rentals" component={ UserRentalContainer } onEnter={_ensureLoggedIn} />
           <Route path="rentals" component={ UserRentalContainer } onEnter={_ensureLoggedIn} />
         </Route>
       </Router>

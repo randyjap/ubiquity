@@ -59,6 +59,7 @@ class UserRental extends React.Component {
   render(){
     return (
       <div className="main">
+        <button className="back-button" onClick={this.props.router.goBack}>Go Back</button><br/>
         <div className="current-user-rentals">
           {this.renderRentals()}
         </div>
@@ -68,5 +69,3 @@ class UserRental extends React.Component {
 }
 
 export default UserRental;
-
-// <div onClick={this.props.router.goBack}>test to go back</div>

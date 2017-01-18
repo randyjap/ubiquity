@@ -156,6 +156,7 @@ class ListingShow extends React.Component {
     } else {
       main = (
         <div className="main">
+          <button className="back-button" onClick={this.props.router.goBack}>Go Back</button><br/>
           <div className="aside-2">
             <h1 className="listing-title">{listing.listing_title}</h1>
             <div className="listing-image">

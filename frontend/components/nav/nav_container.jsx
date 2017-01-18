@@ -4,7 +4,8 @@ import { signup, login, logout } from '../../actions/session_actions';
 import { receiveCenter } from '../../actions/filter_actions';
 
 const mapStateToProps = state => ({
-  currentUser: state.session.currentUser
+  currentUser: state.session.currentUser,
+  map: state.filters.center.map
 });
 
 const mapDispatchToProps = dispatch => ({

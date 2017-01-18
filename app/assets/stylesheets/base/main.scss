@@ -156,7 +156,7 @@ a.listing {
   font-family: 'Fjalla One', sans-serif;
 }
 
-button.filter {
+button.filter, button.back-button {
   background-color: #61C261;
   color: white;
   cursor: pointer;
@@ -167,12 +167,21 @@ button.filter {
   border: solid 1px #cbc9c9;
   margin-bottom: 10px;
   padding-left: 15px;
-  padding-left: 15px;
   font-size: 90%;
 }
 
-button.filter:active, button.filter:hover {
+button.filter:active, button.filter:hover, button.back-button:active, button.back-button:hover {
   box-shadow: none;
+}
+
+button.back-button {
+  width: 80px;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 25px;
+  position: absolute;
+  top: 87px;
+  left: 30px;
 }
 
 .splash {

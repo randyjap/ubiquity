@@ -62,6 +62,7 @@ class UserListing extends React.Component {
   render(){
     return (
       <div className="main">
+        <button className="back-button" onClick={this.props.router.goBack}>Go Back</button><br/>
         { this.renderListings() }
       </div>
     );
