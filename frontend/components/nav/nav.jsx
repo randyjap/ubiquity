@@ -9,6 +9,9 @@ class Nav extends React.Component{
     this.handleLogout = this.handleLogout.bind(this);
     this.toggleDropDown = this.toggleDropDown.bind(this);
     this.initAutocomplete = this.initAutocomplete.bind(this);
+    this.updateLocation = this.updateLocation.bind(this);
+    this.geolocate = this.geolocate.bind(this);
+    this.geocode = this.geocode.bind(this);
   }
 
   componentDidMount(){
@@ -20,40 +23,18 @@ class Nav extends React.Component{
         /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
         {types: ['geocode']});
 
-    autocomplete.addListener('place_changed', this.fillInAddress);
+    autocomplete.addListener('place_changed', this.updateLocation);
     this.state = { autocomplete: autocomplete};
   }
 
-  fillInAddress() {
-    var placeSearch, autocomplete;
-    var componentForm = {
-      street_number: 'short_name',
-      route: 'long_name',
-      locality: 'long_name',
-      administrative_area_level_1: 'short_name',
-      country: 'long_name',
-      postal_code: 'short_name'
-    };
-    // Get the place details from the autocomplete object.
-    var place = autocomplete.getPlace();
-
-    for (var component in componentForm) {
-      document.getElementById(component).value = '';
-      document.getElementById(component).disabled = false;
-    }
-
-    // Get each component of the address from the place details
-    // and fill the corresponding field on the form.
-    for (var i = 0; i < place.address_components.length; i++) {
-      var addressType = place.address_components[i].types[0];
-      if (componentForm[addressType]) {
-        var val = place.address_components[i][componentForm[addressType]];
-        document.getElementById(addressType).value = val;
-      }
-    }
+  updateLocation() {
+    let searchAddress = this.state.autocomplete.getPlace().formatted_address;
+    this.geocode(searchAddress);
+    this.setState({ searchAddress });
   }
 
   geolocate() {
+    let that = this;
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
         var geolocation = {
@@ -64,9 +45,22 @@ class Nav extends React.Component{
           center: geolocation,
           radius: position.coords.accuracy
         });
-        this.state.autocomplete.setBounds(circle.getBounds());
+        that.state.autocomplete.setBounds(circle.getBounds());
       });
     }
+  }
+
+  geocode(searchAddress) {
+    var googleMapsClient = require('@google/maps').createClient({
+      key: 'AIzaSyBqsvOsC3Vz10r3WSLV23Zf4Ou4zfXFVDQ'
+    });
+    googleMapsClient.geocode({
+      address: searchAddress
+    }, function(err, response) {
+      if (!err) {
+        console.log(response.json.results[0].geometry.location);
+      }
+    });
   }
 
   linkSignIn(){
@@ -161,7 +155,7 @@ class Nav extends React.Component{
             size="2x"
             style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.3)' }}
           />
-          <input onFocus={this.geolocate} id="autocomplete" className="searchbar" placeholder="Search near..."/>
+          <input onFocus={this.geolocate()} id="autocomplete" className="searchbar" placeholder="Search near..."/>
         </nav>
         <nav className="right-nav">
           <ul onClick={this.toggleDropDown}>
