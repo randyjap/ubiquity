@@ -20,6 +20,8 @@ class Map extends Component {
     this.MarkerManager = new MarkerManager(this.map, this._handleMarkerClick.bind(this));
     this._registerListeners();
     this.MarkerManager.updateMarkers(this.props.searchListings);
+    ///TODO
+    window.map = this.map;
   }
 
   componentDidUpdate() {
@@ -34,6 +36,8 @@ class Map extends Component {
         southWest: { lat: south, lng: west }
       };
       this.props.receiveBounds(bounds);
+      this.props.receiveCenter(this.map.getCenter().toJSON());
+      this.map.setCenter(this.props.searchFilters.center);
       this.props.fetchSearchListings(this.props.searchFilters);
     });
     google.maps.event.addListener(this.map, 'click', event => {

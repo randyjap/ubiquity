@@ -22,13 +22,12 @@ class Nav extends React.Component{
     let autocomplete = new google.maps.places.Autocomplete(
         /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
         {types: ['geocode']});
-
     autocomplete.addListener('place_changed', this.updateLocation);
-    this.state = { autocomplete: autocomplete};
+    this.autocomplete = autocomplete;
   }
 
   updateLocation() {
-    let searchAddress = this.state.autocomplete.getPlace().formatted_address;
+    let searchAddress = this.autocomplete.getPlace().formatted_address;
     this.geocode(searchAddress);
     this.setState({ searchAddress });
   }
@@ -45,7 +44,7 @@ class Nav extends React.Component{
           center: geolocation,
           radius: position.coords.accuracy
         });
-        that.state.autocomplete.setBounds(circle.getBounds());
+        that.autocomplete.setBounds(circle.getBounds());
       });
     }
   }
@@ -59,6 +58,10 @@ class Nav extends React.Component{
     }, function(err, response) {
       if (!err) {
         console.log(response.json.results[0].geometry.location);
+        console.log(this.props.receiveCenter);
+        debugger
+        this.props.receiveCenter(response.json.results[0].geometry.location);
+        window.map.setCenter(response.json.results[0].geometry.location);
       }
     });
   }
