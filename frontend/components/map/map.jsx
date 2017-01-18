@@ -159,7 +159,7 @@ class Map extends Component {
     let handleLocationError = (browserHasGeolocation, infoWindow, pos) => {
     infoWindow.setPosition(pos);
     infoWindow.setContent(browserHasGeolocation ?
-                          'Error: The Geolocation service failed.' :
+                          'The Geolocation service was not permitted.' :
                           'Error: Your browser doesn\'t support geolocation.');
     };
   }

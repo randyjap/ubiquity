@@ -129,7 +129,7 @@ end
 brand = Brand.first
 category = Category.first
 
-30.times do
+150.times do
   Listing.create({
     lessor: User.find(rand(1..User.count)),
     listing_title: Faker::Company.buzzword,
@@ -189,7 +189,7 @@ end
   })
 end
 
-60.times do |i|
+Listing.count.times do |i|
   12.times do
     Photo.create({
       listing: Listing.find(i + 1),
