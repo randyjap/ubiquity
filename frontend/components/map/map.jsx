@@ -137,31 +137,31 @@ class Map extends Component {
     this.map.setOptions({styles: style['retro']});
 
     // geolocation
-    let infoWindow = new google.maps.InfoWindow({map: this.map});
-    let thisMap = this.map;
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        var pos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
-
-        infoWindow.setPosition(pos);
-        infoWindow.setContent('You are here!');
-      }, function() {
-        handleLocationError(true, infoWindow, thisMap.getCenter());
-      });
-    } else {
-      // Browser doesn't support Geolocation
-      handleLocationError(false, infoWindow, thisMap.getCenter());
-    }
-
-    let handleLocationError = (browserHasGeolocation, infoWindow, pos) => {
-    infoWindow.setPosition(pos);
-    infoWindow.setContent(browserHasGeolocation ?
-                          'The Geolocation service was not permitted.' :
-                          'Error: Your browser doesn\'t support geolocation.');
-    };
+    // let infoWindow = new google.maps.InfoWindow({map: this.map});
+    // let thisMap = this.map;
+    // if (navigator.geolocation) {
+    //   navigator.geolocation.getCurrentPosition(function(position) {
+    //     var pos = {
+    //       lat: position.coords.latitude,
+    //       lng: position.coords.longitude
+    //     };
+    //
+    //     infoWindow.setPosition(pos);
+    //     infoWindow.setContent('You are here!');
+    //   }, function() {
+    //     handleLocationError(true, infoWindow, thisMap.getCenter());
+    //   });
+    // } else {
+    //   // Browser doesn't support Geolocation
+    //   handleLocationError(false, infoWindow, thisMap.getCenter());
+    // }
+    //
+    // let handleLocationError = (browserHasGeolocation, infoWindow, pos) => {
+    // infoWindow.setPosition(pos);
+    // infoWindow.setContent(browserHasGeolocation ?
+    //                       'The Geolocation service was not permitted.' :
+    //                       'Error: Your browser doesn\'t support geolocation.');
+    // };
   }
 
   componentDidUpdate() {
