@@ -12,6 +12,16 @@ class Nav extends React.Component{
     this.updateLocation = this.updateLocation.bind(this);
     this.geolocate = this.geolocate.bind(this);
     this.redirect = this.redirect.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(city){
+    if (city === "sf") {
+      this.props.receiveCenter({lat: 37.75023068394664, lng: -122.44104483349611});
+    } else if (city === "ny") {
+      this.props.receiveCenter({lat: 40.7127837, lng: -74.00594130000002});
+    }
+    this.redirect("search");
   }
 
   redirect(route){
@@ -101,9 +111,15 @@ class Nav extends React.Component{
     if (this.props.currentUser === null) {
       dropDown = (<ul id="gear-dropdown" className={ this.state.dropDownHide ? "gear-dropdown hidden" : "gear-dropdown"}>
                     <li>
+                      <ul className="sections">
+                        <li><Link onClick={() => this.handleClick("sf")}>SAN FRANCISCO</Link></li>
+                        <li><Link onClick={() => this.handleClick("ny")}>NEW YORK</Link></li>
+                      </ul>
+                    </li>
+                    <li>
                       <ul className="help">
-                        <li><a href="#">How does this work?</a></li>
-                        <li><a href="#">Contact Us</a></li>
+                        <li><Link to="contact">Contact</Link></li>
+                        <li><Link to="how">How does this work?</Link></li>
                         <li>
                           { this.linkSignIn() }
                         </li>
@@ -115,23 +131,29 @@ class Nav extends React.Component{
       name = this.props.currentUser.username;
       dropDown = (<ul id="gear-dropdown" className={ this.state.dropDownHide ? "gear-dropdown hidden" : "gear-dropdown"}>
                   <li>
-                    <ul className="editions">
+                    <ul className="sections">
                       <span className="dropdown-subtitle">
                         <Link className='dropdown' to='profile'>
-                          Check Profile: { name }
+                          Check Your Profile: { name }
                         </Link>
                       </span>
                     </ul>
-                    <ul className="editions">
+                    <ul className="sections">
                       <li><Link to="search">Search</Link></li>
                       <li><Link to="listings">My Listings</Link></li>
                       <li><Link to="rentals">My Rentals</Link></li>
                     </ul>
                   </li>
                   <li>
+                    <ul className="sections">
+                      <li><Link onClick={() => this.handleClick("sf")}>SAN FRANCISCO</Link></li>
+                      <li><Link onClick={() => this.handleClick("ny")}>NEW YORK</Link></li>
+                    </ul>
+                  </li>
+                  <li>
                     <ul className="help">
-                      <li><a href="#">How this works</a></li>
-                      <li><a href="#">Contact Us</a></li>
+                      <li><Link to="contact">Contact</Link></li>
+                      <li><Link to="how">How does this work?</Link></li>
                       <li>
                         { this.linkSignOut() }
                       </li>

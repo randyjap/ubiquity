@@ -142,11 +142,16 @@ button.entrance:hover {
   background-color: #42CC42;
 }
 
-div.square-logo {
+div.square-logo, div.square-logo-how {
   position: relative;
   left: -13px;
 	height: 120px;
 	width: 240px;
 	background-image: url("http://res.cloudinary.com/dkympkwdz/image/upload/v1484586735/Youbiquity-Square-Logo_qhltkv.png");
 	background-size: contain;
+}
+
+div.square-logo-how {
+  width: 300px;
+  margin-left: 205px;
 }

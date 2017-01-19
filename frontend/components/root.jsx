@@ -12,6 +12,9 @@ import ListingShowContainer from './listing/listing_show_container';
 import UserListingContainer from './user/user_listing_container';
 import UserRentalContainer from './user/user_rental_container';
 import UserRatingContainer from './user/user_rating_container';
+import Contact from './contact/contact';
+import Terms from './terms/terms';
+import How from './how/how';
 
 const Root = ({ store }) => {
   const _ensureLoggedIn = (nextState, replace) => {
@@ -47,6 +50,9 @@ const Root = ({ store }) => {
           <Route path="listings" component={ UserListingContainer } onEnter={_ensureLoggedIn} />
           <Route path="rentals" component={ UserRentalContainer } onEnter={_ensureLoggedIn} />
           <Route path="profile" component={ UserRatingContainer } onEnter={_ensureLoggedIn} />
+          <Route path="contact" component={ Contact } />
+          <Route path="terms" component={ Terms } />
+          <Route path="how" component={ How } />
         </Route>
       </Router>
     </Provider>

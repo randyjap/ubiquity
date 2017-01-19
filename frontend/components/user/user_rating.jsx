@@ -54,12 +54,6 @@ class UserRating extends React.Component {
           <table className="rating-table">
             <tbody>
               <tr>
-                <td><b className="listing-sub-header">Your Average Rating:</b></td>
-                <td>
-                  <div className="rating-total">{this.props.userProfile.average_rating}</div>
-                </td>
-              </tr>
-              <tr>
                 <td><b className="listing-sub-header">Number of Five Star Ratings:</b></td>
                 <td>
                   <div className="blue color">{this.props.userProfile.five_stars}</div>
@@ -87,12 +81,6 @@ class UserRating extends React.Component {
                 <td><b className="listing-sub-header">Number of One Star Ratings:</b></td>
                 <td>
                   <div className="red color">{this.props.userProfile.one_stars}</div>
-                </td>
-              </tr>
-              <tr>
-                <td><b className="listing-sub-header">Your Total Review Count:</b></td>
-                <td>
-                  <div className="rating-total">{this.props.userProfile.total_count}</div>
                 </td>
               </tr>
             </tbody>

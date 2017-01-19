@@ -25,20 +25,17 @@ class Footer extends React.Component{
     return (
       <div className="footer">
         <div>
-          <li className="footer-items">HOW IT WORKS!</li>
+          <li className="footer-items" onClick={() => this.redirect("how")}>HOW DOES IT WORK?</li>
         </div>
         <div>
-          <li className="footer-items cities" onClick={() => this.handleClick("sf")}>San Francisco</li>
+          <li className="footer-items cities" onClick={() => this.handleClick("sf")}>SAN FRANCISCO</li>
           <li className="footer-items cities" onClick={() => this.handleClick("ny")}>NEW YORK</li>
         </div>
         <div>
-          <li className="footer-items">JOIN US!</li>
+          <li className="footer-items" onClick={() => this.redirect("contact")}>CONTACT</li>
         </div>
         <div>
-          <li className="footer-items">CONTACT ME</li>
-        </div>
-        <div>
-          <li className="footer-items">TERMS</li>
+          <li className="footer-items" onClick={() => this.redirect("terms")}>TERMS</li>
         </div>
       </div>
     );

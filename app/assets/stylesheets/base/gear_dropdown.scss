@@ -15,12 +15,12 @@
 	font-size: 100%;
 }
 
-.gear-dropdown .editions  {
+.gear-dropdown .sections  {
 	border-bottom: 1px solid grey;
 	font-size: 100%;
 }
 
-.gear-dropdown .editions li,
+.gear-dropdown .sections li,
 .gear-dropdown .help li {
 	margin: 5px 0;
 	cursor: pointer;
@@ -36,7 +36,7 @@
 	font-size: 100%;
 }
 
-.editions a {
+.sections a {
 	text-decoration: none;
 	color: white;
 	font-size: 100%;
@@ -59,7 +59,7 @@ a.dropdown:hover {
 	font-size: 100%;
 }
 
-.gear-dropdown .editions li:hover {
+.gear-dropdown .sections li:hover {
 	background-color: grey;
 	font-size: 100%;
 }
