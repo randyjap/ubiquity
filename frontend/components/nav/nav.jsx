@@ -118,7 +118,7 @@ class Nav extends React.Component{
                     <ul className="editions">
                       <span className="dropdown-subtitle">
                         <Link className='dropdown' to='profile'>
-                          { name }
+                          Check Profile: { name }
                         </Link>
                       </span>
                     </ul>

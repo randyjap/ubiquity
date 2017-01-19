@@ -24,7 +24,7 @@ class UserRating extends React.Component {
        {name: 'Three Star', value: this.props.userProfile.three_stars},
        {name: 'Two Star', value: this.props.userProfile.two_stars},
        {name: 'One Star', value: this.props.userProfile.one_stars}];
-    const COLORS = ['#0088FE', '#00C49F', '#FF8042', '#FFBB28', '#FF0000'];
+    const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#FF0000'];
 
     const RADIAN = Math.PI / 180;
     return (
@@ -74,13 +74,13 @@ class UserRating extends React.Component {
               <tr>
                 <td><b className="listing-sub-header">Number of Three Star Ratings:</b></td>
                 <td>
-                  <div className="orange color">{this.props.userProfile.three_stars}</div>
+                  <div className="yellow color">{this.props.userProfile.three_stars}</div>
                 </td>
               </tr>
               <tr>
                 <td><b className="listing-sub-header">Number of Two Star Ratings:</b></td>
                 <td>
-                  <div className="yellow color">{this.props.userProfile.two_stars}</div>
+                  <div className="orange color">{this.props.userProfile.two_stars}</div>
                 </td>
               </tr>
               <tr>
