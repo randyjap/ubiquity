@@ -194,7 +194,7 @@ class Map extends Component {
   }
 
   _handleMarkerClick(listing) {
-    this.props.router.push(`listings/${listing.id}`);
+    this.props.router.replace(`listings/${listing.id}`);
   }
 
   _handleClick(coords) {

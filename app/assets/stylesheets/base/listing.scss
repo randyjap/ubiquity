@@ -40,6 +40,12 @@ h1.listing-title {
   cursor: default;
 }
 
+h1.rating-title {
+  font-size: 130%;
+  font-family: 'Fjalla One', sans-serif;
+  cursor: default;
+}
+
 a.book {
   position: relative;;
   top: 20px;
@@ -123,6 +129,20 @@ table.selection-menu td:first-child {
   width: 90px;
 }
 
+table.rating-table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+table.rating-table td {
+padding: 30px;
+font-size: 115%;
+}
+
+table.rating-table td:first-child {
+  width: 300px;
+}
+
 table.selection-menu td:last-child {
   text-align: right;
   padding-right: 130px;
@@ -131,6 +151,7 @@ table.selection-menu td:last-child {
 table.selection-menu td {
   padding: 20px;
 }
+
 
 .user-review-rating {
   position: relative;
@@ -145,4 +166,49 @@ table.selection-menu td {
 
 .bold {
   font-family: 'Fjalla One', sans-serif;
+}
+
+div.color {
+  padding-left: 50px;
+  padding-top: 7px;
+  width: 50px;
+  height: 25px;
+  color: white;
+}
+
+div.blue {
+  background-color: #0088FE;
+}
+
+div.green {
+  background-color: #00C49F;
+}
+
+div.orange {
+  background-color: #FF8042;
+}
+
+div.yellow {
+  background-color: #FFBB28;
+}
+
+div.red {
+  background-color: #FF0000;
+}
+
+div.rating-total {
+  padding-left: 50px;
+  padding-top: 7px;
+  width: 50px;
+  height: 25px;
+  font-size: 150%;
+}
+
+div.pie-total {
+  top: 275px;
+  left: 130px;
+  position: relative;
+  padding-left: 50px;
+  padding-top: 7px;
+  font-size: 150%;
 }

@@ -1,15 +1,14 @@
 import { connect } from 'react-redux';
 
-import UserListing from './user_listing';
-import { fetchUserListings, toggleListingActivity } from '../../actions/current_user_actions';
+import UserRating from './user_rating';
+import { fetchUserProfile } from '../../actions/current_user_actions';
 
 const mapStateToProps = state => ({
-  userProfile: state.currentUserListings
+  userProfile: state.userProfile
 });
 
 const mapDispatchToProps = dispatch => ({
-  toggleListingActivity: (id) => dispatch(toggleListingActivity(id)),
-  fetchUserListings: () => dispatch(fetchUserListings())
+  fetchUserProfile: () => dispatch(fetchUserProfile())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserListing);
+export default connect(mapStateToProps, mapDispatchToProps)(UserRating);

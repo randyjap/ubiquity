@@ -17,7 +17,7 @@ class UserRental extends React.Component {
   }
 
   redirect(route){
-    this.props.router.push(route);
+    this.props.router.replace(route);
   }
 
   renderRentals(){

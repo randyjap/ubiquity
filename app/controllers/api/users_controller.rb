@@ -13,7 +13,7 @@ class Api::UsersController < ApplicationController
     end
   end
 
-  def show
+  def index
     @user = User.find(current_user.id)
   end
 

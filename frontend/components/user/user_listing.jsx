@@ -20,7 +20,7 @@ class UserListing extends React.Component {
   }
 
   redirect(route){
-    this.props.router.push(route);
+    this.props.router.replace(route);
   }
 
   handleSubmit(){

@@ -20,3 +20,10 @@ export const toggleListingActivity = (id) => (
     url: `/api/listings/${id}`
   })
 );
+
+export const fetchUserProfile = () => (
+  $.ajax({
+    method: 'GET',
+    url: `/api/users`
+  })
+);

@@ -75,7 +75,7 @@ class Nav extends React.Component{
 
   handleLogout(){
     this.props.logout();
-    this.props.router.push('/');
+    this.props.router.replace('/');
   }
 
   linkSignOut(){
