@@ -31,16 +31,17 @@ body {
 
 a.welcome {
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
 	display: inline-block;
 	cursor: pointer;
 	padding: 20px 30px 10px 30px;
 	text-decoration: none;
-  font-size: 130%;
+  font-size: 150%;
   box-shadow: 0 0 15px rgba(79,197,79,.6);
   height: 30px;
+  font-family: 'Fjalla One', sans-serif;
 }
 
 a.welcome:hover {
@@ -77,7 +78,8 @@ a.welcome:hover {
 }
 
 .main {
-  min-height: 550px;
+  padding-top: 110px;
+  min-height: 650px;
   width: 100%;
   padding-left: 20px;
   padding-right: 20px;
@@ -181,13 +183,16 @@ button.back-button {
   padding-right: 10px;
   height: 25px;
   position: absolute;
-  top: 87px;
+  top: 90px;
   left: 30px;
 }
 
 .splash {
+  background-repeat: no-repeat;
+  background-origin: content-box;
+  padding-top: 110px;
   background-image: url("http://res.cloudinary.com/dkympkwdz/image/upload/v1484627970/splash_collage_in5e6x.jpg");
-  background-size: contain;
+  background-size: cover;
 }
 
 .slogan {
@@ -198,7 +203,7 @@ button.back-button {
   background-color: white;
   font-family: 'Fjalla One', sans-serif;
   position: absolute;
-  top: 35%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -237,7 +242,7 @@ a.contact:hover, a.contact:active {
 }
 
 table.contact {
-  width: 650px;
+  width: 550px;
   background: transparent;
 }
 
@@ -246,7 +251,9 @@ table.contact td {
 }
 
 .contact-header {
-  font-size: 170%;
+  font-size: 200%;
+  padding-bottom: -20px;
+  margin-bottom: -20px;
 }
 
 .fjalla {

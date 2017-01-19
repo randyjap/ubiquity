@@ -15,15 +15,16 @@ class Contact extends React.Component{
           <table className="contact">
             <tbody>
               <tr>
-                <td><h1 className="contact-header">Randy Jap</h1></td>
-              </tr>
-              <tr>
-                <td><h1 className="contact">Linkedin:</h1></td>
+                <td><img src="http://res.cloudinary.com/dkympkwdz/image/upload/v1484853581/Logo-2C-21px-R_rc35uu.png" /></td>
                 <td><a className="contact" target="_blank" href="http://www.linkedin.com/in/randyjap">www.linkedin.com/in/randyjap</a></td>
               </tr>
               <tr>
-                <td><h1 className="contact">Github:</h1></td>
+                <td><img src="http://res.cloudinary.com/dkympkwdz/image/upload/v1484853612/GitHub-Mark-64px_rfmfmn.png" /></td>
                 <td><a className="contact" target="_blank" href="http://www.github.com/randyjap">www.github.com/randyjap</a></td>
+              </tr>
+              <tr>
+                <td><img src="http://res.cloudinary.com/dkympkwdz/image/upload/v1484853612/GitHub-Mark-64px_rfmfmn.png" /></td>
+                <td><a className="contact" target="_blank" href="http://www.github.com/randyjap/ubiquity">www.github.com/randyjap/ubiquity</a></td>
               </tr>
             </tbody>
           </table>

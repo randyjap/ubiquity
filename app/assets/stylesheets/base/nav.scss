@@ -74,3 +74,11 @@ div.logo {
 	color: #61C261;
 	transform: scale(90%);
 }
+
+.nav {
+	padding-bottom: 0;
+  position: fixed;
+  z-index: 100;
+  background-color: rgba(255,255,255,.6);
+  width: 100%;
+}
