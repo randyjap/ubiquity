@@ -106,7 +106,7 @@ class Nav extends React.Component{
   }
 
   render(){
-    let name = "User";
+    let name = "Login Here";
     let dropDown;
     if (this.props.currentUser === null) {
       dropDown = (<ul id="gear-dropdown" className={ this.state.dropDownHide ? "gear-dropdown hidden" : "gear-dropdown"}>
@@ -134,7 +134,7 @@ class Nav extends React.Component{
                     <ul className="sections">
                       <span className="dropdown-subtitle">
                         <Link className='profile' to='profile'>
-                          Hello { name }
+                          Check your Profile
                         </Link>
                       </span>
                     </ul>
@@ -179,6 +179,7 @@ class Nav extends React.Component{
           <ul onClick={this.toggleDropDown}>
             <li id="gear-dropdown-btn">
               <div className='fa'>
+                <b className="listing-sub-header">{ name }</b>
                 <FontAwesome
                   className='fa fa-user-o'
                   name="user"
