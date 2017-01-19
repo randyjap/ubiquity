@@ -12,6 +12,7 @@ class Nav extends React.Component{
     this.updateLocation = this.updateLocation.bind(this);
     this.geolocate = this.geolocate.bind(this);
     this.redirect = this.redirect.bind(this);
+    this.focusSearch = this.focusSearch.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -30,6 +31,7 @@ class Nav extends React.Component{
 
   componentDidMount(){
     this.initAutocomplete();
+    this.focusSearch();
   }
 
   initAutocomplete() {
@@ -68,6 +70,10 @@ class Nav extends React.Component{
         that.autocomplete.setBounds(circle.getBounds());
       });
     }
+  }
+
+  focusSearch(){
+    document.getElementById("autocomplete").focus();
   }
 
   linkSignIn(){
@@ -112,7 +118,7 @@ class Nav extends React.Component{
     let fa;
     if (this.props.currentUser === null) {
       fa = (<FontAwesome
-        className='fa fa-power-off'
+        className='fa fa-power-off pointer'
         name="user"
         size="2x"
         style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.3)' }}
@@ -137,7 +143,7 @@ class Nav extends React.Component{
                 );
     } else {
       fa = (<FontAwesome
-        className='fa fa-user-circle'
+        className='fa fa-user-circle pointer'
         name="user"
         size="2x"
         style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.3)' }}
@@ -153,7 +159,7 @@ class Nav extends React.Component{
                       </span>
                     </ul>
                     <ul className="sections">
-                      <li><Link className="gear-item" to="search">Search</Link></li>
+                      <li><Link className="gear-item" onClick={this.focusSearch} to="search">Search</Link></li>
                       <li><Link className="gear-item" to="listings">My Listings</Link></li>
                       <li><Link className="gear-item" to="rentals">My Rentals</Link></li>
                     </ul>
@@ -179,13 +185,14 @@ class Nav extends React.Component{
     const mainBar = (
       <header className="main-nav">
         <nav className="left-nav">
-          <h1><Link className="website-title" to="search"><div className="logo"></div></Link></h1>
+          <h1><Link className="website-title" onClick={this.focusSearch} to="search"><div className="logo"></div></Link></h1>
         </nav>
         <nav className="middle-nav">
           <FontAwesome
-            className='fa-search fa'
+            className='fa-search fa pointer'
             name="search"
             style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.5)' }}
+            onClick={this.focusSearch}
           />
         <input onFocus={this.geolocate()} id="autocomplete" className="searchbar" placeholder="Search near..."/>
         </nav>
@@ -193,7 +200,7 @@ class Nav extends React.Component{
           <ul onClick={this.toggleDropDown}>
             <li id="gear-dropdown-btn">
               <div className='fa'>
-                <b className={this.props.currentUser ? "listing-sub-header" : "listing-sub-header red"}>{ name }</b>
+                <b className={this.props.currentUser ? "listing-sub-header pointer" : "listing-sub-header red pointer"}>{ name }</b>
                 { fa }
               </div>
               { dropDown }
