@@ -126,8 +126,7 @@ class Search extends React.Component{
     let listings;
     if (this.props.searchListings === null) {
       listings = (
-        <div className="loading">Loading <Spinner characterStyle={{ fontSize: 20 }} />
-        </div>
+        <div className="fjalla">Loading <Spinner /></div>
       );
     } else {
       listings = Object.keys(searchListings).map(key => searchListings[key]);

@@ -1,7 +1,7 @@
 import { RECEIVE_USER_RENTALS } from '../actions/current_user_actions';
 import merge from 'lodash/merge';
 
-let _defaultState = {};
+let _defaultState = null;
 
 const currentUserRentalReducer = (state = _defaultState, action) => {
   Object.freeze(state);

@@ -22,7 +22,7 @@ class UserRental extends React.Component {
 
   renderRentals(){
     let rentals;
-    if (this.props.currentUserRentals.current_user) {
+    if (this.props.currentUserRentals) {
       rentals = this.props.currentUserRentals.current_user.map(rental => {
         let review;
         if (rental.rating) {
@@ -52,6 +52,10 @@ class UserRental extends React.Component {
           </div>
         );
       });
+    } else {
+      rentals = (
+        <div className="fjalla"><br/>Loading <Spinner /></div>
+      );
     }
     return rentals;
   }

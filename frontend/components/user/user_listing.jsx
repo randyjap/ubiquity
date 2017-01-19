@@ -50,6 +50,14 @@ class UserListing extends React.Component {
           </div>
         );
       });
+    } else {
+      listings = (
+        <div className="userListing">
+          <div className="sub-rentals">
+            <div className="fjalla">Loading <Spinner /></div>
+          </div>
+        </div>
+      );
     }
 
     return (
