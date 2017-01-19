@@ -84,6 +84,7 @@ class Nav extends React.Component{
   }
 
   handleLogout(){
+    document.getElementById("autocomplete").value = "";
     this.props.logout();
     this.props.router.replace('/');
   }
@@ -108,7 +109,14 @@ class Nav extends React.Component{
   render(){
     let name = "Login Here";
     let dropDown;
+    let fa;
     if (this.props.currentUser === null) {
+      fa = (<FontAwesome
+        className='fa fa-power-off'
+        name="user"
+        size="2x"
+        style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.3)' }}
+      />);
       dropDown = (<ul id="gear-dropdown" className={ this.state.dropDownHide ? "gear-dropdown hidden" : "gear-dropdown"}>
                     <li>
                       <ul className="sections">
@@ -128,6 +136,12 @@ class Nav extends React.Component{
                   </ul>
                 );
     } else {
+      fa = (<FontAwesome
+        className='fa fa-user-circle'
+        name="user"
+        size="2x"
+        style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.3)' }}
+      />);
       name = this.props.currentUser.username;
       dropDown = (<ul id="gear-dropdown" className={ this.state.dropDownHide ? "gear-dropdown hidden" : "gear-dropdown"}>
                   <li>
@@ -179,13 +193,8 @@ class Nav extends React.Component{
           <ul onClick={this.toggleDropDown}>
             <li id="gear-dropdown-btn">
               <div className='fa'>
-                <b className="listing-sub-header">{ name }</b>
-                <FontAwesome
-                  className='fa fa-user-o'
-                  name="user"
-                  size="2x"
-                  style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.3)' }}
-                />
+                <b className={this.props.currentUser ? "listing-sub-header" : "listing-sub-header red"}>{ name }</b>
+                { fa }
               </div>
               { dropDown }
             </li>

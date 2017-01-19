@@ -37,7 +37,6 @@ class Greeting extends React.Component{
     return (
       <div className="main splash">
         <div className='greeting'>
-          <Link className='welcome' to='login'>ENTER SITE</Link>
           <h1 className="slogan">Share, Rent, Get Paid for Your Gear!</h1>
         </div>
       </div>

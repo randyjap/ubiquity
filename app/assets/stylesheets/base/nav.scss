@@ -70,9 +70,13 @@ div.logo {
 	background-size: contain;
 }
 
-.fa-search, .fa-user-o {
+.fa-search, .fa-user-o, .fa-power-off {
 	color: #61C261;
 	transform: scale(90%);
+}
+
+.fa-power-off {
+	color: red;
 }
 
 .nav {
