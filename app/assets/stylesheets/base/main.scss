@@ -36,10 +36,11 @@ a.welcome {
   transform: translate(-50%, -50%);
 	display: inline-block;
 	cursor: pointer;
-	padding: 6px 24px;
+	padding: 20px 30px 10px 30px;
 	text-decoration: none;
   font-size: 130%;
-  box-shadow: 3px 3px 3px #888888;
+  box-shadow: 0 0 15px rgba(79,197,79,.6);
+  height: 30px;
 }
 
 a.welcome:hover {

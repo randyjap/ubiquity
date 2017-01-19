@@ -133,27 +133,27 @@ class Nav extends React.Component{
                   <li>
                     <ul className="sections">
                       <span className="dropdown-subtitle">
-                        <Link className='dropdown' to='profile'>
-                          Check Your Profile: { name }
+                        <Link className='profile' to='profile'>
+                          Hello { name }
                         </Link>
                       </span>
                     </ul>
                     <ul className="sections">
-                      <li><Link to="search">Search</Link></li>
-                      <li><Link to="listings">My Listings</Link></li>
-                      <li><Link to="rentals">My Rentals</Link></li>
+                      <li><Link className="gear-item" to="search">Search</Link></li>
+                      <li><Link className="gear-item" to="listings">My Listings</Link></li>
+                      <li><Link className="gear-item" to="rentals">My Rentals</Link></li>
                     </ul>
                   </li>
                   <li>
                     <ul className="sections">
-                      <li><Link onClick={() => this.handleClick("sf")}>SAN FRANCISCO</Link></li>
-                      <li><Link onClick={() => this.handleClick("ny")}>NEW YORK</Link></li>
+                      <li><Link className="gear-item" onClick={() => this.handleClick("sf")}>SAN FRANCISCO</Link></li>
+                      <li><Link className="gear-item" onClick={() => this.handleClick("ny")}>NEW YORK</Link></li>
                     </ul>
                   </li>
                   <li>
                     <ul className="help">
-                      <li><Link to="contact">Contact</Link></li>
-                      <li><Link to="how">How does this work?</Link></li>
+                      <li><Link className="gear-item" to="contact">Contact</Link></li>
+                      <li><Link className="gear-item" to="how">How does this work?</Link></li>
                       <li>
                         { this.linkSignOut() }
                       </li>
@@ -171,8 +171,7 @@ class Nav extends React.Component{
           <FontAwesome
             className='fa-search fa'
             name="search"
-            size="2x"
-            style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.3)' }}
+            style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.5)' }}
           />
         <input onFocus={this.geolocate()} id="autocomplete" className="searchbar" placeholder="Search near..."/>
         </nav>

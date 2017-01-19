@@ -2,10 +2,10 @@
 	color: white;
 	position: absolute;
 	top: 40px;
-	right: 0px;
+	right: 20px;
 	background-color: #5AB475;
 	border: 1px solid white;
-	border-radius: 3px;
+	border-radius: 12px;
 	padding: 10px;
 	width: 225px;
 	z-index: 1;
@@ -71,4 +71,22 @@ a.dropdown:hover {
 	margin: 10px 5px;
 	display: block;
 	font-size: 100%;
+}
+
+a.gear-item {
+	text-shadow: 5px 5px 10px rgba(0,0,0,.2);
+}
+
+
+a.profile {
+	font-family: 'Fjalla One', sans-serif;
+	font-size: 110%;
+	text-align: center;
+	text-shadow: 5px 5px 10px rgba(0,0,0,.2);
+}
+
+a.profile:hover {
+	background-color: grey;
+	border-radius: 5px;
+	text-shadow: none;
 }

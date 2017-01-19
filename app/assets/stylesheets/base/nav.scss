@@ -31,13 +31,13 @@
 
 input.searchbar {
   width: 350px;
-  height: 30px;
+  height: 27px;
   border-radius: 20px 20px 20px 20px;
   background-color: #fff;
-  box-shadow: 1px 2px 5px rgba(0,0,0,.09);
+  box-shadow: 5px 5px 10px rgba(0,0,0,.2);
   border: solid 1px #61C261;;
   margin-left: -5px;
-  margin-top: 13px;
+  margin-top: 15px;
   padding-left: 20px;
   font-size: 110%;
 }
@@ -45,14 +45,14 @@ input.searchbar {
 nav.middle-nav {
 	overflow-x: scroll;
   position: relative;
-	left: 100px;
-
+	left: 110px;
+	width: 450px;
 	transform: translate(-50%, -50%);
 	top: 57%;
 }
 
 nav.left-nav {
-	width: 25%;
+	width: 20%;
   position: relative;
   top: 6px;
 }
@@ -72,4 +72,5 @@ div.logo {
 
 .fa-search, .fa-user-o {
 	color: #61C261;
+	transform: scale(90%);
 }
