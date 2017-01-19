@@ -194,7 +194,7 @@ class Nav extends React.Component{
             style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.5)' }}
             onClick={this.focusSearch}
           />
-        <input onFocus={this.geolocate()} id="autocomplete" className="searchbar" placeholder="Search near..."/>
+        <input onFocus={this.geolocate()} id="autocomplete" className="searchbar" placeholder="Search a location..."/>
         </nav>
         <nav className="right-nav">
           <ul onClick={this.toggleDropDown}>

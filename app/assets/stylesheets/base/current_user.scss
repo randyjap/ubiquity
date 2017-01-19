@@ -52,3 +52,24 @@
   flex-wrap: wrap;
   overflow-y: auto;
 }
+
+.user-listing {
+  width: 100%;
+}
+
+.sub-rentals {
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  padding-bottom: 0;
+}
+
+.sub-rental {
+  word-wrap: break-word;
+  width: 320px;
+  padding: 10px;
+  border: solid 1px #5AB475;
+  border-radius: 5px;
+  margin: 10px;
+}
