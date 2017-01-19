@@ -21,10 +21,9 @@ class How extends React.Component{
               <tr>
                 <td>
                   <br/>
-                  <p className="how">Make the most of your equipment.</p>
-                  <p className="how">Rent out your equipment.</p>
-                  <p className="how">Save the environment.</p>
-                  <p className="how">And make extra money.</p>
+                  <p className="how">Make the most of your equipment and it rent it out to others!</p>
+                  <p className="how">Ubiquity allows you to list your equipment to others.</p>
+                  <p className="how">Save the environment and make extra money!</p>
                 </td>
               </tr>
             </tbody>
