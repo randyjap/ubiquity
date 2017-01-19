@@ -52,7 +52,7 @@ class Search extends React.Component{
 
   redirect(route){
     this.props.clearSessionErrors();
-    this.props.router.push(route);
+    this.props.router.replace(route);
   }
 
   logArrayChange(field) {

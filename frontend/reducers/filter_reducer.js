@@ -7,7 +7,7 @@ let _defaultState = {
   rating: null,
   bounds: null,
   price: null,
-  center: {lat: 39, lng: -101}
+  center: {lat: 37.75023068394664, lng: -122.44104483349611}
 };
 
 const filterReducer = (state = _defaultState, action) => {

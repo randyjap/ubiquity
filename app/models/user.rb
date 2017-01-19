@@ -32,6 +32,32 @@ class User < ActiveRecord::Base
     self.session_token
   end
 
+  def average_listing_rating
+    (self.total_ratings_received / self.review_count_received.to_f).round(2)
+  end
+
+  def total_ratings_received
+    self.listings.inject(0) do |acc, listing|
+      acc + listing.reviews.inject(0) do |acc2, review|
+        acc2 + review.review
+      end
+    end
+  end
+
+  def review_count_by_rating(rating)
+    total = 0
+    self.listings.each do |listing|
+      listing.reviews.each do |review|
+        total += 1 if review.review == rating
+      end
+    end
+    total
+  end
+
+  def review_count_received
+    self.listings.inject(0) { |acc, listing| acc + listing.review_count }
+  end
+
   private
   def ensure_session_token
     self.session_token ||= SecureRandom.urlsafe_base64(16)

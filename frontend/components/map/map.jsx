@@ -9,8 +9,8 @@ const _getCoordsObj = latLng => ({
 });
 
 let _mapOptions = {
-  center: {lat: 39, lng: -101}, // San Francisco coords
-  zoom: 4
+  center: {lat: 37.75023068394664, lng: -122.44104483349611}, // San Francisco coords
+  zoom: 11
 };
 
 let style = { retro: [

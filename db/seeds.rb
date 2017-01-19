@@ -150,6 +150,40 @@ end
 
 30.times do
   Listing.create({
+    lessor: User.find(rand(1..User.count)),
+    listing_title: Faker::Company.buzzword,
+    detail_desc: Faker::Company.catch_phrase,
+    location: "#{Faker::Address.street_address}, #{Faker::Address.city}",
+    lat: rand(37.711537399325096..37.77940697341724),
+    lng: rand(-122.47692206127931..-122.40310766918947),
+    day_rate: rand(5..500),
+    replacement_value: rand(500..5000),
+    serial: Faker::Crypto.md5,
+    brand: Brand.find(rand(1..Brand.count)),
+    category: Category.find(rand(1..Category.count)),
+    active: true
+  })
+end
+
+30.times do
+  Listing.create({
+    lessor: User.find(rand(1..User.count)),
+    listing_title: Faker::Company.buzzword,
+    detail_desc: Faker::Company.catch_phrase,
+    location: "#{Faker::Address.street_address}, #{Faker::Address.city}",
+    lat: rand(40.59453229604209..40.72475342512843),
+    lng: rand(-74.0213908239258..-73.87376203974611),
+    day_rate: rand(5..500),
+    replacement_value: rand(500..5000),
+    serial: Faker::Crypto.md5,
+    brand: Brand.find(rand(1..Brand.count)),
+    category: Category.find(rand(1..Category.count)),
+    active: true
+  })
+end
+
+30.times do
+  Listing.create({
     lessor: User.first,
     listing_title: Faker::Company.buzzword,
     detail_desc: Faker::Company.catch_phrase,

@@ -1,10 +1,24 @@
 import React from 'react';
-import { Link } from 'react-router';
-import FontAwesome from 'react-fontawesome';
+import { Link, withRouter } from 'react-router';
 
-class Greeting extends React.Component{
+class Footer extends React.Component{
   constructor(props){
     super(props);
+    this.handleClick = this.handleClick.bind(this);
+    this.redirect = this.redirect.bind(this);
+  }
+
+  handleClick(city){
+    if (city === "sf") {
+      this.props.receiveCenter({lat: 37.75023068394664, lng: -122.44104483349611});
+    } else if (city === "ny") {
+      this.props.receiveCenter({lat: 40.7127837, lng: -74.00594130000002});
+    }
+    this.redirect("search");
+  }
+
+  redirect(route){
+    this.props.router.replace(route);
   }
 
   render(){
@@ -14,8 +28,8 @@ class Greeting extends React.Component{
           <li className="footer-items">HOW IT WORKS!</li>
         </div>
         <div>
-          <li className="footer-items cities">SAN Francisco</li>
-          <li className="footer-items cities">NEW YORK</li>
+          <li className="footer-items cities" onClick={() => this.handleClick("sf")}>San Francisco</li>
+          <li className="footer-items cities" onClick={() => this.handleClick("ny")}>NEW YORK</li>
         </div>
         <div>
           <li className="footer-items">JOIN US!</li>
@@ -31,4 +45,4 @@ class Greeting extends React.Component{
   }
 }
 
-export default Greeting;
+export default withRouter(Footer);
