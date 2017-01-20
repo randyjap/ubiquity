@@ -116,7 +116,6 @@ class ListingShow extends React.Component {
           <div className="user-review" key={review.id}>
             <Rating defaultValue={review.rating}
               className="listing-star-rating user-review-rating"
-              character={'✪'}
               disabled/><br/>
             <div className="review-sub-header">{review.date} ago {review.lessee} said...</div>
             <div className="review-text-container">{review.review_text}</div>
@@ -204,7 +203,6 @@ class ListingShow extends React.Component {
             <h1 className="listing-title">{listing.lessor} ({listing.review_count})</h1>
             <Rating defaultValue={Math.round(listing.rating_average)}
               className="listing-star-rating"
-              character={'✪'}
               disabled></Rating>
             <table className="selection-menu">
               <tbody>

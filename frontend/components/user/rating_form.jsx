@@ -51,7 +51,6 @@ class RatingForm extends React.Component {
       <div>
         <Rating defaultValue={null}
           className="rating-filter"
-          character={'✪'}
           onUpdate={this.logRating}>
         </Rating>
         <TextInput style={{ minHeight: 80 }} onChange={this.logReview} placeholder="Enter your review here..." allowNewLine/>

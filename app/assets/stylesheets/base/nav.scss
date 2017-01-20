@@ -9,6 +9,7 @@
 }
 
 .main-nav {
+	background-color: rgba(255, 255, 255, 0.9);
 	position: fixed;
   width: 1050px;
 	display: flex;
@@ -62,10 +63,12 @@ nav.right-nav {
 }
 
 div.logo {
-	height: 60px;
-	width: 180px;
-	background-image: url("http://res.cloudinary.com/dkympkwdz/image/upload/v1484586200/Youbiquity-Logo_q0wmh6.png");
-	background-size: contain;
+	height: 90px;
+	width: 230px;
+	position: relative;
+	top: -20px;
+	background-image: url(http://res.cloudinary.com/dkympkwdz/image/upload/v1484882090/Youbiquity_logo_kuiu0f.png);
+	background-size: cover;
 }
 
 .fa-search, .fa-user-o, .fa-power-off {
@@ -79,4 +82,40 @@ div.logo {
 
 .pointer {
 	cursor: pointer;
+}
+
+div.fa {
+	text-align: left;
+  position: relative;
+  right: 10px;
+  width: 130px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  cursor: pointer;
+  border-radius: 10px;
+	background-color: #4D66A5;
+	color: white;
+	box-shadow: 1px 2px 15px rgba(79,197,79,.3);
+	border: 1px solid white;
+}
+
+div.fa:hover {
+	box-shadow: none;
+	background-color: #5AB475;
+}
+
+.fa-user-circle {
+	font-size: 2em;
+	position: relative;
+	left: 55px;;
+}
+
+.fa-power-off {
+	font-size: 2em;
+	position: relative;
+	left: 20px;;
+}
+
+b.underline {
+	text-decoration: underline;
 }

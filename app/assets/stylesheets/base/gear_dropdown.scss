@@ -1,8 +1,8 @@
 .gear-dropdown {
 	color: white;
 	position: absolute;
-	top: 40px;
-	right: 20px;
+	top: 45px;
+  right: 8px;
 	background-color: #5AB475;
 	border: 1px solid white;
 	border-radius: 12px;
@@ -48,10 +48,12 @@
 
 .help a:hover {
 	background-color: grey;
+	text-decoration: underline;
 }
 
 a.dropdown:hover {
 	background-color: grey;
+	text-decoration: underline;
 }
 
 .gear-dropdown .help li {
@@ -62,6 +64,7 @@ a.dropdown:hover {
 .gear-dropdown .sections li:hover {
 	background-color: grey;
 	font-size: 100%;
+	text-decoration: underline;
 }
 
 .dropdown-subtitle {
@@ -79,14 +82,17 @@ a.gear-item {
 
 
 a.profile {
-	font-family: 'Fjalla One', sans-serif;
-	font-size: 110%;
 	text-align: center;
+	background-color: white;
+	border-radius: 5px;
+	color: black;
+	font-family: 'Fjalla One', sans-serif;
+	font-size: 130%;
 	text-shadow: 5px 5px 10px rgba(0,0,0,.2);
 }
 
 a.profile:hover {
-	background-color: grey;
+	text-decoration: underline;
 	border-radius: 5px;
 	text-shadow: none;
 }

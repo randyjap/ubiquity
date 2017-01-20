@@ -6,7 +6,7 @@ import { Spinner, Rating } from 'belle';
 import MapContainer from '../map/map_container';
 
 const Slider = require('rc-slider');
-const style = { width: 150, margin: 10 };
+const style = { width: 200, margin: 10, position: 'relative', left: '-12px'};
 
 class Search extends React.Component{
   constructor(props){
@@ -102,13 +102,13 @@ class Search extends React.Component{
           onChange={this.logArrayChange("category")}
           value={this.state.category}
           placeholder="Select categories.." />
+        <br/>
           Rating {`>=`} {this.state.rating || " ?"}<br/>
         <Rating defaultValue={null}
           className="rating-filter"
-          character={'✪'}
           onUpdate={this.logRating}>
-        </Rating><br/>
-        <div style={style}>
+        </Rating><br/><br/>
+      <div className="slider" style={style}>
           Price {`<`} ${this.state.price || " ?"}
           <Slider
             min={0}
@@ -136,7 +136,6 @@ class Search extends React.Component{
             <img className="listing-thumbnail" src={listing.photos[0].image_url}/>
             <Rating defaultValue={Math.round(listing.rating_average)}
               className="star-rating"
-              character={'✪'}
               disabled>
             </Rating>
             <br/><div className="listing-title">{listing.lessor}</div>

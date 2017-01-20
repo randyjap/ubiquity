@@ -216,7 +216,7 @@ class Nav extends React.Component{
         className='fa fa-power-off pointer'
         name="user"
         size="2x"
-        style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.3)' }}
+        style={{ color: 'white' }}
       />);
       dropDown = (<ul id="gear-dropdown" className={ this.state.dropDownHide ? "gear-dropdown hidden" : "gear-dropdown"}>
                     <li>
@@ -249,7 +249,7 @@ class Nav extends React.Component{
                     <ul className="sections">
                       <span className="dropdown-subtitle">
                         <Link className='profile' to='profile'>
-                          Check your Profile
+                          YOUR PROFILE PAGE
                         </Link>
                       </span>
                     </ul>
@@ -295,7 +295,7 @@ class Nav extends React.Component{
           <ul onClick={this.toggleDropDown}>
             <li id="gear-dropdown-btn">
               <div className='fa'>
-                <b className={this.props.currentUser ? "listing-sub-header pointer" : "listing-sub-header red pointer"}>{ name }</b>
+                <b className={this.props.currentUser ? "listing-sub-header pointer" : "listing-sub-header pointer"}>{ name }</b>
                 { fa }
               </div>
               { dropDown }
