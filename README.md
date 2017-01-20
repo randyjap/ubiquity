@@ -6,29 +6,6 @@ Welcome to Youbiquity!
 
 Youbiquity is a full-stack web application inspired by Share Grid a consumer-to-consumer photography equipment rental website.
 
-It utilizes the following technology:
-
- - Notable the Frontend (mostly in Javascript & CSS3/HTML5)
-	 - React
-		 - react-redux
-		 - react-router
-		 - react-modal
-		 - react-addons-css-transition-group
-		 - recharts
-	 - Google Map API
-	 - Cloudinary CDN
-
- - Notable on the Backend (in Ruby)
-	 - Rails
-		 - Figaro
-		 - JBuilder
-		 - Redis
-	 - PostgreSQL  DB
-	 - Hosted on Heroku with custom Domain
-
-- Version Control
-	- Github
-
 ## Features & Implementation
 - Users can seamlessly and securely authenticate themselves
 - Users can search on multiple and varied properties
@@ -54,6 +31,23 @@ It utilizes the following technology:
 ### Users Can Leave Reviews that are Aggregated Immediately
 ![enter image description here](docs/screenshots/submitting_review.png)
 ![enter image description here](docs/screenshots/reviews.png)
+
+## Technology
+It utilizes the following technology:
+ - Notable the Frontend (mostly in Javascript & CSS3/HTML5)
+	 - React
+		 - react-redux, react-router, react-modal, react-addons-css-transition-group, recharts
+	 - Google Map API
+	 - Cloudinary CDN
+
+ - Notable on the Backend (in Ruby)
+	 - Rails
+		 - Figaro, JBuilder, Redis
+	 - PostgreSQL DB
+	 - Hosted on Heroku with custom Domain and Redis allocation
+
+- Version Control
+	- Github
 
 ## Project Planning
 A number of documents were prepared for the implementation of this Project
