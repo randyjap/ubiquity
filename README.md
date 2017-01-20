@@ -53,7 +53,7 @@ The Google Map API allows for boundary filtering of the listing based on their l
 ### Equipment Listing / Booking Immediately Updates Booking Status
 ![enter image description here](docs/screenshots/listing.png)
 
-Overlap of scheduling conflicts are handled on the model layer with use of SQL.
+Overlap of scheduling conflicts are handled on the model layer.
 
 ```Ruby
 Rental
