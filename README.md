@@ -1,8 +1,8 @@
 Welcome to Youbiquity!
 ======================
 
-[Youbiquity live][heroku]
-[heroku]: https://youbiquity.herokuapp.com/
+[Youbiquity live][youbiquity]
+[youbiquity]: www.youbiquity.io
 
 Youbiquity is a full-stack web application inspired by Share Grid a consumer-to-consumer photography equipment rental website.
 
