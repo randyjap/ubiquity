@@ -4,7 +4,7 @@ Welcome to Youbiquity!
 [Youbiquity live][heroku]
 [heroku]: https://youbiquity.herokuapp.com/
 
-Youbiquity is a full-stack web application inspired by Share Grid a consumer-to-consumer photography equipment rental website.  
+Youbiquity is a full-stack web application inspired by Share Grid a consumer-to-consumer photography equipment rental website.
 
 It utilizes the following technology:
 
@@ -43,35 +43,26 @@ It utilizes the following technology:
 - Users can schedule rentals, taking into account a multitude of scheduling validations
 - Users can review the associated rental information on their listings
 
-![enter image description here](screenshots/login.png)
-![enter image description here](screenshots/search.png)
-![enter image description here](screenshots/listing.png)
-![enter image description here](screenshots/rating_profile.png)
-![enter image description here](screenshots/submitting_review.png)
-![enter image description here](screenshots/reviews.png)
+### Login Modal
+![enter image description here](docs/screenshots/login.png)
+### Google Search API and PostgreSQL Querying
+![enter image description here](docs/screenshots/search.png)
+### Google Search API and PostgreSQL Querying
+![enter image description here](docs/screenshots/listing.png)
+### Equipment Listing / Booking Immediately Updates Booking Status
+![enter image description here](docs/screenshots/rating_profile.png)
+### Users Can Leave Reviews that are Aggregated Immediately
+![enter image description here](docs/screenshots/submitting_review.png)
+![enter image description here](docs/screenshots/reviews.png)
 
-### Schema
-In its base implementation, Youbiquity will have 6 tables:
- - **User** (Both Lessee and Lessor)
-	 - This table will be shared by lessees and lessors to store `username`, `session tokens`, and `password digest` information
-	 - It will be referenced by **Listing** and **Rental**
- - **Listing** (Equipment Listing)
-	 - This table will house the bulk of the websites data with foreign keys to **User**, **Brand**, and **Category**
-	 - It will allow for storing valid location strings that can validly be queried by the google maps API along with their respective `lat` (latitude) and `lng` (longitude) coordinates.
-		 - This information will be used to mark a good map API implementation to give users visual reference on the location of **Listings**.
- - **Rental** (Actual Rental Request)
-	 - This table stores foreign keys for and references to **Listing** and **User** (lessee)
-	 - In addition, it will be used to store the beginning and end date of a "rental."
-	 - By virtue of active records' through association, **Listings** will have reference to lessor as well.
- - **Brand** (Equipment Brand)
-	 - Stores "brands" and is referenced by **Listing**
- - **Category** (Category)
-	 - "Stores" categories and is referenced by **Listing**
- - **Photo** (Listing Photos)
-	 - The project will use a CDN services to store and manipulate images
-	 - As such, it will store reference to the **Listing** and a `cdn_url`
- - **Review** (Reviews both Lessors and Lessees)
-	 - Lessors and Lessees have the option to leave each other a review for each completed "rental" both quantitatively (a star rating) and qualitatively (a note).
+## Project Planning
+A number of documents were prepared for the implementation of this Project
+- [Implmentation Phases](docs/planning_readme.md)
+- [API Endpoints](docs/api-endpoints.md)
+- [Component Hierarchy](docs/component-hierarchy.md)
+- [Sample React State](docs/sample-state.md)
+- [DB Schema](docs/schema.md)
+- [Wireframes](docs/wireframes)
 
 ## Future Directions for the Project
 
