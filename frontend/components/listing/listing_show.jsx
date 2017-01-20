@@ -245,7 +245,7 @@ class ListingShow extends React.Component {
             <Link className={this.state.success ? "book disabled" : "book"} onClick={this.handleSubmit}>{this.state.success ? "Booked!" : "Book!" }</Link><br/><br/><br/><br/>
             {this.renderErrors()}
             {this.state.success ? (<Link to="rentals" className="success-booking">Thank you! Booking successfull!<br/><br/>Click here to review!</Link>) : ""}
-            <br/>
+            <br/><br/>
             <b className="listing-sub-header">These dates have been taken:</b>
               <ReactCSSTransitionGroup
                 transitionName="example"

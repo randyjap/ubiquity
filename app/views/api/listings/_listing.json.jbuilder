@@ -32,7 +32,7 @@ json.reviews listing.reviews do |review|
   json.rating review.review
   json.review_text review.review_text
   json.id review.id
-end
+end.sort_by! { |k, _| k["created_at"] }.reverse!
 
 json.rentals listing.rentals do |rental|
   json.start_date rental.start_date
