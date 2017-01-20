@@ -89,7 +89,7 @@ class SessionForm extends React.Component {
           <Modal
             isOpen={this.state.modalOpen}
             onRequestClose={this.closeModal}
-            className="modal"
+            className="modal-session"
             overlayClassName="overlayModal"
             contentLabel="Modal"
             transitionName="modal-anim">

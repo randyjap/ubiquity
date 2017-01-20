@@ -9,16 +9,16 @@
 }
 
 .main-nav {
+	position: fixed;
+  width: 1050px;
 	display: flex;
 	justify-content: space-between;
-	padding-top: 0;
-	padding-bottom: 15px;
-	padding-left: 30px;
+	padding: 20px;
 	border-bottom: 1px solid grey;
 	height: 60px;
 	top: 0;
 	transition: top 0.2s ease-in-out;
-	width: 100%;
+	z-index: 999;
 }
 
 .nav-up {
@@ -30,10 +30,10 @@
 }
 
 input.searchbar {
-  width: 350px;
+	background-color: rgba(255, 255, 255, 0);
+  width: 80%;
   height: 27px;
   border-radius: 20px 20px 20px 20px;
-  background-color: #fff;
   box-shadow: 5px 5px 10px rgba(0,0,0,.2);
   border: solid 1px #61C261;;
   margin-left: -5px;
@@ -45,10 +45,8 @@ input.searchbar {
 nav.middle-nav {
 	overflow-x: scroll;
   position: relative;
-	left: 110px;
-	width: 450px;
-	transform: translate(-50%, -50%);
-	top: 57%;
+  min-width: 400px;
+	top: 13px;
 }
 
 nav.left-nav {
@@ -60,7 +58,7 @@ nav.left-nav {
 nav.right-nav {
   position: relative;
   top: 24px;
-	right: 40px;
+	text-align: right;
 }
 
 div.logo {
@@ -77,14 +75,6 @@ div.logo {
 
 .fa-power-off {
 	color: red;
-}
-
-.nav {
-	padding-bottom: 0;
-  position: fixed;
-  z-index: 100;
-  background-color: rgba(255,255,255,.6);
-  width: 100%;
 }
 
 .pointer {

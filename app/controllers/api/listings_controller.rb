@@ -4,13 +4,16 @@ class Api::ListingsController < ApplicationController
       @listings = Listing
                   .where(lessor: current_user)
                   .where(active: true)
+                  .includes(:rentals, rentals: [:lessee])
+                  .order("rentals.start_date")
     else
       render json: ["you are not logged in"], status: 401
     end
   end
 
   def show
-    @listing = Listing.includes(:lessor).find(params[:id])
+    @listing = Listing
+               .find(params[:id])
   end
 
   def update

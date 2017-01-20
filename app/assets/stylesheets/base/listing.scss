@@ -13,6 +13,12 @@
 }
 
 div.listing-thumbnails {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  height: 120px;
+  top: -25px;
   display: flex;
   flex-direction: row;
   overflow-x: scroll;

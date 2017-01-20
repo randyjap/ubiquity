@@ -8,13 +8,23 @@
 }
 
 .sub-rental {
-  padding-bottom: 20px;
+  word-wrap: break-word;
+  width: 260px;
+  padding: 10px;
+  border: solid 1px #5AB475;
+  border-radius: 5px;
+  margin: 10px;
 }
 
 .sub-rentals {
-  padding: 20px;
-  padding-left: 0;
-  padding-top: 0;
+  padding: 0;
+  padding-top: 5px;
+  padding-bottom: 20px;
+
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
 }
 
 .listing-sub-header {
@@ -55,21 +65,4 @@
 
 .user-listing {
   width: 100%;
-}
-
-.sub-rentals {
-  width: 100%;
-  display: flex;
-  flex-flow: row;
-  flex-wrap: wrap;
-  padding-bottom: 0;
-}
-
-.sub-rental {
-  word-wrap: break-word;
-  width: 320px;
-  padding: 10px;
-  border: solid 1px #5AB475;
-  border-radius: 5px;
-  margin: 10px;
 }

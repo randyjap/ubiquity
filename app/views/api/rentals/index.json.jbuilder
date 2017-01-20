@@ -10,5 +10,5 @@ json.set! :current_user do
       json.set! :rating, rental.review.review
       json.set! :review, rental.review.review_text
     end
-  end.sort_by! { |k, _| k["start_date"] }
+  end
 end

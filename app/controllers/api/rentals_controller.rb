@@ -1,6 +1,9 @@
 class Api::RentalsController < ApplicationController
   def index
-    @rentals = Rental.where(lessee: current_user)
+    @rentals = Rental
+              .where(lessee: current_user)
+              .includes(:lessor, :listing, :review)
+              .order(:start_date)
   end
 
   def create

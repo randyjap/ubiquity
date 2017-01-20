@@ -63,7 +63,9 @@ class UserRental extends React.Component {
   render(){
     return (
       <div className="main">
-        <button className="back-button" onClick={this.props.router.goBack}>Go Back</button><br/>
+        <div className="fixed">
+          <nav className="back-button"><button className="back-button" onClick={this.props.router.goBack}>Go Back</button></nav>
+        </div>
         <div className="current-user-rentals">
           {this.renderRentals()}
         </div>

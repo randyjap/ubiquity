@@ -1,11 +1,17 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router';
 import FontAwesome from 'react-fontawesome';
+import Modal from 'react-modal';
 
 class Nav extends React.Component{
   constructor(props){
     super(props);
-    this.state = { dropDownHide: true };
+    this.state = {
+      dropDownHide: true,
+      howModalOpen: false,
+      contactModalOpen: false,
+      termsModalOpen: false,
+    };
     this.handleLogout = this.handleLogout.bind(this);
     this.toggleDropDown = this.toggleDropDown.bind(this);
     this.initAutocomplete = this.initAutocomplete.bind(this);
@@ -112,6 +118,95 @@ class Nav extends React.Component{
     this.setState({ dropDownHide: !this.state.dropDownHide });
   }
 
+  closeModal(attr) {
+    this.setState({ [attr]: false });
+  }
+
+  openModal(attr) {
+    this.setState({ [attr]: true });
+  }
+
+  renderModals(){
+    return (
+      <div>
+        <Modal
+          isOpen={this.state.howModalOpen}
+          onRequestClose={() => this.closeModal("howModalOpen")}
+          className="modal-how"
+          overlayClassName="overlayModal"
+          contentLabel="Modal"
+          transitionName="modal-anim">
+          <div className="how-container">
+            <div className="square-logo-how"></div>
+            <table className="contact">
+              <tbody>
+                <tr>
+                  <td><h1 className="contact-header">Youbquity</h1></td>
+                </tr>
+                <tr>
+                  <td>
+                    <br/>
+                    <p className="how">Make the most of your equipment and it rent it out to others!</p>
+                    <p className="how">Ubiquity allows you to list your equipment to others.</p>
+                    <p className="how">Save the environment and make extra money!</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </Modal>
+        <Modal
+          isOpen={this.state.contactModalOpen}
+          onRequestClose={() => this.closeModal("contactModalOpen")}
+          className="modal-contact"
+          overlayClassName="overlayModal"
+          contentLabel="Modal"
+          transitionName="modal-anim">
+          <div className="contact-container">
+            <table className="contact">
+              <tbody>
+                <tr>
+                  <td><img src="http://res.cloudinary.com/dkympkwdz/image/upload/v1484853581/Logo-2C-21px-R_rc35uu.png" /></td>
+                  <td><a className="contact" target="_blank" href="http://www.linkedin.com/in/randyjap">www.linkedin.com/in/randyjap</a></td>
+                </tr>
+                <tr>
+                  <td><img src="http://res.cloudinary.com/dkympkwdz/image/upload/v1484853612/GitHub-Mark-64px_rfmfmn.png" /></td>
+                  <td><a className="contact" target="_blank" href="http://www.github.com/randyjap">www.github.com/randyjap</a></td>
+                </tr>
+                <tr>
+                  <td><img src="http://res.cloudinary.com/dkympkwdz/image/upload/v1484853612/GitHub-Mark-64px_rfmfmn.png" /></td>
+                  <td><a className="contact" target="_blank" href="http://www.github.com/randyjap/ubiquity">www.github.com/randyjap/ubiquity</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </Modal>
+        <Modal
+          isOpen={this.state.termsModalOpen}
+          onRequestClose={() => this.closeModal("termsModalOpen")}
+          className="modal-contact"
+          overlayClassName="overlayModal"
+          contentLabel="Modal"
+          transitionName="modal-anim">
+          <div className="contact-container">
+            <table className="contact">
+              <tbody>
+                <tr>
+                  <td><h1 className="contact-header">Terms</h1></td>
+                </tr>
+                <tr>
+                  <td>
+                    <br/>All listings are for demonstrational purposes only and are completely fictional.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </Modal>
+      </div>
+    );
+  }
+
   render(){
     let name = "Login Here";
     let dropDown;
@@ -172,8 +267,8 @@ class Nav extends React.Component{
                   </li>
                   <li>
                     <ul className="help">
-                      <li><Link className="gear-item" to="contact">Contact</Link></li>
-                      <li><Link className="gear-item" to="how">How does this work?</Link></li>
+                      <li><Link className="gear-item" onClick={() => this.openModal("contactModalOpen")}>Contact</Link></li>
+                      <li><Link className="gear-item" onClick={() => this.openModal("howModalOpen")}>How does this work?</Link></li>
                       <li>
                         { this.linkSignOut() }
                       </li>
@@ -211,7 +306,8 @@ class Nav extends React.Component{
     );
     return (
       <div className="nav">
-        {mainBar}
+        { mainBar }
+        { this.renderModals() }
       </div>
     );
   }

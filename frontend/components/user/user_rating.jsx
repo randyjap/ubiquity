@@ -29,8 +29,10 @@ class UserRating extends React.Component {
     const RADIAN = Math.PI / 180;
     return (
       <div className="main">
+        <div className="fixed">
+          <nav className="back-button"><button className="back-button" onClick={this.props.router.goBack}>Go Back</button></nav>
+        </div>
         <div className="aside">
-          <button className="back-button" onClick={this.props.router.goBack}>Go Back</button><br/>
           <div className="pie-total">{this.props.userProfile.total_count} Reviews<br/>{this.props.userProfile.average_rating} Average</div>
           <PieChart width={500} height={500} onMouseEnter={this.onPieEnter}>
             <Pie
