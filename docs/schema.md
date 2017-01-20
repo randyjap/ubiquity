@@ -59,3 +59,4 @@ column name | data type | details
 id          | integer   | not null, primary key
 rental_id   | integer   | not null, foreign key (references listing), indexed, unique scope [associated lessee]
 review      | integer   | not null
+review_text | text      | not null

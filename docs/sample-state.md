@@ -70,6 +70,17 @@
       total: 1000
     },
     2: ...
+  },
+  userProfile: {
+    average_rating: 3.9,
+    id: 1,
+    five_stars: 68,
+    four_stars: 32,
+    three_stars: 22,
+    two_stars: 11,
+    one_stars: 13,
+    total: 146,
+    username: "Guest"
   }
 }
 ```

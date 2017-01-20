@@ -32,3 +32,7 @@
 - `POST /api/listings` (Not MVP Required)
 - `GET /api/listings/:id`
 - `PATCH /api/listings/:id`
+- `GET /api/options`
+  - allows react components to efficiently pull their option data
+- `POST /api/reviews`
+  - allows users to post reviews they are authorized for/ associated with

@@ -42,7 +42,7 @@ class UserRental extends React.Component {
         return (
           <div className="current-user-rental" key={rental.id}>
             <ul>
-              <li className="user-rental-sub-header">Rental ID# {rental.id}</li>
+              <li className="user-rental-sub-header">Rental ID# {rental.id} from <Link className="user-rental-sub-header" to={`listings/${rental.listing_id}`}>Listing #{rental.listing_id}</Link></li>
               <li>Lessor: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b className="user-rental-sub-header">{rental.lessor}</b></li>
               <li>Start Date: &nbsp;&nbsp;<b className="user-rental-sub-header">{rental.start_date}</b></li>
               <li>End Date: &nbsp;&nbsp;&nbsp;&nbsp;<b className="user-rental-sub-header">{rental.end_date}</b></li>
