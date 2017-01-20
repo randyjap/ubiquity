@@ -188,7 +188,6 @@ class Map extends Component {
       this.props.receiveCenter(this.map.getCenter().toJSON());
     });
 
-    google.maps.event.trigger(this.map, 'resize');
     // google.maps.event.addListener(this.map, 'click', event => {
     //   const coords = _getCoordsObj(event.latLng);
     //   this._handleClick(coords);

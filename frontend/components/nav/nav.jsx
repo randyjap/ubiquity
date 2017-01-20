@@ -57,7 +57,7 @@ class Nav extends React.Component{
       lat: lat,
       lng: lng
     };
-    this.redirect('search');
+    if (this.props.router.location.pathname !== "/search") this.redirect('search');
     this.setState({ searchAddress, latlng });
     this.props.receiveCenter(latlng);
   }

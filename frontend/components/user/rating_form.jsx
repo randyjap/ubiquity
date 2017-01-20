@@ -49,11 +49,12 @@ class RatingForm extends React.Component {
   render(){
     return (
       <div>
+        <b className="grey">Enter star rating below here...</b>
         <Rating defaultValue={null}
           className="rating-filter"
           onUpdate={this.logRating}>
         </Rating>
-        <TextInput style={{ minHeight: 80 }} onChange={this.logReview} placeholder="Enter your review here..." allowNewLine/>
+        <TextInput style={{ minHeight: 80, "overflow-y": "auto", "border": "1px solid #a9a9ac", "padding": "10px", "padding-top": "0" }} onChange={this.logReview} placeholder="Enter review in here..." allowNewLine/>
         <button className="review" onClick={this.handleSubmit}>Submit Review!</button>
         { this.renderErrors() }
       </div>

@@ -9,11 +9,12 @@
 
 .sub-rental {
   word-wrap: break-word;
-  width: 260px;
+  width: 280px;
   padding: 10px;
   border: solid 1px #5AB475;
   border-radius: 5px;
   margin: 10px;
+  line-height: 28px;
 }
 
 .sub-rentals {
@@ -53,6 +54,7 @@
   border-radius: 5px;
   padding-top: 20px;
   word-wrap: break-word;
+  line-height: 28px;
 }
 
 .current-user-rentals {

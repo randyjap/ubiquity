@@ -140,6 +140,8 @@ a.listing {
   padding: 0;
   background: rgba(255,255,255,.4);
   flex: 3;
+  font-family: 'Fjalla One', sans-serif;
+  text-align: center;
 }
 
 .star-rating {
@@ -276,7 +278,11 @@ p.how {
 }
 
 .rating-filter {
-  padding-top: 15px;
+  padding-top: 0;
+}
+
+b.grey {
+  color: #a9a9ac;
 }
 
 .slider {

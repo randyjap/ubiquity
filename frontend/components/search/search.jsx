@@ -166,6 +166,7 @@ class Search extends React.Component{
         { this.renderedSearchFilters() }
         { this.renderedSearchResults() }
         <div className="aside search-map">
+          Move and zoom the map or use the search bar above to fine tune results!
           <MapContainer />
         </div>
       </div>
