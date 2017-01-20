@@ -57,7 +57,6 @@ class Nav extends React.Component{
       lat: lat,
       lng: lng
     };
-    this.redirect('search');
     this.setState({ searchAddress, latlng });
     this.props.receiveCenter(latlng);
   }
@@ -290,7 +289,7 @@ class Nav extends React.Component{
             style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.5)' }}
             onClick={this.focusSearch}
           />
-        <input onFocus={this.geolocate()} id="autocomplete" className="searchbar" placeholder="Search a location..."/>
+        <input id="autocomplete" className="searchbar" placeholder="Search a location..."/>
         </nav>
         <nav className="right-nav">
           <ul onClick={this.toggleDropDown}>

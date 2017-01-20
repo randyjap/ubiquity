@@ -1,29 +1,35 @@
 import React from 'react';
 import Select from 'react-select';
+import { TextInput } from 'belle';
 
 class ListingUploadForm extends React.Component {
   constructor(props){
     super(props);
     this.state = {
       image_urls: [],
-      listing_title: "listing title",
-      detail_desc: "detail desc",
-      location: "hello",
-      lat: 123,
-      lng: 123,
-      day_rate: 123,
-      replacement_value: 123,
-      serial: "123",
-      brand: "Canon",
-      category: "Video"
+      listing_title: "",
+      detail_desc: "",
+      location: "",
+      lat: "",
+      lng: "",
+      day_rate: "",
+      replacement_value: "",
+      serial: "",
+      brand: "",
+      category: ""
     };
     this.upload = this.upload.bind(this);
     this.getOptions = this.getOptions.bind(this);
     this.logChange = this.logChange.bind(this);
+    this.logChangeInput = this.logChangeInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.initAutocomplete = this.initAutocomplete.bind(this);
+    this.updateLocation = this.updateLocation.bind(this);
+    this.redirect = this.redirect.bind(this);
   }
 
   componentDidMount(){
+    this.initAutocomplete();
     this.props.fetchOptions();
   }
 
@@ -53,9 +59,9 @@ class ListingUploadForm extends React.Component {
     e.preventDefault();
     window.cloudinary.openUploadWidget(window.CLOUDINARY_OPTIONS, function(error, images) {
       if (error === null) {
-        this.props.postImage(images[0].url);
+        this.setState({ image_urls: images.map(image => image.url) });
       }
-    });
+    }.bind(this));
   }
 
   getOptions(key){
@@ -76,9 +82,44 @@ class ListingUploadForm extends React.Component {
     };
   }
 
+  logChangeInput(field) {
+    return e => {
+      this.setState({ [field]: e.target.value });
+    };
+  }
+
+  initAutocomplete() {
+    let autocomplete = new google.maps.places.Autocomplete(
+        /** @type {!HTMLInputElement} */(document.getElementById('autocomplete-2')),
+        {types: ['geocode']});
+    autocomplete.addListener('place_changed', this.updateLocation);
+    this.autocomplete = autocomplete;
+  }
+
+  updateLocation() {
+    if (this.autocomplete.getPlace().geometry === undefined) return null;
+    let lat = this.autocomplete.getPlace().geometry.location.lat();
+    let lng = this.autocomplete.getPlace().geometry.location.lng();
+    let searchAddress = this.autocomplete.getPlace().formatted_address;
+    let latlng = {
+      lat: lat,
+      lng: lng
+    };
+    this.setState({ lat: lat, lng: lng, location: searchAddress });
+  }
+
+  redirect(route){
+    this.props.router.replace(route);
+  }
+
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createListing(this.state);
+    this.props.createListing(this.state)
+      .then(listing => {
+        this.redirect(`listings/${listing.id}`);
+        return listing;
+      })
+      .then(listing => console.log(listing));
   }
 
   render(){
@@ -100,9 +141,12 @@ class ListingUploadForm extends React.Component {
             onChange={this.logChange("category")}
             value={this.state.category}
             placeholder="Select categories.." />
-          <TextInput value={this.state.listing_title} placeholder="Listing title..." />
-          <TextInput value={this.state.detail_desc} placeholder="Listing description..." />
-          <Input type="number" value={this.state.detail_desc} placeholder="Listing description..." />
+          <TextInput value={this.state.listing_title} placeholder="Listing title..." onChange={this.logChangeInput("listing_title")}/>
+          <TextInput value={this.state.detail_desc} placeholder="Listing description..." onChange={this.logChangeInput("detail_desc")}/>
+          <TextInput value={this.state.serial} placeholder="Equipment serial number..." onChange={this.logChangeInput("serial")}/>
+          <input id="autocomplete-2" className="searchbar" value={this.state.location} onChange={this.logChange("location")} placeholder="Search a location..."/>
+          <input type="number" value={this.state.day_rate} placeholder="Day Rate..." onChange={this.logChangeInput("day_rate")}/>
+          <input type="number" value={this.state.replacement_value} placeholder="Replacement Value..." onChange={this.logChangeInput("replacement_value")}/>
           <button onClick={this.upload}>Upload Image</button><br/>
           <button onClick={this.handleSubmit}>Submit!</button>
         </div>

@@ -21,6 +21,9 @@ export const bookListing = (rental) => dispatch => {
 
 export const createListing = listing => dispatch => {
   return ListingAPIUtil.createListing(listing)
-    .then(() => dispatch(clearSessionErrors()))
+    .then((newListing) => {
+      dispatch(clearSessionErrors());
+      return newListing;
+    })
     .fail(errors => dispatch(receiveSessionErrors(errors.responseJSON)));
 };

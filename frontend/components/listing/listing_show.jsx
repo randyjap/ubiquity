@@ -24,7 +24,7 @@ class ListingShow extends React.Component {
   firstMainImage(data){
     const photoData = data.listing.photos;
     if (photoData.length === 0) {
-      this.setState({ mainListingImage: "http://thumb9.shutterstock.com/display_pic_with_logo/114367/229591876/stock-photo-vintage-camera-on-wooden-bench-in-autumn-park-instagram-style-toned-photo-229591876.jpg" });
+      this.setState({ mainListingImage: "http://res.cloudinary.com/dkympkwdz/image/upload/ar_3:2,c_crop/v1484546397/pexels-photo-26738_q9eaqc.jpg" });
     } else {
       this.setState({ mainListingImage: photoData[0].image_url });
     }

@@ -17,7 +17,6 @@ class Api::ListingsController < ApplicationController
   end
 
   def create
-    debugger
     @listing = Listing.new(listing_params)
     @listing.lessor = current_user
     @listing.brand = Brand.find_by(name: params[:listing][:brand])
@@ -25,6 +24,7 @@ class Api::ListingsController < ApplicationController
     if @listing.save
       urls = params[:listing][:image_urls]
       urls.each { |url| Photo.create(listing: @listing, image_url: url) } if urls
+      # debugger
       render json: @listing, status: 200
     else
       render json: @listing.errors.full_messages, status: 422
