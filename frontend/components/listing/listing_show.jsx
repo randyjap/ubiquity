@@ -15,8 +15,8 @@ class ListingShow extends React.Component {
     this.state = {
       pickUp: true,
       dropOff: true,
-      start_date: "../../..",
-      end_date: "../../..",
+      start_date: "mm/dd/yy",
+      end_date: "mm/dd/yy",
       success: false
     };
   }
