@@ -129,7 +129,7 @@ end
 brand = Brand.first
 category = Category.first
 
-150.times do
+100.times do
   Listing.create({
     lessor: User.find(rand(1..User.count)),
     listing_title: Faker::Company.buzzword,
@@ -148,7 +148,7 @@ category = Category.first
   })
 end
 
-30.times do
+60.times do
   Listing.create({
     lessor: User.find(rand(1..User.count)),
     listing_title: Faker::Company.buzzword,
@@ -165,7 +165,7 @@ end
   })
 end
 
-30.times do
+60.times do
   Listing.create({
     lessor: User.find(rand(1..User.count)),
     listing_title: Faker::Company.buzzword,
@@ -188,8 +188,8 @@ end
     listing_title: Faker::Company.buzzword,
     detail_desc: Faker::Company.catch_phrase,
     location: "#{Faker::Address.street_address}, #{Faker::Address.city}",
-    lat: (rand(30..47) - (rand(0..1000)/1000)),
-    lng: (rand(-113..-94) - (rand(0..1000)/1000)),
+    lat: rand(30.59453229604209..47.59453229604209),
+    lng: rand(-113.59453229604209..-94.59453229604209),
     day_rate: rand(5..500),
     replacement_value: rand(500..5000),
     serial: Faker::Crypto.md5,
