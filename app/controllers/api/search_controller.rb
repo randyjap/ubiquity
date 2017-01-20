@@ -5,7 +5,7 @@ class Api::SearchController < ApplicationController
     rating_filter = rating_params.empty? ? 0 : rating_params.to_i - 0.5
     price_filter = price_params.empty? ? 99999 : price_params
     bounds_filter = bounds_params.empty? ? nil : bounds_params
-    if bounds_filter && bounds_filter[:southWest][:lng] < bounds_filter[:northEast][:lng]
+    if bounds_filter && bounds_filter[:southWest][:lng].to_f < bounds_filter[:northEast][:lng].to_f
       @listings = Listing
         .joins(:category, :brand, :rentals, :reviews)
         .where(categories: { name: category_filters })

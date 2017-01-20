@@ -188,10 +188,11 @@ class Map extends Component {
       this.props.receiveCenter(this.map.getCenter().toJSON());
     });
 
-    google.maps.event.addListener(this.map, 'click', event => {
-      const coords = _getCoordsObj(event.latLng);
-      this._handleClick(coords);
-    });
+    google.maps.event.trigger(this.map, 'resize');
+    // google.maps.event.addListener(this.map, 'click', event => {
+    //   const coords = _getCoordsObj(event.latLng);
+    //   this._handleClick(coords);
+    // });
   }
 
   _handleMarkerClick(listing) {
@@ -206,7 +207,7 @@ class Map extends Component {
   }
 
   render() {
-    return <div className="map" ref="map">Map</div>;
+    return <div className="map" id="map-container" ref="map">Map</div>;
   }
 }
 

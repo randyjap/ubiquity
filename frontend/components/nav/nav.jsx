@@ -49,6 +49,7 @@ class Nav extends React.Component{
   }
 
   updateLocation() {
+    if (this.autocomplete.getPlace().geometry === undefined) return null;
     let lat = this.autocomplete.getPlace().geometry.location.lat();
     let lng = this.autocomplete.getPlace().geometry.location.lng();
     let searchAddress = this.autocomplete.getPlace().formatted_address;
