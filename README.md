@@ -34,13 +34,13 @@ Youbiquity is a full-stack web application inspired by Share Grid a consumer-to-
 
 ## Technology
 It utilizes the following technology:
- - Notable the Frontend (mostly in Javascript & CSS3/HTML5)
+ - Notables in the Frontend (mostly using Javascript & CSS3/HTML5)
 	 - React
 		 - react-redux, react-router, react-modal, react-addons-css-transition-group, recharts
 	 - Google Map API
 	 - Cloudinary CDN
 
- - Notable on the Backend (in Ruby)
+ - Notables in the Backend (Ruby)
 	 - Rails
 		 - Figaro, JBuilder, Redis
 	 - PostgreSQL DB
