@@ -22,15 +22,87 @@ Youbiquity is a full-stack web application inspired by Share Grid a consumer-to-
 
 ### Login Modal
 ![enter image description here](docs/screenshots/login.png)
+The use of modals was a very fitting use for the authentication UI/UX experience of the user.
+
+As soon as the AJAX call for the authentication successfully returns, a redirect call through the react router is triggered.
+
+```Javascript
+handleSubmit(e){
+	e.preventDefault();
+	const user = this.state;
+	this.props.processForm({user})
+		.then(() => this.redirect('search')
+	);
+}
+```
+
 ### Google Search API and PostgreSQL Querying
 ![enter image description here](docs/screenshots/search.png)
-### Google Search API and PostgreSQL Querying
-![enter image description here](docs/screenshots/listing.png)
+The user is free to choose any combination of up to five different properties of each listing.
+
+The Google Map API allows for boundary filtering of the listing based on their longitutde and lattiude coordinates.  A simple conditional on the querying allows for wrapping around the world.
+
+```Ruby
+.where("lat BETWEEN ? AND ?", bounds_filter[:southWest][:lat], bounds_filter[:northEast][:lat])
+```
+
+```Ruby
+.where("lng > ? OR lng < ?", bounds_filter[:southWest][:lng], bounds_filter[:northEast][:lng])
+```
+
 ### Equipment Listing / Booking Immediately Updates Booking Status
+![enter image description here](docs/screenshots/listing.png)
+
+Overlap of scheduling conflicts are handled on the model layer with use of SQL.
+
+```Ruby
+Rental
+	.where.not(id: self.id)
+	.where(listing: listing)
+	.where(<<-SQL, start_date: start_date, end_date: end_date)
+		NOT( (start_date >= :end_date) OR (end_date <= :start_date) )
+	SQL
+```
+
+The user receives seamless visual confirmation through the use of Reacts Transition Group.  Instead of blinking into view, the element added to the virtual DOM eases into place.
+
+```Javascript
+<ReactCSSTransitionGroup
+	transitionName="example"
+	transitionAppear={true}
+	transitionAppearTimeout={1000}
+	transitionEnterTimeout={1000}
+	transitionLeaveTimeout={600}>
+	{ this.rentalDates() }
+</ReactCSSTransitionGroup>
+```
+
+### User Profile
 ![enter image description here](docs/screenshots/rating_profile.png)
+
+The user's rating performance is visualized through the Rechart module.  Maping through relevant user Key Performance Indicators makes the user's performance visually apparent.
+
+```Javascript
+<PieChart width={500} height={500} onMouseEnter={this.onPieEnter}>
+	<Pie
+		data={data}
+		cx={250}
+		cy={250}
+		innerRadius={120}
+		outerRadius={160}
+		fill="#8884d8"
+		paddingAngle={5} >
+		{
+			data.map((entry, index) => <Cell key={index} fill={COLORS[index % COLORS.length]}/>)
+		}
+	</Pie>
+</PieChart>
+```
+
 ### Users Can Leave Reviews that are Aggregated Immediately
-![enter image description here](docs/screenshots/submitting_review.png)
 ![enter image description here](docs/screenshots/reviews.png)
+
+User data is collected through visual rating form components.
 
 ## Technology
 It utilizes the following technology:
@@ -51,7 +123,7 @@ It utilizes the following technology:
 
 ## Project Planning
 A number of documents were prepared for the implementation of this Project
-- [Implmentation Phases](docs/planning_readme.md)
+- [implementation Phases](docs/planning_readme.md)
 - [API Endpoints](docs/api-endpoints.md)
 - [Component Hierarchy](docs/component-hierarchy.md)
 - [Sample React State](docs/sample-state.md)

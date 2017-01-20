@@ -38,11 +38,11 @@ Youbiquity allows users to easily rent out their idle equipment to others and al
 
 ### Phase 2: Equipment Listing Model, API, and Components (2 days)
 
-**Objective:** Equipment listings can be created, read, edited and inactivated through the API.
+**Objective:** Equipment listings can be read through the API.
 
 ### Phase 3: Equipment Search, Listings, & Components (2 days)
 
-**Objective:** Equipment listings can be shown and linked to on the google map API.
+**Objective:** Equipment listings can be searched by any combination of 5 disparate properties.
 
 ### Phase 4: Google Map API & Components (1 day)
 
@@ -50,7 +50,7 @@ Youbiquity allows users to easily rent out their idle equipment to others and al
 
 ### Phase 5: Reviews (2 days)
 
-**Objective:** Renters and lessors can leave each other point feedback.
+**Objective:** Lessees can leave lessors point and prose feedback.
 
 ### Bonus Features (TBD)
 - [ ] Lessees must request and lessors may approve rental requests
