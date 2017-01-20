@@ -22,6 +22,7 @@ Youbiquity is a full-stack web application inspired by Share Grid a consumer-to-
 
 ### Login Modal
 ![enter image description here](docs/screenshots/login_modal.png)
+
 The use of modals was a very fitting use for the authentication UI/UX experience of the user.
 
 As soon as the AJAX call for the authentication successfully returns, a redirect call through the react router is triggered.
