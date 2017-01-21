@@ -5,16 +5,7 @@ let _defaultState = {
   brand: null,
   category: null,
   rating: null,
-  bounds: {
-    northEast: {
-      lat: 37.89206846677344,
-      lng: -122.33324148876954
-    },
-    southWest: {
-      lat: 37.59615236417728,
-      lng: -122.5392351411133
-    }
-  },
+  bounds: null,
   price: null,
   center: {lat: 37.75023068394664, lng: -122.44104483349611}
 };
