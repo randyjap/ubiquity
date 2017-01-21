@@ -111,6 +111,41 @@ photo_urls = ["http://res.cloudinary.com/dkympkwdz/image/upload/ar_3:2,c_crop/v1
 "http://res.cloudinary.com/dkympkwdz/image/upload/ar_3:2,c_crop/v1484546396/light-night-lens-shadow_fvx8z1.jpg",
 "http://res.cloudinary.com/dkympkwdz/image/upload/ar_3:2,c_crop/v1484546396/camera-canon-photography-office-space-159479_vghvu0.jpg"]
 
+detail_desc = [
+  "Designed for use with Instax Mini line of cameras
+  Develops Instantly - Press the shutter, capture the moment, and watch the photo slide out and the image develop in front of your eyes!
+  Hi-Speed ISO 800 - With superb grain quality, Instax Mini Film ensure vibrant color and natural skin tones.
+  Credit-Card Size - 5.4 x 8.6 cm (film size) - The unique credit-card sized film is easy to carry in your purse or wallet and has that classic white frame that you can leave blank or personalize with fun messages.
+  Easy-to-Load Cartridge - Film cartridge is designed and labeled for easy loading and filled with film for 10 credit-card sized instant prints.",
+  "Stunning 4K video and 12MP photos in Single, Burst and Time Lapse modes.
+  Durable by design, HERO5 Black is waterproof to 33ft (10m) without a housing
+  Additional GoPro HERO5 Black Features + Benefits below on item page.
+  Preview and playback your shots, change settings and trim your footage, all on your GoPro.",
+  "Long 20X zoom draws in the scene from far away
+  Exclusive high-dynamic range feature reduces bright spots for a professional look
+  Wirelessly connect your smartphone’s video camera for a picture-in-picture video effect",
+  "18 megapixel CMOS (APS-C) sensor with DIGIC 4 image processor
+  EF-S 18-55mm IS II standard zoom lens expands picture-taking possibilities
+  3-inch LCD TFT color, liquid-crystal monitor for easy viewing and sharing
+  EOS 1080p full HD movie mode helps you capture brilliant results
+  Features include continuous shooting up to 3fps, Scene Intelligent Auto mode, creative filers, built-in flash and feature guide",
+  "18 megapixel CMOS (APS-C) sensor with DIGIC 4 image processor
+  EF-S 18-55mm IS II standard zoom lens expands picture-taking possibilities
+  3-inch LCD TFT color, liquid-crystal monitor for easy viewing and sharing. EOS 1080p full HD movie mode helps you capture brilliant results.
+  Features include continuous shooting up to 3fps, Scene Intelligent Auto mode, creative filers, built-in flash and feature guide",
+  "24.2MP APS-C Exmor sensor w/ advanced processing up to ISO 51.200
+  Wide 425 phase detection AF points, Fast 0.05 sec. AF acquisition
+  5-axis in-body image stabilization steadies every lens
+  11fps continuous shooting to 269 frames at 24.2MP w/ AE/AF tracking
+  4K movie w/ 2.4x oversampling4, full pixel readout, no pixel binning",
+  "24 MP APS-C CMOS sensor
+  ISO 100-25600 (expandable to 51200)
+  Hybrid AF with 179-point focal plane phase-detection and 25 contrast detect points
+  Up to 11 FPS continious shooting
+  3-inch tilting LCD with 921,000 dots
+  OLED electronic viewfinder with 100% coverage and 1.4 million dots
+  Built-in Wi-Fi and NFC"
+]
 
 User.create(username: "Guest", password: "password")
 
@@ -133,7 +168,7 @@ category = Category.first
   Listing.create({
     lessor: User.find(rand(1..User.count)),
     listing_title: Faker::Company.buzzword,
-    detail_desc: Faker::Company.catch_phrase,
+    detail_desc: detail_desc.sample,
     location: "#{Faker::Address.street_address}, #{Faker::Address.city}",
     # lat: (rand(30..47) - (rand(0..1000)/1000)),
     # lng: (rand(-113..-94) - (rand(0..1000)/1000)),
@@ -152,7 +187,7 @@ end
   Listing.create({
     lessor: User.find(rand(1..User.count)),
     listing_title: Faker::Company.buzzword,
-    detail_desc: Faker::Company.catch_phrase,
+    detail_desc: detail_desc.sample,
     location: "#{Faker::Address.street_address}, #{Faker::Address.city}",
     lat: rand(37.711537399325096..37.77940697341724),
     lng: rand(-122.47692206127931..-122.40310766918947),
@@ -169,7 +204,7 @@ end
   Listing.create({
     lessor: User.find(rand(1..User.count)),
     listing_title: Faker::Company.buzzword,
-    detail_desc: Faker::Company.catch_phrase,
+    detail_desc: detail_desc.sample,
     location: "#{Faker::Address.street_address}, #{Faker::Address.city}",
     lat: rand(40.59453229604209..40.72475342512843),
     lng: rand(-74.0213908239258..-73.87376203974611),
@@ -186,7 +221,7 @@ end
   Listing.create({
     lessor: User.first,
     listing_title: Faker::Company.buzzword,
-    detail_desc: Faker::Company.catch_phrase,
+    detail_desc: detail_desc.sample,
     location: "#{Faker::Address.street_address}, #{Faker::Address.city}",
     lat: (rand(30..47) - (rand(0..1000)/1000)),
     lng: (rand(-113..-94) - (rand(0..1000)/1000)),
