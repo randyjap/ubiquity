@@ -100,6 +100,38 @@ The user's rating performance is visualized through the Rechart module.  Maping 
 </PieChart>
 ```
 
+The user performance is mostly done in the user model through a number of aggregations.
+
+In order to dry out the code for counting reviews by rating score, we pass a 'rating' argument into the model method below.
+
+```Ruby
+def average_listing_rating
+	(self.total_ratings_received / self.review_count_received.to_f).round(2)
+end
+
+def total_ratings_received
+	self.listings.inject(0) do |acc, listing|
+		acc + listing.reviews.inject(0) do |acc2, review|
+			acc2 + review.review
+		end
+	end
+end
+
+def review_count_received
+	self.listings.inject(0) { |acc, listing| acc + listing.review_count }
+end
+
+def review_count_by_rating(rating)
+	total = 0
+	self.listings.each do |listing|
+		listing.reviews.each do |review|
+			total += 1 if review.review == rating
+		end
+	end
+	total
+end
+```
+
 ### Users Can Leave Reviews that are Aggregated Immediately
 ![enter image description here](docs/screenshots/reviews.png)
 
