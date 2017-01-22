@@ -228,8 +228,8 @@ class Nav extends React.Component{
                     </li>
                     <li>
                       <ul className="help">
-                        <li><Link to="contact">Contact</Link></li>
-                        <li><Link to="how">How does this work?</Link></li>
+                        <li><Link onClick={() => this.openModal("contactModalOpen")}>Contact</Link></li>
+                        <li><Link onClick={() => this.openModal("howModalOpen")}>How does this work?</Link></li>
                         <li>
                           { this.linkSignIn() }
                         </li>
