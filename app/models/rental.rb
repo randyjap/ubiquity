@@ -25,7 +25,7 @@ class Rental < ActiveRecord::Base
   end
 
   def end_date_before_start_date?
-    errors.add(:drop_off, 'must be before pick up date') unless end_date > start_date
+    errors.add(:drop_off, 'must be after pick up date') unless end_date > start_date
   end
 
   def overlap?

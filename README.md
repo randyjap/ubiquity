@@ -105,11 +105,34 @@ The user's rating performance is visualized through the Rechart module.  Maping 
 
 User data is collected through visual rating form components.
 
+Each individual rating form has their own internal state for error handling.
+
+```Javascript
+handleSubmit(){
+	this.props.submitReview({review: this.state})
+		.fail((errors) => this.setState({errors: errors.responseJSON}));
+}
+
+<div>
+	<b className="grey">Enter star rating below here...</b>
+	<Rating defaultValue={null}
+		className="rating-filter"
+		onUpdate={this.logRating}>
+	</Rating>
+	<TextInput style={
+			{ minHeight: 80, "overflow-y": "auto", "border": "1px solid #a9a9ac", "padding": "10px", "padding-top": "0" }
+		} onChange={this.logReview} placeholder="Enter review in here..." allowNewLine/>
+	<button className="review" onClick={this.handleSubmit}>Submit Review!</button>
+	{ this.renderErrors() }
+</div>
+```
+
 ## Technology
 It utilizes the following technology:
  - Notables in the Frontend (mostly using Javascript & CSS3/HTML5)
 	 - React
-		 - react-redux, react-router, react-modal, react-addons-css-transition-group, recharts
+		 - react-redux, react-router, react-modal, redux, react-addons-css-transition-group, recharts
+	 - babel, lodash, recharts, rc-slider, belle
 	 - Google Map API
 	 - Cloudinary CDN
 
