@@ -15,6 +15,15 @@ export const fetchListing = (id) => dispatch => {
 
 export const bookListing = (rental) => dispatch => {
   return ListingAPIUtil.bookListing(rental)
-    .then(user => dispatch(clearSessionErrors()))
+    .then(() => dispatch(clearSessionErrors()))
+    .fail(errors => dispatch(receiveSessionErrors(errors.responseJSON)));
+};
+
+export const createListing = listing => dispatch => {
+  return ListingAPIUtil.createListing(listing)
+    .then(newListing => {
+      dispatch(clearSessionErrors());
+      return newListing;
+    })
     .fail(errors => dispatch(receiveSessionErrors(errors.responseJSON)));
 };

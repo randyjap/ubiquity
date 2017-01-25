@@ -12,6 +12,7 @@ import ListingShowContainer from './listing/listing_show_container';
 import UserListingContainer from './user/user_listing_container';
 import UserRentalContainer from './user/user_rental_container';
 import UserRatingContainer from './user/user_rating_container';
+import ListingUploadFormContainer from './listing/listing_upload_container';
 
 const Root = ({ store }) => {
   const _ensureLoggedIn = (nextState, replace) => {
@@ -47,6 +48,7 @@ const Root = ({ store }) => {
           <Route path="listings" component={ UserListingContainer } onEnter={_ensureLoggedIn} />
           <Route path="rentals" component={ UserRentalContainer } onEnter={_ensureLoggedIn} />
           <Route path="profile" component={ UserRatingContainer } onEnter={_ensureLoggedIn} />
+          <Route path="create" component={ ListingUploadFormContainer } onEnter={_ensureLoggedIn} />
         </Route>
       </Router>
     </Provider>

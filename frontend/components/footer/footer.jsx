@@ -81,7 +81,7 @@ class Footer extends React.Component{
                   <td><a className="contact" target="_blank" href="http://www.linkedin.com/in/randyjap">www.linkedin.com/in/randyjap</a></td>
                 </tr>
                 <tr>
-                  <td><img src="http://res.cloudinary.com/dkympkwdz/image/upload/v1484853612/GitHub-Mark-64px_rfmfmn.png" /></td>
+                  <td><img className="avatar" src="https://avatars0.githubusercontent.com/u/13705970?v=3&s=460" /></td>
                   <td><a className="contact" target="_blank" href="http://www.github.com/randyjap">www.github.com/randyjap</a></td>
                 </tr>
                 <tr>

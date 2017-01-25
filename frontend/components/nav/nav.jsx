@@ -171,8 +171,8 @@ class Nav extends React.Component{
                   <td><a className="contact" target="_blank" href="http://www.linkedin.com/in/randyjap">www.linkedin.com/in/randyjap</a></td>
                 </tr>
                 <tr>
-                  <td><img src="http://res.cloudinary.com/dkympkwdz/image/upload/v1484853612/GitHub-Mark-64px_rfmfmn.png" /></td>
-                  <td><a className="contact" target="_blank" href="http://www.github.com/randyjap">www.github.com/randyjap</a></td>
+                  <td><img className="avatar" src="https://avatars0.githubusercontent.com/u/13705970?v=3&s=460" /></td>
+                  <td><a className="contact" target="_blank" href="http://www.randyjap.com">www.randyjap.com</a></td>
                 </tr>
                 <tr>
                   <td><img src="http://res.cloudinary.com/dkympkwdz/image/upload/v1484853612/GitHub-Mark-64px_rfmfmn.png" /></td>
@@ -255,6 +255,7 @@ class Nav extends React.Component{
                       </span>
                     </ul>
                     <ul className="sections">
+                      <li><Link className="gear-item" to="create">Create New Listing</Link></li>
                       <li><Link className="gear-item" onClick={this.focusSearch} to="search">Search</Link></li>
                       <li><Link className="gear-item" to="listings">My Listings</Link></li>
                       <li><Link className="gear-item" to="rentals">My Rentals</Link></li>
@@ -290,7 +291,7 @@ class Nav extends React.Component{
             style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.5)' }}
             onClick={this.focusSearch}
           />
-        <input onFocus={this.geolocate()} id="autocomplete" className="searchbar" placeholder="Search a location..."/>
+        <input id="autocomplete" className="searchbar" placeholder="Search a location..."/>
         </nav>
         <nav className="right-nav">
           <ul onClick={this.toggleDropDown}>
