@@ -15,7 +15,7 @@ Youbiquity allows users to easily rent out their idle equipment to others and al
 - [ ] Equipment listings are mapped with the google maps API
 - [ ] Renters and lessors can leave each other reviews.
 - [ ] Infinite Scroll
-- [ ] Production README [production_readme](docs/production_readme.md)
+- [ ] Production README [production_readme](../README.md)
 
 ## Design Docs
 * [View Wireframes][wireframes]
@@ -24,11 +24,11 @@ Youbiquity allows users to easily rent out their idle equipment to others and al
 * [DB schema][schema]
 * [Sample State][sample-state]
 
-[wireframes]: docs/wireframes
-[components]: docs/component-hierarchy.md
-[sample-state]: docs/sample-state.md
-[api-endpoints]: docs/api-endpoints.md
-[schema]: docs/schema.md
+[wireframes]: wireframes
+[components]: component-hierarchy.md
+[sample-state]: sample-state.md
+[api-endpoints]: api-endpoints.md
+[schema]: schema.md
 
 ## Implementation Timeline
 

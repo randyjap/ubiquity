@@ -131,9 +131,10 @@ class Search extends React.Component{
     } else {
       listings = Object.keys(searchListings).map(key => searchListings[key]);
       listings = listings.map(listing => {
+        let photoSrc = (listing.photos ? listing.photos[0].image_url : "http://res.cloudinary.com/dkympkwdz/image/upload/ar_3:2,c_crop/v1484546400/stock_photo_oimbwy.jpg");
         return (
           <Link className="listing" key={listing.id} to={`listings/${listing.id}`}>
-            <img className="listing-thumbnail" src={listing.photos[0].image_url}/>
+            <img className="listing-thumbnail" src={photoSrc}/>
             <Rating defaultValue={Math.round(listing.rating_average)}
               className="star-rating"
               disabled>

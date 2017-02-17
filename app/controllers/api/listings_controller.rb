@@ -19,7 +19,7 @@ class Api::ListingsController < ApplicationController
     @listing = Listing.new(listing_params)
     @listing.lessor = current_user
     @listing.brand = Brand.find_by(name: params[:listing][:brand])
-    @listing.category =Category.find_by(name: params[:listing][:category])
+    @listing.category = Category.find_by(name: params[:listing][:category])
     if @listing.save
       urls = params[:listing][:image_urls]
       urls.each { |url| Photo.create(listing: @listing, image_url: url) } if urls
