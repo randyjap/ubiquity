@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { withRouter } from 'react-router';
 import MarkerManager from '../../util/marker_manager';
+import merge from 'lodash/merge';
 
 const _getCoordsObj = latLng => ({
   lat: latLng.lat(),
@@ -181,7 +182,8 @@ class Map extends Component {
         southWest: { lat: south, lng: west }
       };
       this.props.receiveBounds(bounds);
-      setTimeout(this.props.fetchSearchListings(this.props.searchFilters), 10);
+      let filters = merge(this.props.searchFilters, {bounds})
+      this.props.fetchSearchListings(filters);
     });
 
     google.maps.event.addListener(this.map, 'dragend', () => {
