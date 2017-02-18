@@ -181,7 +181,7 @@ class Map extends Component {
         southWest: { lat: south, lng: west }
       };
       this.props.receiveBounds(bounds);
-      this.props.fetchSearchListings(this.props.searchFilters);
+      setTimeout(this.props.fetchSearchListings(this.props.searchFilters), 10);
     });
 
     google.maps.event.addListener(this.map, 'dragend', () => {

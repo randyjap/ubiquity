@@ -16,18 +16,18 @@ class Listing < ActiveRecord::Base
   uri = URI.parse(ENV["REDISTOGO_URL"])
   REDIS = Redis.new(url: uri)
 
-  def rating_average
-    id = self.id
-    rating_avg = REDIS.get("#{id}_listing")
-    if rating_avg.nil?
-      REDIS.set("#{id}_listing", reviews.average(:review).to_f.round(1))
-    end
-    rating_avg
-  end
-
   # def rating_average
-  #   reviews.average(:review).to_f.round(1)
+  #   id = self.id
+  #   rating_avg = REDIS.get("#{id}_listing")
+  #   if rating_avg.nil?
+  #     REDIS.set("#{id}_listing", reviews.average(:review).to_f.round(1))
+  #   end
+  #   rating_avg
   # end
+
+  def rating_average
+    reviews.average(:review).to_f.round(1)
+  end
 
   def review_count
     self.reviews.count
