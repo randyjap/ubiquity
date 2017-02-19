@@ -51,8 +51,9 @@ export default class MarkerManager {
         `${listing.lessor}` +
       '</div>' +
       '<div class="mapwindow-text">' +
-        `Category: <b class="window-bold">${listing.category}</b></br>` +
         `Brand: <b class="window-bold">${listing.brand}</b></br>` +
+        `Category: <b class="window-bold">${listing.category}</b></br>` +
+        `Day Rate: <b class="window-bold">$${listing.day_rate}</b></br>` +
         `Rating Average: <b class="window-bold">${listing.rating_average}</b></br>` +
         `Review Count: <b class="window-bold">${listing.review_count}</b></br>` +
       '</div>' +
