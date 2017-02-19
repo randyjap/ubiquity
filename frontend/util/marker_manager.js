@@ -6,6 +6,7 @@ export default class MarkerManager {
     this._createMarkerFromListing = this._createMarkerFromListing.bind(this);
     this._removeMarker = this._removeMarker.bind(this);
     this._markersToRemove = this._markersToRemove.bind(this);
+    window.markers = this.markers;
   }
 
   updateMarkers(listings){
@@ -29,8 +30,10 @@ export default class MarkerManager {
     const marker = new google.maps.Marker({
       position: pos,
       map: this.map,
-      listingId: listing.id
+      listingId: listing.id,
+      icon: 'http://res.cloudinary.com/dkympkwdz/image/upload/v1487476444/listing_marker_ayxyyk.png'
     });
+    this._addWindow(listing, marker);
     marker.addListener('click', () => this.handleClick(listing));
     this.markers.push(marker);
   }
@@ -39,5 +42,52 @@ export default class MarkerManager {
     const idx = this.markers.indexOf( marker );
     this.markers[idx].setMap(null);
     this.markers.splice(idx, 1);
+  }
+
+  _addWindow(listing, marker) {
+    let content =
+    '<div class="mapwindow-content">' +
+      '<div class="window-title">' +
+        `${listing.lessor}` +
+      '</div>' +
+      '<div class="mapwindow-text">' +
+        `Category: <b class="window-bold">${listing.category}</b></br>` +
+        `Brand: <b class="window-bold">${listing.brand}</b></br>` +
+        `Rating Average: <b class="window-bold">${listing.rating_average}</b></br>` +
+        `Review Count: <b class="window-bold">${listing.review_count}</b></br>` +
+      '</div>' +
+    '</div>';
+
+    const infoWindow = new google.maps.InfoWindow({
+      content: content,
+      disableAutoPan: true,
+      maxWidth: 150
+    });
+
+    marker.addListener('mouseover', () => {
+      infoWindow.open(this.map, marker);
+    });
+
+    marker.addListener('mouseout', () => {
+      infoWindow.close(this.map, marker);
+    });
+
+    const htmlElement = document.getElementById(`listing-${listing.id}`);
+    if (htmlElement) {
+      htmlElement.onmouseover = () => {
+        infoWindow.open(this.map, marker);
+      };
+
+      htmlElement.onmouseout = () => {
+        infoWindow.close(this.map, marker);
+      };
+    }
+
+    google.maps.event.addListener(infoWindow, 'domready', function() {
+      var iwOuter = $('.gm-style-iw');
+      var iwBackground = iwOuter.prev();
+      iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+      iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+    });
   }
 }

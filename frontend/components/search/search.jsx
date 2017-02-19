@@ -20,6 +20,8 @@ class Search extends React.Component{
     this.handleSubmit = this.handleSubmit.bind(this);
     this.logRating = this.logRating.bind(this);
     this.logPrice = this.logPrice.bind(this);
+    this.handleMouseEnter = this.handleMouseEnter.bind(this);
+    this.handleMouseLeave = this.handleMouseLeave.bind(this);
   }
 
   componentDidMount(){
@@ -77,6 +79,16 @@ class Search extends React.Component{
     this.props.fetchSearchListings(this.props.searchFilters);
   }
 
+  handleMouseEnter(listingId) {
+    let listing = markers.filter(el => el.listingId == listingId)[0];
+    google.maps.event.trigger(listing, 'mouseover');
+  }
+
+  handleMouseLeave(listingId) {
+    let listing = markers.filter(el => el.listingId == listingId)[0];
+    google.maps.event.trigger(listing, 'mouseout');
+  }
+
   renderedSearchFilters(){
     let count;
     if (this.props.searchListings) {
@@ -132,7 +144,10 @@ class Search extends React.Component{
       listings = listings.map(listing => {
         let photoSrc = (listing.photos ? listing.photos[0].image_url : "http://res.cloudinary.com/dkympkwdz/image/upload/ar_3:2,c_crop/v1484546400/stock_photo_oimbwy.jpg");
         return (
-          <Link className="listing" key={listing.id} to={`listings/${listing.id}`}>
+          <Link className="listing"
+            onMouseEnter={() => this.handleMouseEnter(listing.id)}
+            onMouseLeave={() => this.handleMouseLeave(listing.id)}
+            key={listing.id} to={`listings/${listing.id}`}>
             <img className="listing-thumbnail" src={photoSrc}/>
             <Rating defaultValue={Math.round(listing.rating_average)}
               className="star-rating"
