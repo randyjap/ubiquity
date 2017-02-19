@@ -24,7 +24,6 @@ class Search extends React.Component{
 
   componentDidMount(){
     this.props.fetchOptions();
-    this.props.fetchSearchListings(this.props.searchFilters);
     this.setState({
       brand: this.props.searchFilters.brand,
       category: this.props.searchFilters.category,
