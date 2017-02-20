@@ -6,6 +6,8 @@ export default class MarkerManager {
     this._createMarkerFromListing = this._createMarkerFromListing.bind(this);
     this._removeMarker = this._removeMarker.bind(this);
     this._markersToRemove = this._markersToRemove.bind(this);
+    this._selectListing = this._selectListing.bind(this);
+    this._unselectListing = this._unselectListing.bind(this);
     window.markers = this.markers;
   }
 
@@ -44,6 +46,14 @@ export default class MarkerManager {
     this.markers.splice(idx, 1);
   }
 
+  _selectListing(id) {
+    document.getElementById(`searchListing-${id}`).className = "listing-selected";
+  }
+
+  _unselectListing(id) {
+    document.getElementById(`searchListing-${id}`).className = "listing";
+  }
+
   _addWindow(listing, marker) {
     let content =
     '<div class="mapwindow-content">' +
@@ -67,22 +77,13 @@ export default class MarkerManager {
 
     marker.addListener('mouseover', () => {
       infoWindow.open(this.map, marker);
+      this._selectListing(listing.id);
     });
 
     marker.addListener('mouseout', () => {
       infoWindow.close(this.map, marker);
+      this._unselectListing(listing.id);
     });
-
-    const htmlElement = document.getElementById(`listing-${listing.id}`);
-    if (htmlElement) {
-      htmlElement.onmouseover = () => {
-        infoWindow.open(this.map, marker);
-      };
-
-      htmlElement.onmouseout = () => {
-        infoWindow.close(this.map, marker);
-      };
-    }
 
     google.maps.event.addListener(infoWindow, 'domready', function() {
       var iwOuter = $('.gm-style-iw');
